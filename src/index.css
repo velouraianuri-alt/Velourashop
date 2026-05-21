@@ -1,0 +1,58 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --white: #FFFFFF;
+  --black: #0A0B0E;
+  --blue: #3e524a;
+  --blue-dark: #2d3d35;
+  --blue-mid: #4a6058;
+  --blue-bright: #5a7068;
+  --navy: #060D1A;
+  --gray-100: #F0F4F8;
+  --gray-200: #D1D9E8;
+  --gray-400: #7A88A6;
+  --gray-600: #4A5568;
+  --font-display: 'Rethink Sans', sans-serif;
+  --font-body: 'Rethink Sans', sans-serif;
+  --font-logo: 'Rethink Sans', sans-serif;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--blue);
+  color: var(--white);
+}
+
+img { display: block; max-width: 100%; }
+button { cursor: pointer; border: none; background: none; font-family: var(--font-body); }
+a { text-decoration: none; color: inherit; }
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--blue-mid); }

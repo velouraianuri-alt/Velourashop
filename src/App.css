@@ -1,0 +1,11 @@
+/* App-level overrides */
+
+/* Hero sits behind the announcement bar (37px) + navbar (72px) but is full-screen */
+main > section:first-child {
+  margin-top: 0;
+}
+
+/* Smooth section transitions */
+main > section {
+  position: relative;
+}

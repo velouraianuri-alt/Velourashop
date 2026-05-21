@@ -1,0 +1,4 @@
+// Firebase no configurado todavía
+export const auth = null
+export const googleProvider = null
+export const appleProvider = null
