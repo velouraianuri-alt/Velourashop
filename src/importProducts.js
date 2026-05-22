@@ -1,8 +1,8 @@
 // Script para importar productos a Shopify via Admin API
 // SOLO EJECUTAR UNA VEZ para migrar los productos
 
-const SHOPIFY_STORE = 'velhoura.myshopify.com'
-const ADMIN_API_TOKEN = process.env.VITE_SHOPIFY_ADMIN_TOKEN || 'YOUR_ADMIN_TOKEN_HERE'
+const SHOPIFY_STORE = import.meta.env.VITE_SHOPIFY_STORE || 'velhoura.myshopify.com'
+const ADMIN_API_TOKEN = import.meta.env.VITE_SHOPIFY_ADMIN_TOKEN || 'YOUR_ADMIN_TOKEN_HERE'
 const GRAPHQL_ENDPOINT = `https://${SHOPIFY_STORE}/admin/api/2024-01/graphql.json`
 
 const HQ = '/imagenes/high-quality-sunglasses-manufacturer'

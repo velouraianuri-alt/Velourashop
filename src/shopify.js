@@ -1,5 +1,5 @@
-const SHOPIFY_STORE = 'velhoura.myshopify.com'
-const STOREFRONT_API_TOKEN = 'cbf31338e9aba747dfd7a67135d41e6b'
+const SHOPIFY_STORE = import.meta.env.VITE_SHOPIFY_STORE || 'velhoura.myshopify.com'
+const STOREFRONT_API_TOKEN = import.meta.env.VITE_STOREFRONT_API_TOKEN || 'cbf31338e9aba747dfd7a67135d41e6b'
 const GRAPHQL_ENDPOINT = `https://${SHOPIFY_STORE}/api/2024-01/graphql.json`
 
 // Función para hacer queries a Shopify GraphQL
