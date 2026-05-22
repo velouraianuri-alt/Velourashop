@@ -115,8 +115,8 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: (index % 4) * 0.08 }}
       style={{ cursor: 'pointer' }}
       onClick={() => onProductClick(product)}
-      onMouseEnter={() => { if (product.id !== 6) { setHovered(true); setActiveImg(1) } else { setHovered(true) } }}
-      onMouseLeave={() => { setHovered(false); if (product.id !== 6) setActiveImg(0) }}
+      onMouseEnter={() => { setHovered(true); if (!product.colors) setActiveImg(1) }}
+      onMouseLeave={() => { setHovered(false); if (!product.colors) setActiveImg(0) }}
     >
       {/* Image box — outer has no overflow:hidden so particles escape */}
       <div style={{ width: '100%', aspectRatio: '1/1', borderRadius: 4, position: 'relative', marginBottom: 10, background: '#FFFFFF' }}>

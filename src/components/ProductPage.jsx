@@ -275,12 +275,12 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
                   {/* Image 1 */}
                   <div
-                    ref={img1Idx === 0 && product.id !== 6 ? tilt.containerRef : null}
-                    onMouseMove={img1Idx === 0 && product.id !== 6 ? tilt.onMouseMove : undefined}
-                    onMouseLeave={img1Idx === 0 && product.id !== 6 ? tilt.onMouseLeave : undefined}
-                    onTouchStart={img1Idx === 0 && product.id !== 6 ? tilt.onTouchStart : undefined}
-                    onTouchMove={img1Idx === 0 && product.id !== 6 ? tilt.onTouchMove : undefined}
-                    onTouchEnd={img1Idx === 0 && product.id !== 6 ? tilt.onTouchEnd : undefined}
+                    ref={img1Idx === 0 && !hasColors ? tilt.containerRef : null}
+                    onMouseMove={img1Idx === 0 && !hasColors ? tilt.onMouseMove : undefined}
+                    onMouseLeave={img1Idx === 0 && !hasColors ? tilt.onMouseLeave : undefined}
+                    onTouchStart={img1Idx === 0 && !hasColors ? tilt.onTouchStart : undefined}
+                    onTouchMove={img1Idx === 0 && !hasColors ? tilt.onTouchMove : undefined}
+                    onTouchEnd={img1Idx === 0 && !hasColors ? tilt.onTouchEnd : undefined}
                     style={{ width: '100%', aspectRatio: '1/1', borderRadius: 10, overflow: 'hidden', background: '#fff', border: '1px solid var(--gray-100)', cursor: 'grab', userSelect: 'none', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                   >
                     <motion.img
@@ -290,7 +290,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
                       initial={{ opacity: 0, scale: 1.05 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.35 }}
-                      style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '8%', display: 'block', pointerEvents: 'none', ...(img1Idx === 0 && product.id !== 6 ? tilt.tiltStyle : {}) }}
+                      style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '8%', display: 'block', pointerEvents: 'none', ...(img1Idx === 0 && !hasColors ? tilt.tiltStyle : {}) }}
                     />
                     {img1Idx === 0 && (
                       <div style={{ position: 'absolute', inset: 0, borderRadius: 10, pointerEvents: 'none', background: `radial-gradient(circle at ${tilt.glare.x}% ${tilt.glare.y}%, rgba(255,255,255,${tilt.glare.opacity}) 0%, transparent 65%)`, transition: 'opacity 0.2s' }} />
