@@ -51,16 +51,17 @@ export default function OfferPopup() {
             style={{ position: 'fixed', inset: 0, background: 'rgba(6,13,26,0.65)', zIndex: 9998, backdropFilter: 'blur(6px)' }}
           />
 
-          <div style={{ position: 'fixed', inset: 0, zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', pointerEvents: 'none' }}>
+          <div style={{ position: 'fixed', inset: 0, zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px', pointerEvents: 'none' }}>
             <motion.div
               initial={{ opacity: 0, scale: 0.88, y: 40 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              style={{ background: 'var(--white)', borderRadius: 16, width: '100%', maxWidth: 820, overflow: 'hidden', display: 'grid', gridTemplateColumns: '1fr 1fr', boxShadow: '0 40px 120px rgba(0,0,0,0.5)', pointerEvents: 'all' }}
+              className="offer-popup-inner"
+              style={{ background: 'var(--white)', borderRadius: 16, width: '100%', maxWidth: 820, overflow: 'hidden', display: 'grid', gridTemplateColumns: '1fr 1fr', boxShadow: '0 40px 120px rgba(0,0,0,0.5)', pointerEvents: 'all', maxHeight: '90vh', overflowY: 'auto' }}
             >
-              {/* Izquierda — imagen */}
-              <div style={{ position: 'relative', minHeight: 480, overflow: 'hidden' }}>
+              {/* Izquierda — imagen (oculta en móvil) */}
+              <div className="offer-popup-image" style={{ position: 'relative', minHeight: 480, overflow: 'hidden' }}>
                 <img
                   src="/imagenes/imagenchico.png"
                   alt="VELOURA Eyewear Oferta"
@@ -81,14 +82,14 @@ export default function OfferPopup() {
               </div>
 
               {/* Derecha — formulario */}
-              <div style={{ background: 'var(--white)', padding: '48px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
+              <div className="offer-popup-form" style={{ background: 'var(--white)', padding: '48px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
                 <button
                   onClick={close}
-                  style={{ position: 'absolute', top: 18, right: 18, width: 32, height: 32, borderRadius: '50%', background: 'var(--gray-100)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }}
+                  style={{ position: 'absolute', top: 16, right: 16, width: 36, height: 36, borderRadius: '50%', background: 'var(--gray-100)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s', zIndex: 10 }}
                   onMouseEnter={e => e.currentTarget.style.background = 'var(--gray-200)'}
                   onMouseLeave={e => e.currentTarget.style.background = 'var(--gray-100)'}
                 >
-                  <X size={14} />
+                  <X size={16} />
                 </button>
 
                 {!submitted && (
@@ -161,6 +162,17 @@ export default function OfferPopup() {
           </div>
         </>
       )}
+      <style>{`
+        @media (max-width: 600px) {
+          .offer-popup-inner {
+            grid-template-columns: 1fr !important;
+            max-height: 88vh !important;
+            border-radius: 12px !important;
+          }
+          .offer-popup-image { display: none !important; }
+          .offer-popup-form { padding: 48px 24px 32px !important; }
+        }
+      `}</style>
     </AnimatePresence>
   )
 }

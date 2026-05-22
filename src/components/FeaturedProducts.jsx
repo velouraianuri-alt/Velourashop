@@ -353,14 +353,6 @@ export default function FeaturedProducts({ products = DEFAULT_PRODUCTS, loading,
         @media (max-width: 1100px) {
           #shop > div:last-child { grid-template-columns: repeat(3, 1fr) !important; }
         }
-        @media (max-width: 768px) {
-          #shop { padding: 80px 32px !important; }
-          #shop > div:last-child { grid-template-columns: repeat(2, 1fr) !important; }
-        }
-        @media (max-width: 480px) {
-          #shop { padding: 60px 20px !important; }
-          #shop > div:last-child { grid-template-columns: repeat(2, 1fr) !important; gap: 24px 16px !important; }
-        }
       `}</style>
     </section>
   )
