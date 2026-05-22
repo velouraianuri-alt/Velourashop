@@ -51,13 +51,14 @@ export default function HistoriaPage({ onClose, onOpenCart, cartItems = [] }) {
       style={{ position: 'fixed', top: 116, left: 0, right: 0, bottom: 0, background: 'var(--white)', zIndex: 200, overflowY: 'auto' }}
     >
       {/* Hero */}
-      <div style={{ position: 'relative', height: '92vh', overflow: 'hidden', background: 'var(--navy)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="historia-hero" style={{ position: 'relative', height: '92vh', overflow: 'hidden', background: 'var(--navy)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <img src="/imagenes/gafitas.png" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', opacity: 0.35 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(6,13,26,0.3) 0%, rgba(6,13,26,0.7) 100%)' }} />
         <motion.div
           variants={stagger}
           initial="hidden"
           animate="show"
+          className="historia-hero-content"
           style={{ position: 'relative', textAlign: 'center', padding: '0 32px', maxWidth: 800 }}
         >
           <motion.span
@@ -96,8 +97,8 @@ export default function HistoriaPage({ onClose, onOpenCart, cartItems = [] }) {
       </div>
 
       {/* Intro */}
-      <div style={{ background: 'var(--white)', padding: '120px 72px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px 80px', alignItems: 'center' }}>
+      <div className="historia-section" style={{ background: 'var(--white)', padding: '120px 72px' }}>
+        <div className="historia-intro-grid" style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px 80px', alignItems: 'center' }}>
           <AnimBlock>
             <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--blue)', display: 'block', marginBottom: 20 }}>Nuestra historia</span>
             <h2 style={{ fontSize: 'clamp(36px, 4vw, 58px)', fontWeight: 800, color: 'var(--black)', lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: 28 }}>
@@ -130,7 +131,7 @@ export default function HistoriaPage({ onClose, onOpenCart, cartItems = [] }) {
       </div>
 
       {/* Dark section — manifesto */}
-      <div style={{ background: 'var(--navy)', padding: '120px 72px', position: 'relative', overflow: 'hidden' }}>
+      <div className="historia-section" style={{ background: 'var(--navy)', padding: '120px 72px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: -120, right: -120, width: 500, height: 500, borderRadius: '50%', background: 'rgba(59,130,246,0.06)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', bottom: -80, left: -80, width: 340, height: 340, borderRadius: '50%', background: 'rgba(59,130,246,0.05)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: 860, margin: '0 auto', textAlign: 'center', position: 'relative' }}>
@@ -147,7 +148,7 @@ export default function HistoriaPage({ onClose, onOpenCart, cartItems = [] }) {
       </div>
 
       {/* Timeline */}
-      <div style={{ background: 'var(--white)', padding: '120px 72px' }}>
+      <div className="historia-section" style={{ background: 'var(--white)', padding: '120px 72px' }}>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
           <AnimBlock style={{ textAlign: 'center', marginBottom: 80 }}>
             <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--blue)', display: 'block', marginBottom: 16 }}>El camino</span>
@@ -159,7 +160,7 @@ export default function HistoriaPage({ onClose, onOpenCart, cartItems = [] }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
             {milestones.map(({ year, icon: Icon, title, desc }, i) => (
               <AnimBlock key={year} delay={i * 0.1}>
-                <div style={{ display: 'grid', gridTemplateColumns: '120px 1px 1fr', gap: '0 40px', alignItems: 'start', paddingBottom: i < milestones.length - 1 ? 64 : 0 }}>
+                <div className="historia-timeline-row" style={{ display: 'grid', gridTemplateColumns: '120px 1px 1fr', gap: '0 40px', alignItems: 'start', paddingBottom: i < milestones.length - 1 ? 64 : 0 }}>
                   {/* Year */}
                   <div style={{ textAlign: 'right', paddingTop: 4 }}>
                     <span style={{ fontFamily: 'var(--font-display)', fontSize: 32, fontWeight: 800, color: 'var(--blue)', letterSpacing: '-0.02em' }}>{year}</span>
@@ -189,7 +190,7 @@ export default function HistoriaPage({ onClose, onOpenCart, cartItems = [] }) {
       </div>
 
       {/* Values */}
-      <div style={{ background: 'var(--gray-100)', padding: '120px 72px' }}>
+      <div className="historia-section" style={{ background: 'var(--gray-100)', padding: '120px 72px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <AnimBlock style={{ marginBottom: 72 }}>
             <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--blue)', display: 'block', marginBottom: 16 }}>Lo que nos mueve</span>
@@ -197,7 +198,7 @@ export default function HistoriaPage({ onClose, onOpenCart, cartItems = [] }) {
               Nuestros valores
             </h2>
           </AnimBlock>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+          <div className="historia-values-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
             {[
               { title: 'Diseño ante todo', desc: 'Cada modelo pasa por cientos de iteraciones antes de llegar a tus manos. No lanzamos nada que no nos enamore primero a nosotros.' },
               { title: 'Accesibilidad real', desc: 'Premium no tiene que significar inalcanzable. Queremos que nuestra generación pueda vestir bien sin arruinarse.' },
@@ -216,7 +217,7 @@ export default function HistoriaPage({ onClose, onOpenCart, cartItems = [] }) {
       </div>
 
       {/* Closing CTA */}
-      <div style={{ background: 'var(--navy)', padding: '100px 72px', textAlign: 'center' }}>
+      <div className="historia-section" style={{ background: 'var(--navy)', padding: '100px 72px', textAlign: 'center' }}>
         <AnimBlock>
           <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase', color: 'var(--blue-bright)', marginBottom: 20 }}>Únete a VELOURA</p>
           <h2 style={{ fontSize: 'clamp(36px, 5vw, 68px)', fontWeight: 800, color: '#fff', lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: 20 }}>
@@ -237,16 +238,6 @@ export default function HistoriaPage({ onClose, onOpenCart, cartItems = [] }) {
       </div>
 
       <Footer />
-
-      <style>{`
-        @media (max-width: 900px) {
-          .historia-intro-grid { grid-template-columns: 1fr !important; }
-          .historia-values-grid { grid-template-columns: 1fr !important; }
-        }
-        @media (max-width: 640px) {
-          .historia-padding { padding: 72px 24px !important; }
-        }
-      `}</style>
     </motion.div>
   )
 }

@@ -122,13 +122,13 @@ function MarqueeRow({ reversed }) {
 
 export default function ProductMarquee() {
   return (
-    <section style={{ background: '#fff', padding: '72px 0', overflow: 'hidden', position: 'relative', borderTop: '1px solid #f0f0f0', borderBottom: '1px solid #f0f0f0' }}>
+    <section className="product-marquee-section" style={{ background: '#fff', padding: '72px 0', overflow: 'hidden', position: 'relative', borderTop: '1px solid #f0f0f0', borderBottom: '1px solid #f0f0f0' }}>
       {/* Fade edges */}
-      <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 180, background: 'linear-gradient(to right, #fff 40%, transparent)', zIndex: 2, pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: 180, background: 'linear-gradient(to left, #fff 40%, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 120, background: 'linear-gradient(to right, #fff 40%, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: 120, background: 'linear-gradient(to left, #fff 40%, transparent)', zIndex: 2, pointerEvents: 'none' }} />
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: 48, position: 'relative', zIndex: 3 }}>
+      <div className="product-marquee-header" style={{ textAlign: 'center', marginBottom: 48, position: 'relative', zIndex: 3, padding: '0 20px' }}>
         <p style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.32em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: 10 }}>
           Toda la colección
         </p>

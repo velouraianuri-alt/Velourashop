@@ -30,7 +30,7 @@ export default function IbizaCollection({ onClose, onOpenCart, cartItems = [] })
       style={{ position: 'fixed', top: 116, left: 0, right: 0, bottom: 0, background: 'var(--white)', zIndex: 200, overflowY: 'auto' }}
     >
       {/* Hero / Portada */}
-      <div style={{ position: 'relative', height: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="ibiza-hero" style={{ position: 'relative', height: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <img
           src="/imagenes/camisa.png"
           alt="Ibiza Collection - Limited Summer Collection"
@@ -47,19 +47,19 @@ export default function IbizaCollection({ onClose, onOpenCart, cartItems = [] })
 
           <motion.h1
             variants={fadeUp}
-            style={{ fontSize: 'clamp(64px, 9vw, 140px)', fontWeight: 900, color: '#fff', lineHeight: 0.9, letterSpacing: '-0.04em', marginBottom: 24 }}
+            style={{ fontSize: 'clamp(54px, 13vw, 140px)', fontWeight: 900, color: '#fff', lineHeight: 0.9, letterSpacing: '-0.04em', marginBottom: 24 }}
           >
             Ibiza<br /><span style={{ fontStyle: 'normal', fontWeight: 900, color: '#fff' }}>Collection.</span>
           </motion.h1>
 
           <motion.p
             variants={fadeUp}
-            style={{ fontSize: 18, fontWeight: 300, color: 'rgba(255,255,255,0.85)', lineHeight: 1.8, maxWidth: 620, margin: '0 auto 48px' }}
+            style={{ fontSize: 16, fontWeight: 300, color: 'rgba(255,255,255,0.85)', lineHeight: 1.7, maxWidth: 620, margin: '0 auto 40px' }}
           >
             Diseñada para capturar la esencia del Mediterráneo. Cada gafa, una historia de lujo, libertad y ese sentimiento indescriptible de verano eterno.
           </motion.p>
 
-          <motion.div variants={fadeUp} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 40, fontSize: 13, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)' }}>
+          <motion.div variants={fadeUp} className="ibiza-hero-info" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 40, fontSize: 12, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <MapPin size={16} /> Ibiza, Balearic Islands
             </div>
@@ -71,7 +71,7 @@ export default function IbizaCollection({ onClose, onOpenCart, cartItems = [] })
       </div>
 
       {/* Coming Soon Section */}
-      <div style={{ padding: '100px 48px', background: 'var(--white)', textAlign: 'center', minHeight: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+      <div className="ibiza-content" style={{ padding: '100px 48px', background: 'var(--white)', textAlign: 'center', minHeight: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -123,7 +123,8 @@ export default function IbizaCollection({ onClose, onOpenCart, cartItems = [] })
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          style={{ marginTop: 120, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 48, width: '100%', maxWidth: 900 }}
+          className="ibiza-features"
+          style={{ marginTop: 120, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 48, width: '100%', maxWidth: 900 }}
         >
           {[
             { label: 'Premium Design', desc: 'Cada detalle cuenta' },

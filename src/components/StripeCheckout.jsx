@@ -113,12 +113,15 @@ Gracias por tu compra en VELOURA.`
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         onClick={e => e.stopPropagation()}
+        className="stripe-checkout-modal"
         style={{
           background: 'white',
           borderRadius: 16,
           width: '90%',
           maxWidth: 500,
           padding: 40,
+          maxHeight: '92vh',
+          overflowY: 'auto',
           boxShadow: '0 20px 80px rgba(0,0,0,0.3)',
           position: 'relative'
         }}

@@ -147,8 +147,8 @@ export default function HombrePage({ onClose, onAdd, onProductClick, cartItems =
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       style={{ position: 'fixed', inset: 0, background: 'var(--white)', zIndex: 300, overflowY: 'auto' }}
     >
-      <div style={{ position: 'sticky', top: 0, zIndex: 10, background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(14px)', borderBottom: '1px solid var(--gray-100)', padding: '0 48px', height: 62, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <button onClick={onClose} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--black)', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.4'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
+      <div className="collection-page-topbar" style={{ position: 'sticky', top: 0, zIndex: 10, background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(14px)', borderBottom: '1px solid var(--gray-100)', padding: '0 48px', height: 62, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <button onClick={onClose} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--black)', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.4'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
           <ArrowLeft size={17} /> Volver
         </button>
         <span style={{ fontSize: 20, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' }}>VELOURA</span>
@@ -158,31 +158,31 @@ export default function HombrePage({ onClose, onAdd, onProductClick, cartItems =
         </button>
       </div>
 
-      <div style={{ position: 'relative', height: 420, overflow: 'hidden' }}>
+      <div className="collection-page-hero" style={{ position: 'relative', height: 420, overflow: 'hidden' }}>
         <img src="/imagenes/imagenchico.png" alt="Colección Hombre" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(6,13,26,0.82) 40%, rgba(6,13,26,0.2) 100%)' }} />
-        <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px' }}>
+        <div className="collection-page-hero-content" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px' }}>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--blue-bright)', marginBottom: 14 }}>
             Colección Exclusiva
           </motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }} style={{ fontSize: 'clamp(48px, 6vw, 88px)', fontWeight: 800, color: '#fff', lineHeight: 0.92, letterSpacing: '-0.02em' }}>
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }} style={{ fontSize: 'clamp(44px, 9vw, 88px)', fontWeight: 800, color: '#fff', lineHeight: 0.92, letterSpacing: '-0.02em' }}>
             Hombre
           </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', marginTop: 18, maxWidth: 380 }}>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', marginTop: 16, maxWidth: 380 }}>
             Estilo sin esfuerzo. Carácter sin límites.
           </motion.p>
         </div>
       </div>
 
-      <div style={{ padding: '72px 72px 100px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 52 }}>
+      <div className="collection-page-content" style={{ padding: '72px 72px 100px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 52, gap: 16, flexWrap: 'wrap' }}>
           <div>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: 8 }}>Selección Curada</p>
-            <h2 style={{ fontSize: 'clamp(28px, 3vw, 48px)', fontWeight: 800, color: 'var(--black)', lineHeight: 1 }}>Modelos Hombre</h2>
+            <h2 style={{ fontSize: 'clamp(28px, 6vw, 48px)', fontWeight: 800, color: 'var(--black)', lineHeight: 1 }}>Modelos Hombre</h2>
           </div>
           <p style={{ fontSize: 13, color: 'var(--gray-400)' }}>{hombreProducts.length} modelos disponibles</p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px 28px' }}>
+        <div className="collection-page-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px 28px' }}>
           {hombreProducts.map((p, i) => (
             <ProductCard key={p.id} product={p} index={i} onAdd={onAdd} onProductClick={onProductClick} />
           ))}

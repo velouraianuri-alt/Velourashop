@@ -44,7 +44,7 @@ export default function Hero() {
   const opacity    = useTransform(scrollYProgress, [0, 0.6], [1, 0])
 
   return (
-    <section ref={ref} style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+    <section ref={ref} className="hero-section" style={{ position: 'relative', height: '100vh', minHeight: 520, overflow: 'hidden' }}>
 
       {/* Imagen con parallax */}
       <motion.div
@@ -73,7 +73,7 @@ export default function Hero() {
           display: 'flex', flexDirection: 'column',
           alignItems: 'center', justifyContent: 'center',
           textAlign: 'center',
-          padding: '0 24px',
+          padding: '116px 24px 24px',
           y: textY, opacity,
         }}
       >
@@ -97,12 +97,12 @@ export default function Hero() {
             variants={fadeUp}
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(52px, 7.5vw, 110px)',
+              fontSize: 'clamp(42px, 7.5vw, 110px)',
               fontWeight: 700,
               lineHeight: 0.9,
               letterSpacing: '-0.03em',
               color: '#fff',
-              marginBottom: 44,
+              marginBottom: 36,
             }}
           >
             Las gafas de sol<br />

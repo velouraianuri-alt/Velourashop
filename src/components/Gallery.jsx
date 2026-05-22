@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, useInView, useMotionValue, animate as motionAnimate } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
@@ -13,9 +13,13 @@ const BASE_ITEMS = [
 ]
 
 const N     = BASE_ITEMS.length
-const CARD_W = 480
 const GAP    = 28
-const STEP   = CARD_W + GAP
+const getCardWidth = () => {
+  if (typeof window === 'undefined') return 480
+  if (window.innerWidth <= 560) return Math.min(window.innerWidth - 56, 320)
+  if (window.innerWidth <= 900) return 360
+  return 480
+}
 
 // Triple-clone for seamless infinite loop
 const ITEMS = [
@@ -25,7 +29,7 @@ const ITEMS = [
 ]
 
 /* ─── Single card with scroll-driven y parallax ─────────────── */
-function GalleryCard({ item }) {
+function GalleryCard({ item, cardW }) {
   const ref  = useRef(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
   const y    = useTransform(
@@ -33,17 +37,18 @@ function GalleryCard({ item }) {
     [item.realIdx % 2 === 0 ? 55 : -55, item.realIdx % 2 === 0 ? -55 : 55]
   )
   const inView = useInView(ref, { once: true, margin: '-40px' })
+  const cardHeight = Math.round(cardW * 1.08)
 
   return (
     <motion.div
       ref={ref}
-      style={{ flexShrink: 0, width: CARD_W, y }}
+      style={{ flexShrink: 0, width: cardW, y }}
       initial={{ opacity: 0 }}
       animate={inView ? { opacity: 1 } : {}}
       transition={{ duration: 0.8 }}
     >
       <div
-        style={{ width: '100%', height: 520, borderRadius: 6, marginBottom: 20, position: 'relative', overflow: 'hidden' }}
+        style={{ width: '100%', height: cardHeight, borderRadius: 6, marginBottom: 20, position: 'relative', overflow: 'hidden' }}
         className="gallery-img-wrap"
       >
         <img
@@ -84,6 +89,14 @@ export default function Gallery() {
   const titleInView = useInView(titleRef, { once: true, margin: '-60px' })
   const animRef    = useRef(null)
   const rawIdxRef  = useRef(N) // start in middle set
+  const [cardW, setCardW] = useState(getCardWidth)
+  const STEP = cardW + GAP
+
+  useEffect(() => {
+    const onResize = () => setCardW(getCardWidth())
+    window.addEventListener('resize', onResize, { passive: true })
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
   // Scroll-driven horizontal parallax (the "giraban" effect)
@@ -91,6 +104,10 @@ export default function Gallery() {
 
   const arrowOffset  = useMotionValue(-N * STEP)   // starts at middle set
   const combinedX    = useTransform([scrollOffset, arrowOffset], ([s, a]) => s + a)
+
+  useEffect(() => {
+    arrowOffset.set(-rawIdxRef.current * STEP)
+  }, [STEP, arrowOffset])
 
   const [displayIdx, setDisplayIdx] = useState(0)  // 0..N-1 for dots
 
@@ -182,7 +199,7 @@ export default function Gallery() {
       <div className="gallery-strip" style={{ paddingLeft: 72, overflow: 'visible' }}>
         <motion.div style={{ display: 'flex', gap: GAP, x: combinedX, willChange: 'transform' }}>
           {ITEMS.map(item => (
-            <GalleryCard key={item.uid} item={item} />
+            <GalleryCard key={item.uid} item={item} cardW={cardW} />
           ))}
         </motion.div>
       </div>

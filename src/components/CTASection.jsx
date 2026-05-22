@@ -11,6 +11,7 @@ export default function CTASection({ onShopClick }) {
   return (
     <section
       ref={ref}
+      className="cta-section"
       style={{
         padding: '150px 72px',
         background: 'var(--navy)',
@@ -98,7 +99,7 @@ export default function CTASection({ onShopClick }) {
             marginBottom: 52,
           }}
         >
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 15 }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 15, tableLayout: 'auto' }}>
             <thead>
               <tr>
                 <th style={{ padding: '28px 32px', textAlign: 'left', fontWeight: 600, color: 'rgba(255,255,255,0.5)', fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>Feature</th>

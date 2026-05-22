@@ -24,7 +24,7 @@ export default function FloatingOffer() {
   }
 
   return (
-    <div style={{ position: 'fixed', bottom: 32, left: 32, zIndex: 450 }}>
+    <div className="floating-offer" style={{ position: 'fixed', bottom: 32, left: 32, zIndex: 450 }}>
       <AnimatePresence mode="wait">
         {!open ? (
           <motion.button
@@ -36,6 +36,7 @@ export default function FloatingOffer() {
             onClick={() => setOpen(true)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
+            className="floating-offer-pill"
             style={{
               display: 'flex', alignItems: 'center', gap: 10,
               padding: '13px 20px',
@@ -65,8 +66,10 @@ export default function FloatingOffer() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="floating-offer-card"
             style={{
               width: 300,
+              maxWidth: '92vw',
               background: '#fff',
               borderRadius: 20,
               overflow: 'hidden',

@@ -281,6 +281,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+            className="cart-drawer"
             style={{
               position: 'fixed',
               top: 0, right: 0, bottom: 0,
@@ -294,7 +295,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
             }}
           >
             {/* Header */}
-            <div style={{
+            <div className="cart-drawer-header" style={{
               padding: '20px 24px 16px',
               borderBottom: '1px solid #f0f0f0',
               textAlign: 'center',
@@ -332,7 +333,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
             {hasItems && <ShippingBar subtotal={subtotal} />}
 
             {/* Body */}
-            <div style={{ flex: 1, overflowY: 'auto', padding: '0 24px' }}>
+            <div className="cart-drawer-body" style={{ flex: 1, overflowY: 'auto', padding: '0 24px' }}>
               {!hasItems ? (
                 <div style={{ textAlign: 'center', paddingTop: 80 }}>
                   <ShoppingBag size={48} color="#e5e7eb" style={{ margin: '0 auto 20px' }} />
@@ -387,7 +388,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
 
             {/* Footer */}
             {hasItems && (
-              <div style={{ padding: '16px 24px', borderTop: '1px solid #f0f0f0' }}>
+              <div className="cart-drawer-footer" style={{ padding: '16px 24px', borderTop: '1px solid #f0f0f0' }}>
                 {/* Promo code input */}
                 <div style={{ display: 'flex', gap: 0, marginBottom: 14 }}>
                   <input

@@ -1,5 +1,5 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { ShoppingBag } from 'lucide-react'
 
 const HQ = '/imagenes/high-quality-sunglasses-manufacturer'
@@ -94,7 +94,18 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
   const [activeImg, setActiveImg] = useState(0)
   const [addState, setAddState] = useState('idle')
   const [burst, setBurst] = useState(false)
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768)
   const images = product.images || [product.imgDefault, product.imgHover]
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 768)
+    window.addEventListener('resize', onResize, { passive: true })
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
+  // En móvil el botón siempre visible (no hay hover)
+  const showButton = isMobile || hovered
+  const showThumbnails = isMobile || hovered
 
   const handleAdd = (e) => {
     e.stopPropagation()
@@ -148,15 +159,15 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
         <motion.button
           onClick={handleAdd}
           animate={{
-            opacity: hovered ? 1 : 0,
-            y: hovered ? 0 : 8,
+            opacity: showButton ? 1 : 0,
+            y: showButton ? 0 : 8,
           }}
           whileTap={{ scale: 0.93 }}
           transition={{ duration: 0.2 }}
           style={{
-            position: 'absolute', bottom: 10, left: 10, right: 10, zIndex: 3,
-            padding: '11px 0',
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
+            position: 'absolute', bottom: 8, left: 8, right: 8, zIndex: 3,
+            padding: isMobile ? '9px 0' : '11px 0',
+            fontSize: isMobile ? 10 : 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
             borderRadius: 3, border: 'none',
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
             overflow: 'hidden',
@@ -254,16 +265,16 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
 
       {/* Thumbnails */}
       <motion.div
-        animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 4 }}
+        animate={{ opacity: showThumbnails ? 1 : 0, y: showThumbnails ? 0 : 4 }}
         transition={{ duration: 0.2 }}
-        style={{ display: 'flex', gap: 6, marginBottom: 8 }}
+        style={{ display: 'flex', gap: 5, marginBottom: 8, flexWrap: 'wrap' }}
         onClick={e => e.stopPropagation()}
       >
         {images.map((src, i) => (
           <button
             key={i}
             onClick={e => { e.stopPropagation(); setActiveImg(i) }}
-            style={{ width: 28, height: 28, borderRadius: 4, overflow: 'hidden', border: `2px solid ${activeImg === i ? 'var(--blue)' : 'var(--gray-200)'}`, padding: 0, background: '#fff', flexShrink: 0, transition: 'border-color 0.2s', cursor: 'pointer' }}
+            style={{ width: isMobile ? 24 : 28, height: isMobile ? 24 : 28, borderRadius: 4, overflow: 'hidden', border: `2px solid ${activeImg === i ? 'var(--blue)' : 'var(--gray-200)'}`, padding: 0, background: '#fff', flexShrink: 0, transition: 'border-color 0.2s', cursor: 'pointer' }}
           >
             <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 2 }} />
           </button>
@@ -287,13 +298,13 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
         <span style={{ fontSize: 10, color: '#9ca3af', fontWeight: 500 }}>{product.stars} ({product.reviews})</span>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-          <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--blue)' }}>{product.price},00 €</span>
-          <span style={{ fontSize: 12, color: 'var(--gray-400)', textDecoration: 'line-through' }}>{product.originalPrice} €</span>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 4, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: isMobile ? 5 : 8 }}>
+          <span style={{ fontSize: isMobile ? 13 : 14, fontWeight: 700, color: 'var(--blue)' }}>{product.price},00 €</span>
+          <span style={{ fontSize: isMobile ? 11 : 12, color: 'var(--gray-400)', textDecoration: 'line-through' }}>{product.originalPrice} €</span>
         </div>
         {product.stock <= 4 && (
-          <span style={{ fontSize: 10, fontWeight: 700, color: '#dc2626', letterSpacing: '0.04em' }}>
+          <span style={{ fontSize: isMobile ? 9 : 10, fontWeight: 700, color: '#dc2626', letterSpacing: '0.04em' }}>
             ¡Solo {product.stock} left!
           </span>
         )}
@@ -311,7 +322,7 @@ export default function FeaturedProducts({ products = DEFAULT_PRODUCTS, loading,
 
   return (
     <section id="shop" style={{ padding: '130px 72px', background: 'var(--white)' }}>
-      <div ref={titleRef} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 72 }}>
+      <div ref={titleRef} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 72, gap: 16, flexWrap: 'wrap' }}>
         <div>
           <motion.span
             initial={{ opacity: 0, x: -20 }}
@@ -354,13 +365,15 @@ export default function FeaturedProducts({ products = DEFAULT_PRODUCTS, loading,
           #shop > div:last-child { grid-template-columns: repeat(3, 1fr) !important; }
         }
         @media (max-width: 768px) {
-          #shop { padding: 60px 12px !important; }
-          #shop > div:last-child { grid-template-columns: repeat(2, 1fr) !important; gap: 16px 8px !important; }
-          #shop > div:first-child { margin-bottom: 40px !important; }
+          #shop { padding: 60px 16px !important; }
+          #shop > div:last-child { grid-template-columns: repeat(2, 1fr) !important; gap: 22px 12px !important; }
+          #shop > div:first-child { margin-bottom: 36px !important; }
+          #shop > div:first-child button { font-size: 11px !important; padding: 10px 18px !important; }
+          #shop h2 { font-size: clamp(32px, 7vw, 48px) !important; }
         }
         @media (max-width: 480px) {
-          #shop { padding: 48px 10px !important; }
-          #shop > div:last-child { gap: 14px 6px !important; }
+          #shop { padding: 48px 12px !important; }
+          #shop > div:last-child { gap: 18px 10px !important; }
         }
       `}</style>
     </section>

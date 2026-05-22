@@ -244,24 +244,24 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: '100%' }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      style={{ position: 'fixed', top: 116, left: 0, right: 0, bottom: 0, background: 'var(--white)', zIndex: 300, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
+      style={{ position: 'fixed', top: isMobile ? 116 : 116, left: 0, right: 0, bottom: 0, background: 'var(--white)', zIndex: 300, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
     >
       {/* ── Top bar ── */}
-      <div className="product-top-bar" style={{ position: 'sticky', top: 0, zIndex: 10, background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(14px)', borderBottom: '1px solid var(--gray-200)', padding: '0 40px', height: 62, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div className="product-top-bar" style={{ position: 'sticky', top: 0, zIndex: 10, background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(14px)', borderBottom: '1px solid var(--gray-200)', padding: '0 40px', height: 62, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
         <button
           onClick={onClose}
-          style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--black)', transition: 'opacity 0.2s' }}
+          style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 4 : 8, fontFamily: 'var(--font-body)', fontSize: isMobile ? 11 : 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--black)', transition: 'opacity 0.2s' }}
           onMouseEnter={e => e.currentTarget.style.opacity = '0.45'}
           onMouseLeave={e => e.currentTarget.style.opacity = '1'}
         >
-          <ArrowLeft size={17} /> Volver
+          <ArrowLeft size={isMobile ? 15 : 17} /> Volver
         </button>
 
-        <span style={{ fontFamily: 'var(--font-logo)', fontSize: 20, fontWeight: 600, letterSpacing: '0.26em', textTransform: 'uppercase', color: 'var(--black)' }}>
+        <span style={{ fontFamily: 'var(--font-logo)', fontSize: isMobile ? 15 : 20, fontWeight: 600, letterSpacing: isMobile ? '0.18em' : '0.26em', textTransform: 'uppercase', color: 'var(--black)' }}>
           VELOURA
         </span>
 
-        <div style={{ width: 40 }} />
+        <div style={{ width: isMobile ? 20 : 40 }} />
       </div>
 
       {/* ── Body: scrollable content ── */}
@@ -272,6 +272,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
           gridTemplateColumns: isMobile ? '1fr' : '1fr 450px',
           gap: 0,
           overflow: isMobile ? 'auto' : 'hidden',
+          minHeight: 0,
         }}
       >
 
@@ -297,6 +298,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
                 borderRadius: 10,
+                WebkitOverflowScrolling: 'touch',
               }}>
                 {images.map((src, i) => (
                   <div
@@ -304,7 +306,8 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
                     onClick={() => setMainImg(i)}
                     style={{
                       flexShrink: 0,
-                      width: 'calc(100vw - 32px)',
+                      width: 'calc(100vw - 24px)',
+                      maxWidth: 'calc(100vw - 24px)',
                       aspectRatio: '1/1',
                       borderRadius: 10,
                       overflow: 'hidden',
@@ -429,9 +432,9 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
           </div>
 
           {/* Price */}
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 22, paddingBottom: 22, borderBottom: '1px solid var(--gray-200)' }}>
-            <span style={{ fontFamily: 'var(--font-display)', fontSize: 40, fontWeight: 700, color: 'var(--blue)' }}>35,00€</span>
-            <span style={{ fontSize: 20, color: 'var(--gray-400)', textDecoration: 'line-through' }}>49,99€</span>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 22, paddingBottom: 22, borderBottom: '1px solid var(--gray-200)', flexWrap: 'wrap' }}>
+            <span style={{ fontFamily: 'var(--font-display)', fontSize: isMobile ? 32 : 40, fontWeight: 700, color: 'var(--blue)' }}>35,00€</span>
+            <span style={{ fontSize: isMobile ? 17 : 20, color: 'var(--gray-400)', textDecoration: 'line-through' }}>49,99€</span>
             <span style={{ background: 'var(--blue)', color: 'var(--white)', fontSize: 10, fontWeight: 700, padding: '4px 8px', borderRadius: 4, letterSpacing: '0.08em' }}>−30%</span>
           </div>
 
@@ -439,12 +442,12 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
           <motion.button
             onClick={handleAdd}
             whileTap={{ scale: 0.97 }}
-            style={{ width: '100%', padding: '19px', background: added ? '#16a34a' : 'var(--navy)', color: 'var(--white)', fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, transition: 'background 0.3s', marginBottom: 22, cursor: 'pointer' }}
+            style={{ width: '100%', padding: isMobile ? '16px' : '19px', background: added ? '#16a34a' : 'var(--navy)', color: 'var(--white)', fontFamily: 'var(--font-body)', fontSize: isMobile ? 13 : 14, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, transition: 'background 0.3s', marginBottom: 22, cursor: 'pointer', border: 'none' }}
             onMouseEnter={e => { if (!added) e.currentTarget.style.background = 'var(--blue)' }}
             onMouseLeave={e => { if (!added) e.currentTarget.style.background = 'var(--navy)' }}
           >
-            <ShoppingBag size={17} />
-            {added ? '¡Añadido a la bolsa! ✓' : 'Añadir a la cesta — 35,00€'}
+            <ShoppingBag size={isMobile ? 15 : 17} />
+            {added ? '¡Añadido a la bolsa! ✓' : `Añadir a la cesta — 35,00€`}
           </motion.button>
 
           {/* Color selector */}
@@ -461,14 +464,14 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
                   {selectedColorName}
                 </span>
               </p>
-              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: isMobile ? 8 : 10, flexWrap: 'wrap' }}>
                 {product.colors.map((color, i) => (
                   <button
                     key={i}
                     onClick={() => handleColorChange(i)}
                     title={color.name}
                     style={{
-                      width: 64, height: 64,
+                      width: isMobile ? 54 : 64, height: isMobile ? 54 : 64,
                       borderRadius: 8,
                       overflow: 'hidden',
                       background: '#fff',
@@ -476,6 +479,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
                       transition: 'border-color 0.2s, transform 0.15s',
                       transform: i === colorIdx ? 'scale(1.06)' : 'scale(1)',
                       padding: 3,
+                      cursor: 'pointer',
                     }}
                   >
                     <img
@@ -511,9 +515,9 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
           {/* Feature grid */}
           <div ref={featuresRef} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 28 }}>
             {featureBadges.map(({ icon: Icon, title, desc }) => (
-              <div key={title} style={{ display: 'flex', gap: 10, padding: '13px', background: 'var(--gray-100)', borderRadius: 10, alignItems: 'flex-start' }}>
+              <div key={title} style={{ display: 'flex', gap: 10, padding: '13px', background: 'var(--gray-100)', borderRadius: 10, alignItems: 'flex-start', minWidth: 0 }}>
                 <Icon size={15} color="var(--blue)" style={{ flexShrink: 0, marginTop: 2 }} />
-                <div>
+                <div style={{ minWidth: 0 }}>
                   <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--black)', marginBottom: 2 }}>{title}</p>
                   <p style={{ fontSize: 10, color: 'var(--gray-600)', lineHeight: 1.5 }}>{desc}</p>
                 </div>

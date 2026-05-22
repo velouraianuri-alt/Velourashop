@@ -169,7 +169,7 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
         </ul>
 
         {/* Right icons */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
           <button
             onClick={onAuthOpen}
             style={{ color: textColor, display: 'flex', transition: 'color 0.4s, opacity 0.2s' }}
@@ -251,14 +251,18 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
             transition={{ duration: 0.3 }}
             style={{
               position: 'fixed',
-              inset: 0,
+              top: 116,
+              left: 0,
+              right: 0,
+              bottom: 0,
               background: 'var(--navy)',
-              zIndex: 99,
+              zIndex: 9998,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: 40,
+              gap: 32,
+              padding: 24,
             }}
           >
             {links.map((link, i) => (
@@ -271,10 +275,11 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
                 onClick={e => handleLinkClick(e, link)}
                 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: 48,
+                  fontSize: 'clamp(28px, 7vw, 44px)',
                   fontWeight: 600,
                   letterSpacing: '0.04em',
                   color: 'var(--white)',
+                  textAlign: 'center',
                 }}
               >
                 {link}

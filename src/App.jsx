@@ -155,7 +155,7 @@ export default function App() {
             padding: '40px 72px',
             display: 'flex',
             justifyContent: 'center',
-            gap: 80,
+            gap: 60,
             flexWrap: 'wrap',
           }}
         >
