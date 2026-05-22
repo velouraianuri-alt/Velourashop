@@ -180,9 +180,16 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
   const [colorIdx, setColorIdx]   = useState(0)
   const [mainImg, setMainImg]     = useState(0)
   const [added, setAdded]         = useState(false)
+  const [isMobile, setIsMobile]   = useState(() => window.innerWidth <= 768)
   const tilt = use3DTilt()
   const scrollContainerRef = useRef(null)
   const featuresRef = useRef(null)
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 768)
+    window.addEventListener('resize', onResize, { passive: true })
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   const images = hasColors
     ? product.colors[colorIdx].images
@@ -258,72 +265,149 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
       </div>
 
       {/* ── Body: scrollable content ── */}
-      <div className="product-page-body" style={{ flex: 1, display: 'grid', gridTemplateColumns: '1fr 450px', gap: 0, overflow: 'hidden' }}>
+      <div
+        style={{
+          flex: 1,
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : '1fr 450px',
+          gap: 0,
+          overflow: isMobile ? 'auto' : 'hidden',
+        }}
+      >
 
-        {/* LEFT: Gallery - Scrollable */}
-        <div className="product-gallery" ref={scrollContainerRef} style={{ display: 'flex', flexDirection: 'column', gap: 40, padding: '40px 30px 80px', overflowY: 'auto' }}>
-          {/* Group images in pairs */}
-          {Array.from({ length: Math.ceil(images.length / 2) }).map((_, pairIdx) => {
-            const img1Idx = pairIdx * 2
-            const img2Idx = pairIdx * 2 + 1
-            const img1 = images[img1Idx]
-            const img2 = images[img2Idx]
-
-            return (
-              <div key={`pair-${colorIdx}-${pairIdx}`} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                {/* 2 images side by side */}
-                <div className="product-image-pair-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-                  {/* Image 1 */}
+        {/* LEFT / TOP: Gallery */}
+        <div
+          ref={isMobile ? null : scrollContainerRef}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: isMobile ? 0 : 40,
+            padding: isMobile ? '12px 12px 0' : '40px 30px 80px',
+            overflowY: isMobile ? 'visible' : 'auto',
+          }}
+        >
+          {isMobile ? (
+            /* ── MÓVIL: galería horizontal deslizable ── */
+            <>
+              <div style={{
+                display: 'flex',
+                overflowX: 'auto',
+                scrollSnapType: 'x mandatory',
+                gap: 8,
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
+                borderRadius: 10,
+              }}>
+                {images.map((src, i) => (
                   <div
-                    ref={img1Idx === 0 && !hasColors ? tilt.containerRef : null}
-                    onMouseMove={img1Idx === 0 && !hasColors ? tilt.onMouseMove : undefined}
-                    onMouseLeave={img1Idx === 0 && !hasColors ? tilt.onMouseLeave : undefined}
-                    onTouchStart={img1Idx === 0 && !hasColors ? tilt.onTouchStart : undefined}
-                    onTouchMove={img1Idx === 0 && !hasColors ? tilt.onTouchMove : undefined}
-                    onTouchEnd={img1Idx === 0 && !hasColors ? tilt.onTouchEnd : undefined}
-                    style={{ width: '100%', aspectRatio: '1/1', borderRadius: 10, overflow: 'hidden', background: '#fff', border: '1px solid var(--gray-100)', cursor: 'grab', userSelect: 'none', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    key={`${colorIdx}-m-${i}`}
+                    onClick={() => setMainImg(i)}
+                    style={{
+                      flexShrink: 0,
+                      width: 'calc(100vw - 32px)',
+                      aspectRatio: '1/1',
+                      borderRadius: 10,
+                      overflow: 'hidden',
+                      background: '#fff',
+                      border: `2px solid ${mainImg === i ? 'var(--blue)' : 'var(--gray-100)'}`,
+                      scrollSnapAlign: 'start',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
                   >
-                    <motion.img
-                      key={`${colorIdx}-${img1Idx}`}
-                      src={img1}
+                    <img
+                      src={src}
                       alt={product.name}
-                      initial={{ opacity: 0, scale: 1.05 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.35 }}
-                      style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '8%', display: 'block', pointerEvents: 'none', ...(img1Idx === 0 && !hasColors ? tilt.tiltStyle : {}) }}
+                      style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '6%' }}
                     />
-                    {img1Idx === 0 && (
-                      <div style={{ position: 'absolute', inset: 0, borderRadius: 10, pointerEvents: 'none', background: `radial-gradient(circle at ${tilt.glare.x}% ${tilt.glare.y}%, rgba(255,255,255,${tilt.glare.opacity}) 0%, transparent 65%)`, transition: 'opacity 0.2s' }} />
-                    )}
                   </div>
-
-                  {/* Image 2 */}
-                  {img2 && (
-                    <div
-                      style={{ width: '100%', aspectRatio: '1/1', borderRadius: 10, overflow: 'hidden', background: '#fff', border: '1px solid var(--gray-100)', cursor: 'grab', userSelect: 'none', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                    >
-                      <motion.img
-                        key={`${colorIdx}-${img2Idx}`}
-                        src={img2}
-                        alt={product.name}
-                        initial={{ opacity: 0, scale: 1.05 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.35 }}
-                        style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '8%', display: 'block', pointerEvents: 'none' }}
-                      />
-                    </div>
-                  )}
-                </div>
-
+                ))}
               </div>
-            )
-          })}
+              {/* Puntos indicadores */}
+              <div style={{ display: 'flex', justifyContent: 'center', gap: 6, padding: '10px 0 4px' }}>
+                {images.map((_, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      width: i === mainImg ? 20 : 6,
+                      height: 6,
+                      borderRadius: 3,
+                      background: i === mainImg ? 'var(--blue)' : 'var(--gray-200)',
+                      transition: 'width 0.3s, background 0.3s',
+                    }}
+                  />
+                ))}
+              </div>
+            </>
+          ) : (
+            /* ── ESCRITORIO: par de imágenes en grid ── */
+            <>
+              {Array.from({ length: Math.ceil(images.length / 2) }).map((_, pairIdx) => {
+                const img1Idx = pairIdx * 2
+                const img2Idx = pairIdx * 2 + 1
+                const img1 = images[img1Idx]
+                const img2 = images[img2Idx]
 
-          <Footer />
+                return (
+                  <div key={`pair-${colorIdx}-${pairIdx}`} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+                      <div
+                        ref={img1Idx === 0 && !hasColors ? tilt.containerRef : null}
+                        onMouseMove={img1Idx === 0 && !hasColors ? tilt.onMouseMove : undefined}
+                        onMouseLeave={img1Idx === 0 && !hasColors ? tilt.onMouseLeave : undefined}
+                        onTouchStart={img1Idx === 0 && !hasColors ? tilt.onTouchStart : undefined}
+                        onTouchMove={img1Idx === 0 && !hasColors ? tilt.onTouchMove : undefined}
+                        onTouchEnd={img1Idx === 0 && !hasColors ? tilt.onTouchEnd : undefined}
+                        style={{ width: '100%', aspectRatio: '1/1', borderRadius: 10, overflow: 'hidden', background: '#fff', border: '1px solid var(--gray-100)', cursor: 'grab', userSelect: 'none', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                      >
+                        <motion.img
+                          key={`${colorIdx}-${img1Idx}`}
+                          src={img1}
+                          alt={product.name}
+                          initial={{ opacity: 0, scale: 1.05 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.35 }}
+                          style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '8%', display: 'block', pointerEvents: 'none', ...(img1Idx === 0 && !hasColors ? tilt.tiltStyle : {}) }}
+                        />
+                        {img1Idx === 0 && (
+                          <div style={{ position: 'absolute', inset: 0, borderRadius: 10, pointerEvents: 'none', background: `radial-gradient(circle at ${tilt.glare.x}% ${tilt.glare.y}%, rgba(255,255,255,${tilt.glare.opacity}) 0%, transparent 65%)`, transition: 'opacity 0.2s' }} />
+                        )}
+                      </div>
+                      {img2 && (
+                        <div style={{ width: '100%', aspectRatio: '1/1', borderRadius: 10, overflow: 'hidden', background: '#fff', border: '1px solid var(--gray-100)', cursor: 'grab', userSelect: 'none', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <motion.img
+                            key={`${colorIdx}-${img2Idx}`}
+                            src={img2}
+                            alt={product.name}
+                            initial={{ opacity: 0, scale: 1.05 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.35 }}
+                            style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '8%', display: 'block', pointerEvents: 'none' }}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+              <Footer />
+            </>
+          )}
         </div>
 
-        {/* RIGHT: Product info - Scrollable panel */}
-        <div className="product-info-panel" style={{ overflowY: 'auto', paddingLeft: 32, paddingRight: 32, paddingTop: 40, paddingBottom: 40, background: 'var(--white)', borderLeft: '1px solid var(--gray-200)', zIndex: 100 }}>
+        {/* RIGHT / BOTTOM: Product info */}
+        <div style={{
+          overflowY: isMobile ? 'visible' : 'auto',
+          paddingLeft: isMobile ? 16 : 32,
+          paddingRight: isMobile ? 16 : 32,
+          paddingTop: isMobile ? 16 : 40,
+          paddingBottom: isMobile ? 80 : 40,
+          background: 'var(--white)',
+          borderLeft: isMobile ? 'none' : '1px solid var(--gray-200)',
+          borderTop: isMobile ? '1px solid var(--gray-200)' : 'none',
+          zIndex: 100,
+        }}>
           {/* Stars */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
             <div style={{ display: 'flex', gap: 2 }}>
