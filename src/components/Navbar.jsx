@@ -59,7 +59,7 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
   return (
     <>
       {/* Sale countdown bar */}
-      <div style={{
+      <div className="sale-bar" style={{
         background: 'var(--blue)',
         color: '#fff',
         height: 44,
@@ -73,7 +73,7 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
         right: 0,
         zIndex: 10000,
       }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', lineHeight: 1.15 }}>
+        <div className="sale-bar-label" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', lineHeight: 1.15 }}>
           <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase' }}>Spring Sale</span>
           <span style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.9 }}>Buy 1 Get 1 Free</span>
         </div>
@@ -97,6 +97,7 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
       </div>
 
       <motion.nav
+        className="veloura-nav"
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
@@ -208,7 +209,7 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
             }}
           >
             <ShoppingBag size={15} />
-            <span>Bolsa</span>
+            <span className="nav-bolsa-text">Bolsa</span>
             {cartCount > 0 && (
               <span style={{
                 position: 'absolute',
@@ -287,6 +288,9 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
         @media (max-width: 768px) {
           nav ul { display: none !important; }
           .hamburger { display: flex !important; }
+        }
+        @media (max-width: 480px) {
+          .veloura-nav { padding: 0 14px !important; }
         }
       `}</style>
     </>

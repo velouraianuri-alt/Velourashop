@@ -21,6 +21,7 @@ export default function VideoSection() {
 
   return (
     <section
+      className="video-section"
       ref={ref}
       style={{ padding: '130px 72px', background: 'var(--navy)', overflow: 'hidden' }}
     >
@@ -155,11 +156,6 @@ export default function VideoSection() {
         </button>
       </motion.div>
 
-      <style>{`
-        @media (max-width: 768px) {
-          section { padding: 80px 24px !important; }
-        }
-      `}</style>
     </section>
   )
 }

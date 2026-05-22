@@ -240,7 +240,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
       style={{ position: 'fixed', top: 116, left: 0, right: 0, bottom: 0, background: 'var(--white)', zIndex: 300, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
     >
       {/* ── Top bar ── */}
-      <div style={{ position: 'sticky', top: 0, zIndex: 10, background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(14px)', borderBottom: '1px solid var(--gray-200)', padding: '0 40px', height: 62, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div className="product-top-bar" style={{ position: 'sticky', top: 0, zIndex: 10, background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(14px)', borderBottom: '1px solid var(--gray-200)', padding: '0 40px', height: 62, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <button
           onClick={onClose}
           style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--black)', transition: 'opacity 0.2s' }}
@@ -258,10 +258,10 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
       </div>
 
       {/* ── Body: scrollable content ── */}
-      <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '1fr 450px', gap: 0, overflow: 'hidden' }}>
+      <div className="product-page-body" style={{ flex: 1, display: 'grid', gridTemplateColumns: '1fr 450px', gap: 0, overflow: 'hidden' }}>
 
         {/* LEFT: Gallery - Scrollable */}
-        <div ref={scrollContainerRef} style={{ display: 'flex', flexDirection: 'column', gap: 40, padding: '40px 30px 80px', overflowY: 'auto' }}>
+        <div className="product-gallery" ref={scrollContainerRef} style={{ display: 'flex', flexDirection: 'column', gap: 40, padding: '40px 30px 80px', overflowY: 'auto' }}>
           {/* Group images in pairs */}
           {Array.from({ length: Math.ceil(images.length / 2) }).map((_, pairIdx) => {
             const img1Idx = pairIdx * 2
@@ -272,7 +272,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
             return (
               <div key={`pair-${colorIdx}-${pairIdx}`} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 {/* 2 images side by side */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+                <div className="product-image-pair-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
                   {/* Image 1 */}
                   <div
                     ref={img1Idx === 0 && !hasColors ? tilt.containerRef : null}
@@ -323,7 +323,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
         </div>
 
         {/* RIGHT: Product info - Scrollable panel */}
-        <div style={{ overflowY: 'auto', paddingLeft: 32, paddingRight: 32, paddingTop: 40, paddingBottom: 40, background: 'var(--white)', borderLeft: '1px solid var(--gray-200)', zIndex: 100 }}>
+        <div className="product-info-panel" style={{ overflowY: 'auto', paddingLeft: 32, paddingRight: 32, paddingTop: 40, paddingBottom: 40, background: 'var(--white)', borderLeft: '1px solid var(--gray-200)', zIndex: 100 }}>
           {/* Stars */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
             <div style={{ display: 'flex', gap: 2 }}>

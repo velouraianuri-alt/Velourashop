@@ -45,7 +45,7 @@ export default function Testimonials() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section style={{ padding: '130px 72px', background: 'var(--gray-100)' }}>
+    <section className="testimonials-section" style={{ padding: '130px 72px', background: 'var(--gray-100)' }}>
       <div ref={ref}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: 80 }}>
@@ -83,7 +83,7 @@ export default function Testimonials() {
         </div>
 
         {/* Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
+        <div className="testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
@@ -135,6 +135,7 @@ export default function Testimonials() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.6 }}
+          className="testimonials-trust"
           style={{
             display: 'flex',
             justifyContent: 'center',
@@ -162,16 +163,6 @@ export default function Testimonials() {
         </motion.div>
       </div>
 
-      <style>{`
-        @media (max-width: 1024px) {
-          section { padding: 80px 32px !important; }
-          section > div > div:nth-child(2) { grid-template-columns: repeat(2, 1fr) !important; }
-          section > div > div:last-child { gap: 32px !important; flex-wrap: wrap !important; }
-        }
-        @media (max-width: 560px) {
-          section > div > div:nth-child(2) { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   )
 }

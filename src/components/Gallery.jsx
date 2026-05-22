@@ -142,7 +142,7 @@ export default function Gallery() {
     <section ref={sectionRef} style={{ padding: '130px 0', background: 'var(--gray-100)', overflow: 'hidden' }}>
 
       {/* Title row */}
-      <div ref={titleRef} style={{ padding: '0 72px', marginBottom: 72 }}>
+      <div className="gallery-title-row" ref={titleRef} style={{ padding: '0 72px', marginBottom: 72 }}>
         <motion.span
           initial={{ opacity: 0, x: -20 }}
           animate={titleInView ? { opacity: 1, x: 0 } : {}}
@@ -179,7 +179,7 @@ export default function Gallery() {
       </div>
 
       {/* Horizontal strip — scroll + arrow combined */}
-      <div style={{ paddingLeft: 72, overflow: 'visible' }}>
+      <div className="gallery-strip" style={{ paddingLeft: 72, overflow: 'visible' }}>
         <motion.div style={{ display: 'flex', gap: GAP, x: combinedX, willChange: 'transform' }}>
           {ITEMS.map(item => (
             <GalleryCard key={item.uid} item={item} />
@@ -204,7 +204,7 @@ export default function Gallery() {
       </div>
 
       {/* Accent line */}
-      <div style={{ margin: '56px 72px 0', height: 2, background: 'linear-gradient(to right, var(--blue) 30%, transparent)' }} />
+      <div className="gallery-accent" style={{ margin: '56px 72px 0', height: 2, background: 'linear-gradient(to right, var(--blue) 30%, transparent)' }} />
     </section>
   )
 }

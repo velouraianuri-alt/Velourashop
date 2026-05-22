@@ -149,6 +149,7 @@ export default function App() {
         {/* Stats bar */}
         <div
           ref={statsRef}
+          className="veloura-stats"
           style={{
             background: 'var(--navy)',
             padding: '40px 72px',

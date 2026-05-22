@@ -34,10 +34,10 @@ export default function Benefits() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section style={{ padding: '130px 72px', background: 'var(--white)' }}>
+    <section className="benefits-section" style={{ padding: '130px 72px', background: 'var(--white)' }}>
       <div ref={ref}>
         {/* Header */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, marginBottom: 88, alignItems: 'end' }}>
+        <div className="benefits-header" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, marginBottom: 88, alignItems: 'end' }}>
           <div>
             <motion.span
               initial={{ opacity: 0, x: -20 }}
@@ -90,7 +90,7 @@ export default function Benefits() {
         </div>
 
         {/* Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 28, alignItems: 'start' }}>
+        <div className="benefits-cards" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 28, alignItems: 'start' }}>
           {benefits.map((b, i) => {
             const Icon = b.icon
             return (
@@ -144,16 +144,6 @@ export default function Benefits() {
         </div>
       </div>
 
-      <style>{`
-        @media (max-width: 900px) {
-          section { padding: 80px 32px !important; }
-          section > div > div:first-child { grid-template-columns: 1fr !important; }
-          section > div > div:last-child { grid-template-columns: repeat(2, 1fr) !important; }
-        }
-        @media (max-width: 560px) {
-          section > div > div:last-child { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   )
 }

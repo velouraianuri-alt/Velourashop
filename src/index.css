@@ -56,3 +56,90 @@ a { text-decoration: none; color: inherit; }
 ::-webkit-scrollbar-track { background: var(--navy); }
 ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--blue-mid); }
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+
+/* Sale bar */
+@media (max-width: 480px) {
+  .sale-bar { gap: 12px !important; padding: 0 12px !important; }
+  .sale-bar-label { display: none !important; }
+}
+
+/* Navbar */
+@media (max-width: 768px) {
+  .veloura-nav { padding: 0 20px !important; }
+  .nav-bolsa-text { display: none !important; }
+}
+
+/* Stats bar */
+@media (max-width: 768px) {
+  .veloura-stats { padding: 32px 24px !important; gap: 32px !important; }
+}
+@media (max-width: 480px) {
+  .veloura-stats { padding: 24px 16px !important; gap: 20px !important; }
+}
+
+/* Product page – mobile layout */
+@media (max-width: 768px) {
+  .product-page-body {
+    grid-template-columns: 1fr !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+  .product-gallery {
+    overflow-y: visible !important;
+    padding: 16px 16px 0 !important;
+    gap: 16px !important;
+  }
+  .product-info-panel {
+    border-left: none !important;
+    overflow-y: visible !important;
+    padding: 20px 16px 60px !important;
+  }
+  .product-top-bar { padding: 0 16px !important; }
+}
+@media (max-width: 480px) {
+  .product-image-pair-grid { grid-template-columns: 1fr !important; }
+}
+
+/* Gallery */
+@media (max-width: 768px) {
+  .gallery-title-row { padding: 0 24px !important; }
+  .gallery-strip { padding-left: 24px !important; }
+  .gallery-accent { margin-left: 24px !important; margin-right: 24px !important; }
+}
+
+/* Benefits */
+@media (max-width: 900px) {
+  .benefits-section { padding: 80px 32px !important; }
+  .benefits-header { grid-template-columns: 1fr !important; margin-bottom: 48px !important; }
+  .benefits-cards { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 560px) {
+  .benefits-section { padding: 60px 20px !important; }
+  .benefits-cards { grid-template-columns: 1fr !important; }
+}
+
+/* Testimonials */
+@media (max-width: 1024px) {
+  .testimonials-section { padding: 80px 32px !important; }
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .testimonials-trust { gap: 32px !important; }
+}
+@media (max-width: 560px) {
+  .testimonials-section { padding: 60px 20px !important; }
+  .testimonials-grid { grid-template-columns: 1fr !important; }
+}
+
+/* Video section */
+@media (max-width: 768px) {
+  .video-section { padding: 80px 24px !important; }
+}
+
+/* FeaturedProducts */
+@media (max-width: 768px) {
+  #shop { padding: 60px 20px !important; }
+}
+@media (max-width: 480px) {
+  #shop > div:last-child { grid-template-columns: repeat(2, 1fr) !important; gap: 24px 12px !important; }
+}
