@@ -74,22 +74,22 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
         zIndex: 10000,
       }}>
         <div className="sale-bar-label" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', lineHeight: 1.15 }}>
-          <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase' }}>Spring Sale</span>
-          <span style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.9 }}>Buy 1 Get 1 Free</span>
+          <span className="sale-bar-title" style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase' }}>Spring Sale</span>
+          <span className="sale-bar-sub" style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.9 }}>Buy 1 Get 1 Free</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <div className="sale-bar-timer" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           {[
             { val: hours, label: 'HRS' },
             { val: minutes, label: 'MIN' },
             { val: seconds, label: 'SECS' },
           ].map(({ val, label }, i) => (
             <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              {i > 0 && <span style={{ fontSize: 20, fontWeight: 700, opacity: 0.7, marginBottom: 10 }}>:</span>}
+              {i > 0 && <span className="sale-bar-colon" style={{ fontSize: 20, fontWeight: 700, opacity: 0.7, marginBottom: 10 }}>:</span>}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <span style={{ fontSize: 20, fontWeight: 800, lineHeight: 1, fontVariantNumeric: 'tabular-nums', minWidth: 28, textAlign: 'center' }}>
+                <span className="sale-bar-num" style={{ fontSize: 20, fontWeight: 800, lineHeight: 1, fontVariantNumeric: 'tabular-nums', minWidth: 28, textAlign: 'center' }}>
                   {String(val).padStart(2, '0')}
                 </span>
-                <span style={{ fontSize: 8, fontWeight: 600, letterSpacing: '0.1em', opacity: 0.8 }}>{label}</span>
+                <span className="sale-bar-unit" style={{ fontSize: 8, fontWeight: 600, letterSpacing: '0.1em', opacity: 0.8 }}>{label}</span>
               </div>
             </div>
           ))}
@@ -290,7 +290,7 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
       </AnimatePresence>
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
           nav ul { display: none !important; }
           .hamburger { display: flex !important; }
         }

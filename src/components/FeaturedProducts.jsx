@@ -364,7 +364,7 @@ export default function FeaturedProducts({ products = DEFAULT_PRODUCTS, loading,
         @media (max-width: 1100px) {
           #shop > div:last-child { grid-template-columns: repeat(3, 1fr) !important; }
         }
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
           #shop { padding: 60px 16px !important; }
           #shop > div:last-child { grid-template-columns: repeat(2, 1fr) !important; gap: 22px 12px !important; }
           #shop > div:first-child { margin-bottom: 36px !important; }

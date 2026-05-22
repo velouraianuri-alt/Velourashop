@@ -180,13 +180,13 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
   const [colorIdx, setColorIdx]   = useState(0)
   const [mainImg, setMainImg]     = useState(0)
   const [added, setAdded]         = useState(false)
-  const [isMobile, setIsMobile]   = useState(() => window.innerWidth <= 768)
+  const [isMobile, setIsMobile]   = useState(() => window.innerWidth <= 900)
   const tilt = use3DTilt()
   const scrollContainerRef = useRef(null)
   const featuresRef = useRef(null)
 
   useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth <= 768)
+    const onResize = () => setIsMobile(window.innerWidth <= 900)
     window.addEventListener('resize', onResize, { passive: true })
     return () => window.removeEventListener('resize', onResize)
   }, [])
@@ -247,21 +247,21 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
       style={{ position: 'fixed', top: isMobile ? 116 : 116, left: 0, right: 0, bottom: 0, background: 'var(--white)', zIndex: 300, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}
     >
       {/* ── Top bar ── */}
-      <div className="product-top-bar" style={{ position: 'sticky', top: 0, zIndex: 10, background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(14px)', borderBottom: '1px solid var(--gray-200)', padding: '0 40px', height: 62, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
+      <div className="product-top-bar" style={{ position: 'sticky', top: 0, zIndex: 10, background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(14px)', borderBottom: '1px solid var(--gray-200)', padding: isMobile ? '0 14px' : '0 40px', height: isMobile ? 50 : 62, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
         <button
           onClick={onClose}
-          style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 4 : 8, fontFamily: 'var(--font-body)', fontSize: isMobile ? 11 : 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--black)', transition: 'opacity 0.2s' }}
+          style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 4 : 8, fontFamily: 'var(--font-body)', fontSize: isMobile ? 10 : 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--black)', transition: 'opacity 0.2s' }}
           onMouseEnter={e => e.currentTarget.style.opacity = '0.45'}
           onMouseLeave={e => e.currentTarget.style.opacity = '1'}
         >
-          <ArrowLeft size={isMobile ? 15 : 17} /> Volver
+          <ArrowLeft size={isMobile ? 14 : 17} /> Volver
         </button>
 
-        <span style={{ fontFamily: 'var(--font-logo)', fontSize: isMobile ? 15 : 20, fontWeight: 600, letterSpacing: isMobile ? '0.18em' : '0.26em', textTransform: 'uppercase', color: 'var(--black)' }}>
+        <span style={{ fontFamily: 'var(--font-logo)', fontSize: isMobile ? 13 : 20, fontWeight: 600, letterSpacing: isMobile ? '0.16em' : '0.26em', textTransform: 'uppercase', color: 'var(--black)' }}>
           VELOURA
         </span>
 
-        <div style={{ width: isMobile ? 20 : 40 }} />
+        <div style={{ width: isMobile ? 16 : 40 }} />
       </div>
 
       {/* ── Body: scrollable content ── */}
@@ -402,17 +402,17 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
         {/* RIGHT / BOTTOM: Product info */}
         <div style={{
           overflowY: isMobile ? 'visible' : 'auto',
-          paddingLeft: isMobile ? 16 : 32,
-          paddingRight: isMobile ? 16 : 32,
-          paddingTop: isMobile ? 16 : 40,
-          paddingBottom: isMobile ? 80 : 40,
+          paddingLeft: isMobile ? 14 : 32,
+          paddingRight: isMobile ? 14 : 32,
+          paddingTop: isMobile ? 18 : 40,
+          paddingBottom: isMobile ? 60 : 40,
           background: 'var(--white)',
           borderLeft: isMobile ? 'none' : '1px solid var(--gray-200)',
           borderTop: isMobile ? '1px solid var(--gray-200)' : 'none',
           zIndex: 100,
         }}>
           {/* Stars */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
             <div style={{ display: 'flex', gap: 2 }}>
               {[1,2,3,4,5].map(s => <Star key={s} size={13} fill="var(--blue)" color="var(--blue)" />)}
             </div>
@@ -421,11 +421,11 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
 
           {/* Name + tag */}
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 8, flexWrap: 'wrap' }}>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(30px, 3vw, 44px)', fontWeight: 700, lineHeight: 1.05, color: 'var(--black)' }}>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: isMobile ? 'clamp(24px, 6.5vw, 32px)' : 'clamp(30px, 3vw, 44px)', fontWeight: 700, lineHeight: 1.05, color: 'var(--black)' }}>
               {product.name}
             </h1>
             {product.tag && (
-              <span style={{ background: 'var(--blue)', color: 'var(--white)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 4, letterSpacing: '0.1em', textTransform: 'uppercase', alignSelf: 'flex-start', marginTop: 8 }}>
+              <span style={{ background: 'var(--blue)', color: 'var(--white)', fontSize: 9, fontWeight: 700, padding: '4px 8px', borderRadius: 4, letterSpacing: '0.1em', textTransform: 'uppercase', alignSelf: 'flex-start', marginTop: 6 }}>
                 {product.tag}
               </span>
             )}
@@ -494,15 +494,15 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
           )}
 
           {/* Promo banner */}
-          <div style={{ padding: '18px 20px', background: '#1a1a1a', marginBottom: 22 }}>
-            <p style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 3, letterSpacing: '0.05em' }}>COMPRA UNA, LLÉVATE 2ª GRATIS</p>
-            <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>Válido en Spring Sale</p>
+          <div style={{ padding: isMobile ? '14px 16px' : '18px 20px', background: '#1a1a1a', marginBottom: 22, borderRadius: 4 }}>
+            <p style={{ fontSize: isMobile ? 12 : 13, fontWeight: 700, color: '#fff', marginBottom: 3, letterSpacing: '0.05em' }}>COMPRA UNA, LLÉVATE 2ª GRATIS</p>
+            <p style={{ fontSize: isMobile ? 10 : 11, color: 'rgba(255,255,255,0.6)' }}>Válido en Spring Sale</p>
           </div>
 
           {/* Shipping */}
-          <div style={{ display: 'flex', gap: 18, marginBottom: 22, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: isMobile ? 10 : 18, marginBottom: 22, flexWrap: 'wrap' }}>
             {shippingBadges.map(({ icon: Icon, label }) => (
-              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 12, color: 'var(--gray-600)', fontWeight: 500 }}>
+              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: isMobile ? 11 : 12, color: 'var(--gray-600)', fontWeight: 500 }}>
                 <Icon size={13} color="var(--blue)" /> {label}
               </div>
             ))}

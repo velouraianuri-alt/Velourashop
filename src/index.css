@@ -61,9 +61,23 @@ a { text-decoration: none; color: inherit; }
 /* ─── Responsive ─────────────────────────────────────────────── */
 
 /* Sale bar */
+@media (max-width: 768px) {
+  .sale-bar { gap: 14px !important; padding: 0 12px !important; }
+  .sale-bar-title { font-size: 10px !important; letter-spacing: 0.12em !important; }
+  .sale-bar-sub { font-size: 9px !important; letter-spacing: 0.08em !important; }
+  .sale-bar-num { font-size: 16px !important; min-width: 22px !important; }
+  .sale-bar-unit { font-size: 7px !important; }
+  .sale-bar-colon { font-size: 16px !important; }
+  .sale-bar-timer { gap: 4px !important; }
+}
 @media (max-width: 480px) {
-  .sale-bar { gap: 10px !important; padding: 0 10px !important; }
-  .sale-bar-label { display: none !important; }
+  .sale-bar { gap: 10px !important; padding: 0 8px !important; }
+  .sale-bar-title { font-size: 9px !important; }
+  .sale-bar-sub { font-size: 8px !important; }
+  .sale-bar-num { font-size: 14px !important; min-width: 18px !important; }
+}
+@media (max-width: 360px) {
+  .sale-bar-sub { display: none !important; }
 }
 
 /* Navbar */
@@ -83,7 +97,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* Product page – mobile layout */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .product-page-body {
     grid-template-columns: 1fr !important;
     overflow-y: auto !important;
@@ -97,14 +111,14 @@ a { text-decoration: none; color: inherit; }
   .product-info-panel {
     border-left: none !important;
     overflow-y: visible !important;
-    padding: 18px 16px 80px !important;
+    padding: 18px 14px 60px !important;
   }
-  .product-top-bar { padding: 0 14px !important; height: 54px !important; }
-  .product-top-bar > span { font-size: 16px !important; letter-spacing: 0.2em !important; }
+  .product-top-bar { padding: 0 14px !important; height: 50px !important; }
+  .product-top-bar > span { font-size: 14px !important; letter-spacing: 0.16em !important; }
 }
 @media (max-width: 480px) {
   .product-image-pair-grid { grid-template-columns: 1fr !important; }
-  .product-top-bar > span { font-size: 14px !important; letter-spacing: 0.18em !important; }
+  .product-top-bar > span { font-size: 13px !important; letter-spacing: 0.14em !important; }
 }
 
 /* Gallery */
@@ -144,7 +158,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* FeaturedProducts */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   #shop { padding: 60px 16px !important; }
   #shop > div:last-child { grid-template-columns: repeat(2, 1fr) !important; gap: 22px 12px !important; }
   #shop > div:first-child { margin-bottom: 36px !important; }
