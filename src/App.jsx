@@ -2,6 +2,7 @@ import { useState, useCallback, useRef } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { ShoppingBag } from 'lucide-react'
 import { useProducts } from './hooks/useProducts'
+import { createCheckout } from './shopify'
 
 function FlyingBag({ from, to, onDone }) {
   const SIZE = 38
@@ -40,7 +41,6 @@ import Testimonials from './components/Testimonials'
 import CTASection from './components/CTASection'
 import ProductMarquee from './components/ProductMarquee'
 import CartDrawer from './components/CartDrawer'
-import StripeCheckout from './components/StripeCheckout'
 import Toast from './components/Toast'
 import Footer from './components/Footer'
 import ProductPage from './components/ProductPage'
@@ -56,8 +56,8 @@ let toastId = 0
 
 export default function App() {
   const [cartOpen, setCartOpen] = useState(false)
-  const [checkoutOpen, setCheckoutOpen] = useState(false)
   const [cartItems, setCartItems] = useState([])
+  const [checkoutLoading, setCheckoutLoading] = useState(false)
   const [toasts, setToasts] = useState([])
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [currentSection, setCurrentSection] = useState(null)
@@ -84,13 +84,18 @@ export default function App() {
         return prev.map(i => i.cartItemKey === cartItemKey ? { ...i, qty: i.qty + 1 } : i)
       }
 
+      const variantId = product.colors
+        ? product.colors[colorIdx]?.variantId
+        : product.variants?.[0]?.id
+
       const newItem = {
         ...product,
         qty: 1,
         cartItemKey,
         colorIdx,
         color: product.colors ? product.colors[colorIdx]?.name : undefined,
-        imgDefault: product.colors ? product.colors[colorIdx]?.images[0] : product.imgDefault
+        imgDefault: product.colors ? product.colors[colorIdx]?.images[0] : product.imgDefault,
+        variantId,
       }
       return [...prev, newItem]
     })
@@ -118,6 +123,24 @@ export default function App() {
   const handleRemove = useCallback((id) => {
     setCartItems(prev => prev.filter(i => i.cartItemKey !== id && i.id !== id))
   }, [])
+
+  const handleCheckout = useCallback(async () => {
+    const lineItems = cartItems
+      .filter(i => i.variantId)
+      .map(i => ({ variantId: i.variantId, quantity: i.qty }))
+
+    if (lineItems.length === 0) return
+
+    setCheckoutLoading(true)
+    try {
+      const checkout = await createCheckout(lineItems)
+      if (checkout?.webUrl) {
+        window.location.href = checkout.webUrl
+      }
+    } finally {
+      setCheckoutLoading(false)
+    }
+  }, [cartItems])
 
   const cartCount = cartItems.reduce((s, i) => s + i.qty, 0)
 
@@ -214,17 +237,8 @@ export default function App() {
         onIncrease={handleIncrease}
         onDecrease={handleDecrease}
         onRemove={handleRemove}
-        onCheckout={() => setCheckoutOpen(true)}
-      />
-
-      <StripeCheckout
-        open={checkoutOpen}
-        onClose={() => setCheckoutOpen(false)}
-        items={cartItems}
-        total={cartItems.reduce((sum, i) => {
-          const payQty = i.qty === 2 ? 1 : i.qty
-          return sum + i.price * payQty
-        }, 0) + 2.95}
+        onCheckout={handleCheckout}
+        checkoutLoading={checkoutLoading}
       />
 
       <AnimatePresence>

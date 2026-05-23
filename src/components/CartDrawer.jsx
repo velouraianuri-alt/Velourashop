@@ -239,7 +239,7 @@ const PAYMENT_ICONS = [
   },
 ]
 
-export default function CartDrawer({ open, onClose, items, onIncrease, onDecrease, onRemove, onCheckout }) {
+export default function CartDrawer({ open, onClose, items, onIncrease, onDecrease, onRemove, onCheckout, checkoutLoading = false }) {
   const [shippingProtection, setShippingProtection] = useState(false)
   const [promoCode, setPromoCode] = useState('')
   const [promoApplied, setPromoApplied] = useState(false)
@@ -466,23 +466,39 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
 
                 <button
                   onClick={onCheckout}
+                  disabled={checkoutLoading}
                   style={{
                     width: '100%',
                     padding: isMobile ? '13px' : '17px',
-                    background: 'var(--black)',
+                    background: checkoutLoading ? '#6b7280' : 'var(--black)',
                     color: 'white',
                     fontSize: isMobile ? 13 : 15,
                     fontWeight: 800,
                     borderRadius: 8,
                     letterSpacing: '0.02em',
-                    transition: 'opacity 0.2s',
-                    cursor: 'pointer',
-                    border: 'none'
+                    transition: 'opacity 0.2s, background 0.2s',
+                    cursor: checkoutLoading ? 'not-allowed' : 'pointer',
+                    border: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 8,
                   }}
-                  onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
+                  onMouseEnter={e => { if (!checkoutLoading) e.currentTarget.style.opacity = '0.88' }}
                   onMouseLeave={e => e.currentTarget.style.opacity = '1'}
                 >
-                  Checkout · €{total.toFixed(2)}
+                  {checkoutLoading ? (
+                    <>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83">
+                          <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.8s" repeatCount="indefinite"/>
+                        </path>
+                      </svg>
+                      Procesando…
+                    </>
+                  ) : (
+                    `Checkout · €${total.toFixed(2)}`
+                  )}
                 </button>
 
                 {/* Payment methods */}
