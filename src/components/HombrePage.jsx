@@ -132,9 +132,17 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
 }
 
 export default function HombrePage({ onClose, onAdd, onProductClick, cartItems = [], onOpenCart }) {
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 900)
+
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = '' }
+  }, [])
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 900)
+    window.addEventListener('resize', onResize, { passive: true })
+    return () => window.removeEventListener('resize', onResize)
   }, [])
 
   const cartCount = cartItems.reduce((s, i) => s + i.qty, 0)
@@ -182,7 +190,7 @@ export default function HombrePage({ onClose, onAdd, onProductClick, cartItems =
           </div>
           <p style={{ fontSize: 13, color: 'var(--gray-400)' }}>{hombreProducts.length} modelos disponibles</p>
         </div>
-        <div className="collection-page-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px 28px' }}>
+        <div className="collection-page-grid" style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: isMobile ? '28px 12px' : '48px 28px' }}>
           {hombreProducts.map((p, i) => (
             <ProductCard key={p.id} product={p} index={i} onAdd={onAdd} onProductClick={onProductClick} />
           ))}

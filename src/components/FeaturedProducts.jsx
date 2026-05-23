@@ -316,6 +316,22 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
 export default function FeaturedProducts({ products = DEFAULT_PRODUCTS, loading, error, onAdd, onProductClick }) {
   const titleRef = useRef(null)
   const titleInView = useInView(titleRef, { once: true, margin: '-60px' })
+  const [viewportCols, setViewportCols] = useState(() => {
+    if (typeof window === 'undefined') return 4
+    const w = window.innerWidth
+    if (w <= 900) return 2
+    if (w <= 1100) return 3
+    return 4
+  })
+
+  useEffect(() => {
+    const onResize = () => {
+      const w = window.innerWidth
+      setViewportCols(w <= 900 ? 2 : w <= 1100 ? 3 : 4)
+    }
+    window.addEventListener('resize', onResize, { passive: true })
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   // Usar productos locales si Shopify falla
   const displayProducts = products && products.length > 0 ? products : DEFAULT_PRODUCTS
@@ -354,7 +370,7 @@ export default function FeaturedProducts({ products = DEFAULT_PRODUCTS, loading,
         </motion.button>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px 24px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${viewportCols}, 1fr)`, gap: viewportCols === 2 ? '22px 12px' : '40px 24px' }}>
         {displayProducts.map((product, i) => (
           <ProductCard key={product.id} product={product} index={i} onAdd={onAdd} onProductClick={onProductClick} />
         ))}

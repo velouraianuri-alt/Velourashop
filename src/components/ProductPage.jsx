@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  ArrowLeft, ShoppingBag, ChevronDown, Sun, Shield,
+  ArrowLeft, ShoppingBag, ChevronDown, ChevronLeft, ChevronRight, Sun, Shield,
   Layers, Heart, Star, Truck, RefreshCw, Package,
   Minus, Plus, X, RotateCcw,
 } from 'lucide-react'
@@ -288,56 +288,87 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
           }}
         >
           {isMobile ? (
-            /* ── MÓVIL: galería horizontal deslizable ── */
+            /* ── MÓVIL: una sola imagen + botón siguiente/anterior ── */
             <>
               <div style={{
-                display: 'flex',
-                overflowX: 'auto',
-                scrollSnapType: 'x mandatory',
-                gap: 8,
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',
+                position: 'relative',
+                width: '100%',
+                aspectRatio: '1/1',
                 borderRadius: 10,
-                WebkitOverflowScrolling: 'touch',
+                overflow: 'hidden',
+                background: '#fff',
+                border: '1px solid var(--gray-100)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}>
-                {images.map((src, i) => (
-                  <div
-                    key={`${colorIdx}-m-${i}`}
-                    onClick={() => setMainImg(i)}
-                    style={{
-                      flexShrink: 0,
-                      width: 'calc(100vw - 24px)',
-                      maxWidth: 'calc(100vw - 24px)',
-                      aspectRatio: '1/1',
-                      borderRadius: 10,
-                      overflow: 'hidden',
-                      background: '#fff',
-                      border: `2px solid ${mainImg === i ? 'var(--blue)' : 'var(--gray-100)'}`,
-                      scrollSnapAlign: 'start',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <img
-                      src={src}
-                      alt={product.name}
-                      style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '6%' }}
-                    />
-                  </div>
-                ))}
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={`${colorIdx}-m-${mainImg}`}
+                    src={images[mainImg]}
+                    alt={product.name}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.22 }}
+                    style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '8%' }}
+                  />
+                </AnimatePresence>
+
+                <button
+                  onClick={() => setMainImg((mainImg - 1 + images.length) % images.length)}
+                  aria-label="Imagen anterior"
+                  style={{
+                    position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)',
+                    width: 40, height: 40, borderRadius: '50%',
+                    background: 'rgba(255,255,255,0.92)',
+                    border: '1px solid var(--gray-200)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                  }}
+                >
+                  <ChevronLeft size={20} color="var(--black)" />
+                </button>
+
+                <button
+                  onClick={() => setMainImg((mainImg + 1) % images.length)}
+                  aria-label="Siguiente imagen"
+                  style={{
+                    position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)',
+                    width: 40, height: 40, borderRadius: '50%',
+                    background: 'rgba(255,255,255,0.92)',
+                    border: '1px solid var(--gray-200)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                  }}
+                >
+                  <ChevronRight size={20} color="var(--black)" />
+                </button>
+
+                <div style={{
+                  position: 'absolute', bottom: 10, right: 12,
+                  background: 'rgba(0,0,0,0.55)', color: '#fff',
+                  fontSize: 11, fontWeight: 600, letterSpacing: '0.06em',
+                  padding: '4px 9px', borderRadius: 12,
+                }}>
+                  {mainImg + 1} / {images.length}
+                </div>
               </div>
+
               {/* Puntos indicadores */}
-              <div style={{ display: 'flex', justifyContent: 'center', gap: 6, padding: '10px 0 4px' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: 6, padding: '12px 0 4px' }}>
                 {images.map((_, i) => (
-                  <div
+                  <button
                     key={i}
+                    onClick={() => setMainImg(i)}
+                    aria-label={`Ir a imagen ${i + 1}`}
                     style={{
-                      width: i === mainImg ? 20 : 6,
-                      height: 6,
-                      borderRadius: 3,
+                      width: i === mainImg ? 22 : 7,
+                      height: 7,
+                      borderRadius: 4,
                       background: i === mainImg ? 'var(--blue)' : 'var(--gray-200)',
                       transition: 'width 0.3s, background 0.3s',
+                      padding: 0,
                     }}
                   />
                 ))}
