@@ -111,7 +111,7 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
     e.stopPropagation()
     if (addState !== 'idle') return
     const sourceRect = e.currentTarget.getBoundingClientRect()
-    onAdd(product, sourceRect)
+    onAdd(product, 0, sourceRect)
     setAddState('added')
     setBurst(true)
     setTimeout(() => setBurst(false), 700)
