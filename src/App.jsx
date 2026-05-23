@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { ShoppingBag } from 'lucide-react'
 import { useProducts } from './hooks/useProducts'
@@ -68,6 +68,22 @@ export default function App() {
 
   // Cargar productos de Shopify
   const { products, loading, error } = useProducts()
+
+  // Deep link: si la URL tiene #shop al cargar, scroll directo a productos
+  useEffect(() => {
+    if (window.location.hash === '#shop') {
+      const el = document.getElementById('shop')
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        // Espera a que el componente se monte
+        const t = setTimeout(() => {
+          document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth' })
+        }, 600)
+        return () => clearTimeout(t)
+      }
+    }
+  }, [])
 
   const addToast = useCallback((message) => {
     const id = ++toastId
