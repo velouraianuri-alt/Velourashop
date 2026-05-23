@@ -2,13 +2,15 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ShoppingBag, Menu, X, User } from 'lucide-react'
 
-function useCountdown(targetDate) {
+function useCountdown() {
   const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 })
 
   useEffect(() => {
     const calc = () => {
-      const diff = Math.max(0, targetDate - Date.now())
-      const totalSecs = Math.floor(diff / 1000)
+      const now = new Date()
+      const midnight = new Date(now)
+      midnight.setHours(24, 0, 0, 0)
+      const totalSecs = Math.floor((midnight - now) / 1000)
       setTimeLeft({
         hours: Math.floor(totalSecs / 3600),
         minutes: Math.floor((totalSecs % 3600) / 60),
@@ -18,7 +20,7 @@ function useCountdown(targetDate) {
     calc()
     const id = setInterval(calc, 1000)
     return () => clearInterval(id)
-  }, [targetDate])
+  }, [])
 
   return timeLeft
 }
@@ -27,8 +29,7 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
-  const saleEnd = useState(() => Date.now() + 12 * 60 * 60 * 1000)[0]
-  const { hours, minutes, seconds } = useCountdown(saleEnd)
+  const { hours, minutes, seconds } = useCountdown()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80)
