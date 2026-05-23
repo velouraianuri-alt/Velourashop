@@ -184,6 +184,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
   const tilt = use3DTilt()
   const scrollContainerRef = useRef(null)
   const featuresRef = useRef(null)
+  const touchStartX = useRef(null)
 
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth <= 900)
@@ -290,7 +291,17 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
           {isMobile ? (
             /* ── MÓVIL: una sola imagen + botón siguiente/anterior ── */
             <>
-              <div style={{
+              <div
+                onTouchStart={e => { touchStartX.current = e.touches[0].clientX }}
+                onTouchEnd={e => {
+                  if (touchStartX.current === null) return
+                  const delta = e.changedTouches[0].clientX - touchStartX.current
+                  touchStartX.current = null
+                  if (Math.abs(delta) < 40) return
+                  if (delta < 0) setMainImg(i => (i + 1) % images.length)
+                  else setMainImg(i => (i - 1 + images.length) % images.length)
+                }}
+                style={{
                 position: 'relative',
                 width: '100%',
                 aspectRatio: '1/1',

@@ -1,22 +1,22 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Minus, Plus, Trash2, ShoppingBag, Truck } from 'lucide-react'
 
 const FREE_SHIPPING_THRESHOLD = 100
 
-function ShippingBar({ subtotal }) {
+function ShippingBar({ subtotal, compact }) {
   const pct = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100)
   const unlocked = subtotal >= FREE_SHIPPING_THRESHOLD
 
   return (
-    <div style={{ padding: '14px 24px', borderBottom: '1px solid #f0f0f0' }}>
+    <div style={{ padding: compact ? '8px 18px' : '14px 24px', borderBottom: '1px solid #f0f0f0' }}>
       <p style={{
         textAlign: 'center',
-        fontSize: 12,
+        fontSize: compact ? 11 : 12,
         fontWeight: 800,
         letterSpacing: '0.14em',
         textTransform: 'uppercase',
-        marginBottom: 10,
+        marginBottom: compact ? 6 : 10,
         color: unlocked ? '#16a34a' : 'var(--black)',
       }}>
         {unlocked ? '¡Envío gratuito desbloqueado!' : `Te faltan €${(FREE_SHIPPING_THRESHOLD - subtotal).toFixed(2)} para envío gratis`}
@@ -56,15 +56,15 @@ function ShippingBar({ subtotal }) {
   )
 }
 
-function CartItem({ item, onIncrease, onDecrease, onRemove }) {
+function CartItem({ item, onIncrease, onDecrease, onRemove, compact }) {
   const originalPrice = item.price * 1.45
   const saving = originalPrice - item.price
 
   return (
-    <div style={{ display: 'flex', gap: 14, padding: '18px 0', borderBottom: '1px solid #f0f0f0' }}>
+    <div style={{ display: 'flex', gap: compact ? 10 : 14, padding: compact ? '10px 0' : '18px 0', borderBottom: '1px solid #f0f0f0' }}>
       <div style={{
-        width: 72,
-        height: 80,
+        width: compact ? 58 : 72,
+        height: compact ? 64 : 80,
         borderRadius: 8,
         flexShrink: 0,
         overflow: 'hidden',
@@ -82,9 +82,9 @@ function CartItem({ item, onIncrease, onDecrease, onRemove }) {
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8 }}>
           <div>
-            <p style={{ fontSize: 14, fontWeight: 700, color: 'var(--black)', marginBottom: 2 }}>{item.name}</p>
+            <p style={{ fontSize: compact ? 13 : 14, fontWeight: 700, color: 'var(--black)', marginBottom: 2 }}>{item.name}</p>
             {item.color && (
-              <p style={{ fontSize: 12, color: '#9ca3af' }}>Color: {item.color}</p>
+              <p style={{ fontSize: 11, color: '#9ca3af' }}>Color: {item.color}</p>
             )}
           </div>
           <button
@@ -97,16 +97,18 @@ function CartItem({ item, onIncrease, onDecrease, onRemove }) {
           </button>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, margin: '6px 0 10px' }}>
-          <span style={{ fontSize: 13, color: '#9ca3af', textDecoration: 'line-through' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, margin: compact ? '3px 0 7px' : '6px 0 10px' }}>
+          <span style={{ fontSize: 12, color: '#9ca3af', textDecoration: 'line-through' }}>
             €{originalPrice.toFixed(2)}
           </span>
-          <span style={{ fontSize: 15, fontWeight: 800, color: 'var(--black)' }}>
+          <span style={{ fontSize: compact ? 13 : 15, fontWeight: 800, color: 'var(--black)' }}>
             €{item.price.toFixed(2)}
           </span>
-          <span style={{ fontSize: 11, fontWeight: 700, color: '#ef4444' }}>
-            (Ahorras €{saving.toFixed(2)})
-          </span>
+          {!compact && (
+            <span style={{ fontSize: 11, fontWeight: 700, color: '#ef4444' }}>
+              (Ahorras €{saving.toFixed(2)})
+            </span>
+          )}
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
@@ -153,33 +155,35 @@ function CartItem({ item, onIncrease, onDecrease, onRemove }) {
   )
 }
 
-function ShippingProtection({ enabled, onToggle }) {
+function ShippingProtection({ enabled, onToggle, compact }) {
   return (
     <div style={{
       display: 'flex',
       alignItems: 'center',
-      gap: 14,
-      padding: '14px 16px',
+      gap: compact ? 10 : 14,
+      padding: compact ? '8px 12px' : '14px 16px',
       background: '#f9fafb',
       borderRadius: 10,
-      margin: '12px 0',
+      margin: compact ? '6px 0' : '12px 0',
     }}>
       <div style={{
-        width: 44, height: 44, flexShrink: 0,
+        width: compact ? 34 : 44, height: compact ? 34 : 44, flexShrink: 0,
         background: '#dbeafe', borderRadius: 10,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontSize: 22,
+        fontSize: compact ? 17 : 22,
       }}>
         🛡️
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--black)' }}>Protección de envío</span>
-          <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--black)' }}>€2,95</span>
+          <span style={{ fontSize: compact ? 12 : 13, fontWeight: 700, color: 'var(--black)' }}>Protección de envío</span>
+          <span style={{ fontSize: compact ? 12 : 13, fontWeight: 700, color: 'var(--black)' }}>€2,95</span>
         </div>
+        {!compact && (
         <p style={{ fontSize: 11, color: '#9ca3af', marginTop: 2, lineHeight: 1.4 }}>
           Protege tu pedido contra daños, pérdida o robo durante el envío.
         </p>
+        )}
       </div>
       <button
         onClick={onToggle}
@@ -239,6 +243,13 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
   const [shippingProtection, setShippingProtection] = useState(false)
   const [promoCode, setPromoCode] = useState('')
   const [promoApplied, setPromoApplied] = useState(false)
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 600)
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 600)
+    window.addEventListener('resize', onResize, { passive: true })
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   const count = items.reduce((sum, i) => sum + i.qty, 0)
 
@@ -296,14 +307,15 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
           >
             {/* Header */}
             <div className="cart-drawer-header" style={{
-              padding: '20px 24px 16px',
+              padding: isMobile ? '12px 18px 10px' : '20px 24px 16px',
               borderBottom: '1px solid #f0f0f0',
               textAlign: 'center',
               position: 'relative',
             }}>
-              <h2 style={{ fontSize: 22, fontWeight: 900, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--black)' }}>
+              <h2 style={{ fontSize: isMobile ? 17 : 22, fontWeight: 900, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--black)' }}>
                 VELOURA
               </h2>
+              {!isMobile && (
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5, marginTop: 3 }}>
                 <span style={{ fontSize: 10, color: '#6b7280' }}>Excellent</span>
                 <span style={{ fontSize: 11, color: '#00b67a', fontWeight: 700 }}>4.7</span>
@@ -311,6 +323,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                 <span style={{ fontSize: 12, color: '#00b67a' }}>★</span>
                 <span style={{ fontSize: 10, color: '#6b7280', fontWeight: 600 }}>Trustpilot</span>
               </div>
+              )}
               <button
                 onClick={onClose}
                 style={{
@@ -330,10 +343,10 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
             </div>
 
             {/* Shipping bar */}
-            {hasItems && <ShippingBar subtotal={subtotal} />}
+            {hasItems && <ShippingBar subtotal={subtotal} compact={isMobile} />}
 
             {/* Body */}
-            <div className="cart-drawer-body" style={{ flex: 1, overflowY: 'auto', padding: '0 24px' }}>
+            <div className="cart-drawer-body" style={{ flex: 1, overflowY: 'auto', padding: isMobile ? '0 14px' : '0 24px' }}>
               {!hasItems ? (
                 <div style={{ textAlign: 'center', paddingTop: 80 }}>
                   <ShoppingBag size={48} color="#e5e7eb" style={{ margin: '0 auto 20px' }} />
@@ -359,38 +372,40 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
               ) : (
                 <>
                   {items.map(item => (
-                    <CartItem key={item.id} item={item} onIncrease={onIncrease} onDecrease={onDecrease} onRemove={onRemove} />
+                    <CartItem key={item.id} item={item} onIncrease={onIncrease} onDecrease={onDecrease} onRemove={onRemove} compact={isMobile} />
                   ))}
 
                   {/* Buy 1 Get 1 Free upsell */}
                   {count === 1 && (
                     <div style={{
-                      margin: '8px 0 4px',
-                      padding: '16px',
+                      margin: isMobile ? '6px 0 2px' : '8px 0 4px',
+                      padding: isMobile ? '10px 12px' : '16px',
                       background: '#fffbeb',
                       border: '1.5px dashed #fbbf24',
                       borderRadius: 10,
                       textAlign: 'center',
                     }}>
-                      <p style={{ fontSize: 14, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--black)', marginBottom: 4 }}>
-                        🎁 Llévate el 2.º gratis:
+                      <p style={{ fontSize: isMobile ? 12 : 14, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--black)', marginBottom: isMobile ? 2 : 4 }}>
+                        🎁 Llévate el 2.º gratis
                       </p>
-                      <p style={{ fontSize: 12, color: '#92400e' }}>
-                        Añade otro artículo y te lo regalamos con la Spring Sale.
-                      </p>
+                      {!isMobile && (
+                        <p style={{ fontSize: 12, color: '#92400e' }}>
+                          Añade otro artículo y te lo regalamos con la Spring Sale.
+                        </p>
+                      )}
                     </div>
                   )}
 
-                  <ShippingProtection enabled={shippingProtection} onToggle={() => setShippingProtection(v => !v)} />
+                  <ShippingProtection enabled={shippingProtection} onToggle={() => setShippingProtection(v => !v)} compact={isMobile} />
                 </>
               )}
             </div>
 
             {/* Footer */}
             {hasItems && (
-              <div className="cart-drawer-footer" style={{ padding: '16px 24px', borderTop: '1px solid #f0f0f0' }}>
+              <div className="cart-drawer-footer" style={{ padding: isMobile ? '10px 14px' : '16px 24px', borderTop: '1px solid #f0f0f0' }}>
                 {/* Promo code input */}
-                <div style={{ display: 'flex', gap: 0, marginBottom: 14 }}>
+                <div style={{ display: 'flex', gap: 0, marginBottom: isMobile ? 8 : 14 }}>
                   <input
                     type="text"
                     placeholder="Código promocional"
@@ -399,12 +414,12 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                     disabled={promoApplied}
                     style={{
                       flex: 1,
-                      padding: '11px 14px',
+                      padding: isMobile ? '8px 10px' : '11px 14px',
                       border: '1.5px solid #e5e7eb',
                       borderRight: 'none',
                       borderRadius: '4px 0 0 4px',
                       fontFamily: 'var(--font-body)',
-                      fontSize: 13,
+                      fontSize: 12,
                       outline: 'none',
                       backgroundColor: promoApplied ? '#f3f4f6' : 'white',
                       cursor: promoApplied ? 'not-allowed' : 'text'
@@ -414,7 +429,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                     onClick={applyPromo}
                     disabled={promoApplied}
                     style={{
-                      padding: '11px 14px',
+                      padding: isMobile ? '8px 10px' : '11px 14px',
                       background: promoApplied ? 'var(--blue)' : 'var(--black)',
                       color: 'var(--white)',
                       borderRadius: '0 4px 4px 0',
@@ -427,36 +442,36 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                       border: 'none'
                     }}
                   >
-                    {promoApplied ? '✓ Aplicado' : 'Aplicar'}
+                    {promoApplied ? '✓' : 'Aplicar'}
                   </button>
                 </div>
 
                 {/* Subtotal and discount */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8, fontSize: 13, color: '#6b7280' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: isMobile ? 4 : 8, fontSize: 12, color: '#6b7280' }}>
                   <span>Subtotal</span>
                   <span>€{subtotal.toFixed(2)}</span>
                 </div>
 
                 {discount > 0 && (
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8, fontSize: 13, color: '#16a34a' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: isMobile ? 4 : 8, fontSize: 12, color: '#16a34a' }}>
                     <span>Descuento (10%)</span>
                     <span>−€{discount.toFixed(2)}</span>
                   </div>
                 )}
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, paddingTop: 8, borderTop: '1px solid #f0f0f0' }}>
-                  <span style={{ fontSize: 15, fontWeight: 600, color: 'var(--black)' }}>Total</span>
-                  <span style={{ fontSize: 18, fontWeight: 800, color: 'var(--black)' }}>€{total.toFixed(2)}</span>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: isMobile ? 10 : 16, paddingTop: isMobile ? 6 : 8, borderTop: '1px solid #f0f0f0' }}>
+                  <span style={{ fontSize: isMobile ? 14 : 15, fontWeight: 600, color: 'var(--black)' }}>Total</span>
+                  <span style={{ fontSize: isMobile ? 16 : 18, fontWeight: 800, color: 'var(--black)' }}>€{total.toFixed(2)}</span>
                 </div>
 
                 <button
                   onClick={onCheckout}
                   style={{
                     width: '100%',
-                    padding: '17px',
+                    padding: isMobile ? '13px' : '17px',
                     background: 'var(--black)',
                     color: 'white',
-                    fontSize: 15,
+                    fontSize: isMobile ? 13 : 15,
                     fontWeight: 800,
                     borderRadius: 8,
                     letterSpacing: '0.02em',
@@ -471,20 +486,20 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                 </button>
 
                 {/* Payment methods */}
-                <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 6, marginTop: 14 }}>
+                <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: isMobile ? 4 : 6, marginTop: isMobile ? 8 : 14 }}>
                   {PAYMENT_ICONS.map(({ type, src, label, render }) => (
                     <div key={label} style={{
-                      padding: '4px 8px',
+                      padding: isMobile ? '3px 6px' : '4px 8px',
                       border: '1.5px solid #e5e7eb',
                       borderRadius: 6,
                       background: 'white',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      height: 34,
+                      height: isMobile ? 28 : 34,
                     }}>
                       {type === 'img'
-                        ? <img src={src} alt={label} style={{ width: 52, height: 26, objectFit: 'contain' }} />
+                        ? <img src={src} alt={label} style={{ width: isMobile ? 40 : 52, height: isMobile ? 20 : 26, objectFit: 'contain' }} />
                         : render()
                       }
                     </div>
