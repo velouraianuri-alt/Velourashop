@@ -170,16 +170,16 @@ export async function getProductByHandle(handle) {
   }
 }
 
-// Crear un checkout
+// Crear un checkout via Cart API (reemplaza la deprecada checkoutCreate)
 export async function createCheckout(lineItems) {
   const query = `
-    mutation($input: CheckoutCreateInput!) {
-      checkoutCreate(input: $input) {
-        checkout {
+    mutation cartCreate($input: CartInput!) {
+      cartCreate(input: $input) {
+        cart {
           id
-          webUrl
+          checkoutUrl
         }
-        checkoutUserErrors {
+        userErrors {
           field
           message
         }
@@ -189,8 +189,8 @@ export async function createCheckout(lineItems) {
 
   const variables = {
     input: {
-      lineItems: lineItems.map(item => ({
-        variantId: item.variantId,
+      lines: lineItems.map(item => ({
+        merchandiseId: item.variantId,
         quantity: item.quantity,
       })),
     },
@@ -198,7 +198,8 @@ export async function createCheckout(lineItems) {
 
   try {
     const data = await shopifyFetch(query, variables)
-    return data.checkoutCreate.checkout
+    const cart = data.cartCreate.cart
+    return { webUrl: cart.checkoutUrl }
   } catch (error) {
     console.error('Error creating checkout:', error)
     return null
