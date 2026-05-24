@@ -79,8 +79,13 @@ export function useProducts() {
           variants: product.variants,
         }))
 
+        // Excluir productos de servicios/add-ons (ej. Shipping Protection)
+        const sunglassesOnly = mappedProducts.filter(p =>
+          !/(protecci[oó]n|shipping.?protection|envio|envío)/i.test(p.name)
+        )
+
         // Fusionar variantes de color en un único producto por modelo
-        const grouped = groupByModel(mappedProducts)
+        const grouped = groupByModel(sunglassesOnly)
 
         setProducts(grouped)
         setError(null)
