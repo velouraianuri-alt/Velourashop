@@ -253,16 +253,14 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
 
   const count = items.reduce((sum, i) => sum + i.qty, 0)
 
-  // 2ª unidad al 50%: solo si qty es exactamente 2 (1 a precio completo + 1 a mitad)
-  const subtotalWithPromo = items.reduce((sum, i) => {
-    const effectiveQty = i.qty === 2 ? 1.5 : i.qty
-    return sum + i.price * effectiveQty
-  }, 0)
+  // 2ª unidad al 50%: con 2+ unidades totales (mismo producto o distintos), una unidad al 50%
+  const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0)
+  const cheapestPrice = items.length > 0 ? Math.min(...items.map(i => i.price)) : 0
+  const promoDiscount = count >= 2 ? Math.round(cheapestPrice * 0.5 * 100) / 100 : 0
 
-  const subtotal = subtotalWithPromo
   const protectionFee = shippingProtection ? 2.95 : 0
-  const discount = promoApplied ? Math.round(subtotal * 0.1 * 100) / 100 : 0
-  const total = subtotal - discount + protectionFee
+  const discount = promoApplied ? Math.round((subtotal - promoDiscount) * 0.1 * 100) / 100 : 0
+  const total = subtotal - promoDiscount - discount + protectionFee
   const hasItems = items.length > 0
 
   const applyPromo = () => {
@@ -375,7 +373,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                     <CartItem key={item.id} item={item} onIncrease={onIncrease} onDecrease={onDecrease} onRemove={onRemove} compact={isMobile} />
                   ))}
 
-                  {/* Buy 1 Get 1 Free upsell */}
+                  {/* 2ª unidad al 50% upsell */}
                   {count === 1 && (
                     <div style={{
                       margin: isMobile ? '6px 0 2px' : '8px 0 4px',
@@ -451,6 +449,13 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                   <span>Subtotal</span>
                   <span>€{subtotal.toFixed(2)}</span>
                 </div>
+
+                {promoDiscount > 0 && (
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: isMobile ? 4 : 8, fontSize: 12, color: '#16a34a' }}>
+                    <span>2ª unidad al 50%</span>
+                    <span>−€{promoDiscount.toFixed(2)}</span>
+                  </div>
+                )}
 
                 {discount > 0 && (
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: isMobile ? 4 : 8, fontSize: 12, color: '#16a34a' }}>

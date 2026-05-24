@@ -132,9 +132,9 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
       {/* Image box — outer has no overflow:hidden so particles escape */}
       <div style={{ width: '100%', aspectRatio: '1/1', borderRadius: 4, position: 'relative', marginBottom: 10, background: '#FFFFFF' }}>
 
-        {/* 2x1 Badge */}
+        {/* Promo Badge */}
         <div style={{ position: 'absolute', top: 10, right: 10, zIndex: 5, background: '#1a1a1a', padding: '6px 9px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <span style={{ fontSize: 12, fontWeight: 800, color: '#fff', letterSpacing: '0.06em', lineHeight: 1 }}>2x1</span>
+          <span style={{ fontSize: 12, fontWeight: 800, color: '#fff', letterSpacing: '0.06em', lineHeight: 1 }}>2ª −50%</span>
         </div>
 
         {/* Inner clip layer — clips images only */}
