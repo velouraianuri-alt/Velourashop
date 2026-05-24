@@ -290,7 +290,7 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
         </p>
       )}
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 5 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 4 }}>
         <div style={{ display: 'flex' }}>
           {[1,2,3,4,5].map(s => (
             <span key={s} style={{ color: s <= Math.round(product.stars) ? '#f59e0b' : '#e5e7eb', fontSize: 11 }}>★</span>
@@ -298,6 +298,12 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
         </div>
         <span style={{ fontSize: 10, color: '#9ca3af', fontWeight: 500 }}>{product.stars} ({product.reviews})</span>
       </div>
+
+      {product.watching > 0 && (
+        <p style={{ fontSize: 10, color: '#6b7280', marginBottom: 5 }}>
+          <span style={{ fontWeight: 700, color: 'var(--black)' }}>{product.watching}</span> sold
+        </p>
+      )}
 
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 4, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: isMobile ? 5 : 8 }}>
