@@ -37,7 +37,7 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const links = ['Colecciones', 'Ibiza Collection', 'Historia', 'Contacto']
+  const links = ['Colecciones', 'Ibiza Collection']
 
   const handleLinkClick = (e, link) => {
     e.preventDefault()
