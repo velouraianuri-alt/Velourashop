@@ -62,13 +62,13 @@ export function useProducts() {
 
         // Metadatos realistas por producto
         const META = {
-          'Crystal Street':  { stars: 4.7, reviews:  89, watching:  8, stock: 5, tag: 'Exclusive' },
-          'Retro Ace':       { stars: 4.9, reviews: 318, watching: 23, stock: 4, tag: 'Best Seller' },
-          'Vintage Lady':    { stars: 4.8, reviews: 134, watching: 15, stock: 6, tag: 'New Drop' },
-          'Italian Glam':    { stars: 5.0, reviews:  61, watching: 34, stock: 2, tag: 'Limited' },
-          'Vintage Square':  { stars: 4.6, reviews: 207, watching:  6, stock: 3, tag: null },
-          'Unisex Pro':      { stars: 4.8, reviews: 182, watching: 11, stock: 7, tag: 'Exclusive' },
-          'Eclipse':         { stars: 4.9, reviews:  97, watching: 19, stock: 8, tag: 'New Drop' },
+          'Crystal Street':  { stars: 4.7, reviews:  6, watching:  8, stock: 5, tag: 'Exclusive' },
+          'Retro Ace':       { stars: 4.9, reviews: 19, watching: 23, stock: 4, tag: 'Best Seller' },
+          'Vintage Lady':    { stars: 4.8, reviews: 11, watching: 15, stock: 6, tag: 'New Drop' },
+          'Italian Glam':    { stars: 5.0, reviews: 27, watching: 34, stock: 2, tag: 'Limited' },
+          'Vintage Square':  { stars: 4.6, reviews:  4, watching:  6, stock: 3, tag: null },
+          'Unisex Pro':      { stars: 4.8, reviews:  8, watching: 11, stock: 7, tag: 'Exclusive' },
+          'Eclipse':         { stars: 4.9, reviews: 14, watching: 19, stock: 8, tag: 'New Drop' },
         }
 
         // Mapear productos de Shopify al formato de la app
