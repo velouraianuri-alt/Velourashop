@@ -537,7 +537,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
 
           {/* Promo banner */}
           <div style={{ padding: isMobile ? '14px 16px' : '18px 20px', background: '#1a1a1a', marginBottom: 22, borderRadius: 4 }}>
-            <p style={{ fontSize: isMobile ? 12 : 13, fontWeight: 700, color: '#fff', marginBottom: 3, letterSpacing: '0.05em' }}>COMPRA UNA, LLÉVATE 2ª GRATIS</p>
+            <p style={{ fontSize: isMobile ? 12 : 13, fontWeight: 700, color: '#fff', marginBottom: 3, letterSpacing: '0.05em' }}>COMPRA UNA, 2ª UNIDAD AL 50%</p>
             <p style={{ fontSize: isMobile ? 10 : 11, color: 'rgba(255,255,255,0.6)' }}>Válido en Spring Sale</p>
           </div>
 

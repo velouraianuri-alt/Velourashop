@@ -253,10 +253,10 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
 
   const count = items.reduce((sum, i) => sum + i.qty, 0)
 
-  // Buy 2 Get 1 Free: only if qty is exactly 2, otherwise pay full price
+  // 2ª unidad al 50%: solo si qty es exactamente 2 (1 a precio completo + 1 a mitad)
   const subtotalWithPromo = items.reduce((sum, i) => {
-    const payQty = i.qty === 2 ? 1 : i.qty
-    return sum + i.price * payQty
+    const effectiveQty = i.qty === 2 ? 1.5 : i.qty
+    return sum + i.price * effectiveQty
   }, 0)
 
   const subtotal = subtotalWithPromo
@@ -386,11 +386,11 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                       textAlign: 'center',
                     }}>
                       <p style={{ fontSize: isMobile ? 12 : 14, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--black)', marginBottom: isMobile ? 2 : 4 }}>
-                        🎁 Llévate el 2.º gratis
+                        🎁 2.ª unidad al 50%
                       </p>
                       {!isMobile && (
                         <p style={{ fontSize: 12, color: '#92400e' }}>
-                          Añade otro artículo y te lo regalamos con la Spring Sale.
+                          Añade otro artículo y la 2.ª te sale a mitad de precio.
                         </p>
                       )}
                     </div>

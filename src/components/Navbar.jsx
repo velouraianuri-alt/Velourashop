@@ -76,7 +76,7 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
       }}>
         <div className="sale-bar-label" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', lineHeight: 1.15 }}>
           <span className="sale-bar-title" style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase' }}>Spring Sale</span>
-          <span className="sale-bar-sub" style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.9 }}>Buy 1 Get 1 Free</span>
+          <span className="sale-bar-sub" style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.9 }}>2ª unidad al 50%</span>
         </div>
         <div className="sale-bar-timer" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           {[
