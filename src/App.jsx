@@ -2,7 +2,7 @@ import { useState, useCallback, useRef, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { ShoppingBag } from 'lucide-react'
 import { useProducts } from './hooks/useProducts'
-import { createCheckout } from './shopify'
+import { createCheckout, PROTECTION_VARIANT_ID } from './shopify'
 
 function FlyingBag({ from, to, onDone }) {
   const SIZE = 38
@@ -140,12 +140,16 @@ export default function App() {
     setCartItems(prev => prev.filter(i => i.cartItemKey !== id && i.id !== id))
   }, [])
 
-  const handleCheckout = useCallback(async () => {
+  const handleCheckout = useCallback(async (withProtection = false) => {
     const lineItems = cartItems
       .filter(i => i.variantId)
       .map(i => ({ variantId: i.variantId, quantity: i.qty }))
 
     if (lineItems.length === 0) return
+
+    if (withProtection && PROTECTION_VARIANT_ID) {
+      lineItems.push({ variantId: PROTECTION_VARIANT_ID, quantity: 1 })
+    }
 
     setCheckoutLoading(true)
     try {

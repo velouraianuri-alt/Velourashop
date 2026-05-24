@@ -470,7 +470,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                 </div>
 
                 <button
-                  onClick={onCheckout}
+                  onClick={() => onCheckout(shippingProtection)}
                   disabled={checkoutLoading}
                   style={{
                     width: '100%',
