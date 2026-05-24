@@ -109,9 +109,9 @@ export default function Footer() {
 
         {/* Links cols */}
         {[
-          { title: 'Tienda', links: ['Novedades', 'Más Vendidos', 'Colecciones', 'Ediciones Limitadas', 'Outlet'] },
-          { title: 'Ayuda', links: ['Guía de Tallas', 'Información de Envío', 'Devoluciones', 'Seguir Pedido', 'FAQ'] },
-          { title: 'Empresa', links: ['Sobre Nosotros', 'Sostenibilidad', 'Trabaja con Nosotros', 'Prensa', 'Contacto'] },
+          { title: 'Tienda', links: ['Novedades', 'Más Vendidos', 'Colecciones', 'Ediciones Limitadas'] },
+          { title: 'Ayuda', links: ['Devoluciones', 'Seguir Pedido', 'FAQ'] },
+          { title: 'Empresa', links: ['Contacto'] },
         ].map((col, i) => (
           <motion.div
             key={col.title}
