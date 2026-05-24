@@ -32,11 +32,12 @@ const DEFAULT_PRODUCTS = [
     images: [`${UNISEX}/frontal.png`, `${UNISEX}/semilateral.png`, `${UNISEX}/lateral.png`, `${UNISEX}/traseras.png`] },
   { id: 6, name: 'Eclipse', price: 35, originalPrice: 49.99, tag: 'New Drop', stock: 8, stars: 4.8, reviews: 127, watching: 14,
     imgDefault: `${HQ}/negras_naranja/frontal.png`,
-    imgHover:   `${HQ}/negras_naranja/frontal.png`,
+    imgHover:   `${HQ}/negras_naranja/semilateral.png`,
     images: [
       `${HQ}/negras_naranja/frontal.png`,
-      `${HQ}/color_negro/frontal.png`,
-      `${HQ}/color_verde/frontal.png`,
+      `${HQ}/negras_naranja/semilateral.png`,
+      `${HQ}/negras_naranja/lateral.png`,
+      `${HQ}/negras_naranja/traseras.png`,
     ],
     colors: [
       {
@@ -126,8 +127,8 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: (index % 4) * 0.08 }}
       style={{ cursor: 'pointer' }}
       onClick={() => onProductClick(product)}
-      onMouseEnter={() => { setHovered(true); if (!product.colors) setActiveImg(1) }}
-      onMouseLeave={() => { setHovered(false); if (!product.colors) setActiveImg(0) }}
+      onMouseEnter={() => { setHovered(true); setActiveImg(1) }}
+      onMouseLeave={() => { setHovered(false); setActiveImg(0) }}
     >
       {/* Image box — outer has no overflow:hidden so particles escape */}
       <div style={{ width: '100%', aspectRatio: '1/1', borderRadius: 4, position: 'relative', marginBottom: 10, background: '#FFFFFF' }}>
