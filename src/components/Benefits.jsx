@@ -5,26 +5,26 @@ import { Zap, Shield, Truck, RefreshCw } from 'lucide-react'
 const benefits = [
   {
     icon: Zap,
-    title: 'Materiales Premium',
-    desc: 'Cada modelo está fabricado con materiales seleccionados a mano de todo el mundo. Sin atajos, sin concesiones.',
+    title: 'Premium Materials',
+    desc: 'Each model is crafted with hand-picked materials from around the world. No shortcuts, no compromises.',
     offset: 0,
   },
   {
     icon: Shield,
-    title: 'Garantía de Autenticidad',
-    desc: 'Cada gafa viene con certificado de autenticidad. Lleva tu VELHOURA con total confianza.',
+    title: 'Authenticity Guarantee',
+    desc: 'Every pair comes with an authenticity certificate. Wear your VELHOURA with complete confidence.',
     offset: 60,
   },
   {
     icon: Truck,
-    title: 'Envío Express Mundial',
-    desc: 'Enviado en 48 horas. Completamente rastreado, asegurado y entregado con nuestro packaging exclusivo.',
+    title: 'Worldwide Express Shipping',
+    desc: 'Shipped within 48 hours. Fully tracked, insured and delivered with our exclusive packaging.',
     offset: 0,
   },
   {
     icon: RefreshCw,
-    title: 'Devoluciones 30 Días',
-    desc: '¿No estás completamente enamorado? Devuélvelo sin preguntas. Tu satisfacción es innegociable.',
+    title: '30-Day Returns',
+    desc: 'Not completely in love? Send it back, no questions asked. Your satisfaction is non-negotiable.',
     offset: 60,
   },
 ]
@@ -54,7 +54,7 @@ export default function Benefits() {
                 marginBottom: 14,
               }}
             >
-              Por qué VELHOURA
+              Why VELHOURA
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 35 }}
@@ -69,8 +69,8 @@ export default function Benefits() {
                 color: 'var(--black)',
               }}
             >
-              Diferente<br />
-              <em style={{ fontStyle: 'italic' }}>Por Diseño</em>
+              Different<br />
+              <em style={{ fontStyle: 'italic' }}>By Design</em>
             </motion.h2>
           </div>
           <motion.p
@@ -85,7 +85,7 @@ export default function Benefits() {
               alignSelf: 'flex-end',
             }}
           >
-            Nos obsesionamos con cada detalle para que tú no tengas que hacerlo. Desde el origen de los materiales hasta el momento en que tu pedido llega a tu puerta, el estándar es absoluto.
+            We obsess over every detail so you don't have to. From sourcing materials to the moment your order arrives at your door, the standard is absolute.
           </motion.p>
         </div>
 

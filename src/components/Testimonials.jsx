@@ -5,28 +5,28 @@ const testimonials = [
   {
     name: 'María G.',
     handle: '@mariag_style',
-    text: 'Las gafas más elegantes que he llevado nunca. El packaging solo ya me hizo sentir que estaba abriendo arte.',
+    text: 'The most elegant sunglasses I have ever worn. The packaging alone made me feel like I was unwrapping a piece of art.',
     rating: 5,
     tag: 'VELHOURA Classic',
   },
   {
     name: 'Carlos V.',
     handle: '@carlosv',
-    text: 'VELHOURA es donde el streetwear se encuentra con la precisión. He pedido tres veces y cada experiencia ha sido impecable.',
+    text: 'VELHOURA is where streetwear meets precision. I have ordered three times and every experience has been flawless.',
     rating: 5,
     tag: 'Midnight Slim',
   },
   {
     name: 'Sofía R.',
     handle: '@sofiar_looks',
-    text: 'El envío más rápido que he experimentado. Llegó en 36 horas, perfectamente empaquetado. Volveré.',
+    text: 'The fastest shipping I have ever experienced. Arrived in 36 hours, perfectly packaged. I will be back.',
     rating: 5,
     tag: 'Urban Shield',
   },
   {
     name: 'Alejandro M.',
     handle: '@alejandrom',
-    text: 'La calidad habla por sí sola. Cada detalle, desde las bisagras hasta los cristales, es perfecto.',
+    text: 'The quality speaks for itself. Every detail, from the hinges to the lenses, is perfect.',
     rating: 5,
     tag: 'Coastal Drift',
   },
@@ -63,7 +63,7 @@ export default function Testimonials() {
               marginBottom: 14,
             }}
           >
-            Confianza de Miles
+            Trusted by Thousands
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 35 }}
@@ -78,7 +78,7 @@ export default function Testimonials() {
               color: 'var(--black)',
             }}
           >
-            Lo que <em style={{ fontStyle: 'italic' }}>Dicen</em>
+            What They <em style={{ fontStyle: 'italic' }}>Say</em>
           </motion.h2>
         </div>
 
@@ -146,7 +146,7 @@ export default function Testimonials() {
             flexWrap: 'wrap',
           }}
         >
-          {['8.000+ Pedidos Enviados', '4.9 / 5 Valoración Media', 'Devoluciones 30 Días', 'Garantía Autenticidad'].map(badge => (
+          {['8,000+ Orders Shipped', '4.9 / 5 Average Rating', '30-Day Returns', 'Authenticity Guarantee'].map(badge => (
             <div key={badge} style={{ textAlign: 'center' }}>
               <p style={{
                 fontFamily: 'var(--font-body)',

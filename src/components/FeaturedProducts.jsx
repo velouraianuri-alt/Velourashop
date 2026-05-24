@@ -12,22 +12,22 @@ const UNISEX = '/imagenes/manufacture-custom-high-quality-unisex-luxury'
 
 // Datos locales como fallback si Shopify no carga
 const DEFAULT_PRODUCTS = [
-  { id: 1, name: 'Crystal Street', price: 35, originalPrice: 49.99, tag: 'Exclusivo', stock: 5, stars: 4.8, reviews: 196, watching: 12,
+  { id: 1, name: 'Crystal Street', price: 35, originalPrice: 49.99, tag: 'Exclusive', stock: 5, stars: 4.8, reviews: 196, watching: 12,
     imgDefault: `${TRANSPARENT}/frontal.png`, imgHover: `${TRANSPARENT}/semilateral.png`,
     images: [`${TRANSPARENT}/frontal.png`, `${TRANSPARENT}/semilateral.png`, `${TRANSPARENT}/lateral.png`, `${TRANSPARENT}/traseras.png`] },
-  { id: 2, name: 'Retro Ace', price: 35, originalPrice: 49.99, tag: 'Más Vendido', stock: 4, stars: 4.9, reviews: 312, watching: 18,
+  { id: 2, name: 'Retro Ace', price: 35, originalPrice: 49.99, tag: 'Best Seller', stock: 4, stars: 4.9, reviews: 312, watching: 18,
     imgDefault: `${RETRO}/frontal.png`, imgHover: `${RETRO}/semilateral.png`,
     images: [`${RETRO}/frontal.png`, `${RETRO}/semilateral.png`, `${RETRO}/lateral.png`, `${RETRO}/traseras.png`] },
   { id: 3, name: 'Vintage Lady', price: 35, originalPrice: 49.99, tag: 'New Drop', stock: 6, stars: 4.8, reviews: 87, watching: 11,
     imgDefault: `${VINTAGE_LADY}/forntal.png`, imgHover: `${VINTAGE_LADY}/semilateral.png`,
     images: [`${VINTAGE_LADY}/forntal.png`, `${VINTAGE_LADY}/semilateral.png`, `${VINTAGE_LADY}/lateral.png`, `${VINTAGE_LADY}/traseras.png`] },
-  { id: 4, name: 'Italian Glam', price: 35, originalPrice: 49.99, tag: 'Limitado', stock: 2, stars: 5.0, reviews: 143, watching: 24,
+  { id: 4, name: 'Italian Glam', price: 35, originalPrice: 49.99, tag: 'Limited', stock: 2, stars: 5.0, reviews: 143, watching: 24,
     imgDefault: `${ITALIAN}/frontal.png`, imgHover: `${ITALIAN}/semilateral.png`,
     images: [`${ITALIAN}/frontal.png`, `${ITALIAN}/semilateral.png`, `${ITALIAN}/lateral.png`, `${ITALIAN}/traseras.png`] },
   { id: 5, name: 'Vintage Square', price: 35, originalPrice: 49.99, tag: null, stock: 3, stars: 4.7, reviews: 201, watching: 9,
     imgDefault: `${VINTAGE_SQ}/frontal.png`, imgHover: `${VINTAGE_SQ}/semilateral.png`,
     images: [`${VINTAGE_SQ}/frontal.png`, `${VINTAGE_SQ}/semilateral.png`, `${VINTAGE_SQ}/lateral.png`, `${VINTAGE_SQ}/traseras.png`] },
-  { id: 7, name: 'Unisex Pro', price: 35, originalPrice: 49.99, tag: 'Exclusivo', stock: 7, stars: 4.9, reviews: 176, watching: 15,
+  { id: 7, name: 'Unisex Pro', price: 35, originalPrice: 49.99, tag: 'Exclusive', stock: 7, stars: 4.9, reviews: 176, watching: 15,
     imgDefault: `${UNISEX}/frontal.png`, imgHover: `${UNISEX}/semilateral.png`,
     images: [`${UNISEX}/frontal.png`, `${UNISEX}/semilateral.png`, `${UNISEX}/lateral.png`, `${UNISEX}/traseras.png`] },
   { id: 6, name: 'Eclipse', price: 35, originalPrice: 49.99, tag: 'New Drop', stock: 8, stars: 4.8, reviews: 127, watching: 14,
@@ -134,7 +134,7 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
 
         {/* Promo Badge */}
         <div style={{ position: 'absolute', top: 10, right: 10, zIndex: 5, background: '#1a1a1a', padding: '6px 9px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <span style={{ fontSize: 12, fontWeight: 800, color: '#fff', letterSpacing: '0.06em', lineHeight: 1 }}>2ª −50%</span>
+          <span style={{ fontSize: 12, fontWeight: 800, color: '#fff', letterSpacing: '0.06em', lineHeight: 1 }}>2ND −50%</span>
         </div>
 
         {/* Inner clip layer — clips images only */}
@@ -210,7 +210,7 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
                 transition={{ duration: 0.15 }}
                 style={{ display: 'flex', alignItems: 'center', gap: 6, position: 'relative', color: 'white' }}
               >
-                <ShoppingBag size={11} /> Añadir
+                <ShoppingBag size={11} /> Add
               </motion.span>
             ) : (
               <motion.span
@@ -233,7 +233,7 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
                     transition={{ duration: 0.35, ease: 'easeOut' }}
                   />
                 </svg>
-                ¡Añadido!
+                Added!
               </motion.span>
             )}
           </AnimatePresence>
@@ -285,7 +285,7 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
 
       {product.colors && (
         <p style={{ fontSize: 11, color: 'var(--gray-500)', marginBottom: 6, fontWeight: 500 }}>
-          {product.colors.length} colores disponibles
+          {product.colors.length} colors available
         </p>
       )}
 
@@ -305,7 +305,7 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
         </div>
         {product.stock <= 4 && (
           <span style={{ fontSize: isMobile ? 9 : 10, fontWeight: 700, color: '#dc2626', letterSpacing: '0.04em' }}>
-            ¡Solo {product.stock} left!
+            Only {product.stock} left!
           </span>
         )}
       </div>
@@ -346,7 +346,7 @@ export default function FeaturedProducts({ products = DEFAULT_PRODUCTS, loading,
             transition={{ duration: 0.6 }}
             style={{ display: 'block', fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 600, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: 14 }}
           >
-            Selección Curada
+            Curated Selection
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 35 }}
@@ -354,7 +354,7 @@ export default function FeaturedProducts({ products = DEFAULT_PRODUCTS, loading,
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 4vw, 68px)', fontWeight: 700, lineHeight: 0.93, letterSpacing: '-0.02em', color: 'var(--black)' }}
           >
-            Modelos<br /><em style={{ fontStyle: 'italic' }}>Destacados</em>
+            Featured<br /><em style={{ fontStyle: 'italic' }}>Models</em>
           </motion.h2>
         </div>
 
@@ -366,7 +366,7 @@ export default function FeaturedProducts({ products = DEFAULT_PRODUCTS, loading,
           onMouseEnter={e => { e.currentTarget.style.background = 'var(--blue)'; e.currentTarget.style.color = 'var(--white)'; e.currentTarget.style.borderColor = 'var(--blue)' }}
           onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--black)'; e.currentTarget.style.borderColor = 'var(--black)' }}
         >
-          Ver Todo
+          View All
         </motion.button>
       </div>
 

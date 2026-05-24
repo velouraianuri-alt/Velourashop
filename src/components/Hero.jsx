@@ -89,7 +89,7 @@ export default function Hero() {
               color: 'rgba(255,255,255,0.55)', marginBottom: 24,
             }}
           >
-            Nueva Colección · Primavera / Verano 2025
+            New Collection · Spring / Summer 2025
           </motion.span>
 
           {/* Titular */}
@@ -105,8 +105,8 @@ export default function Hero() {
               marginBottom: 36,
             }}
           >
-            Las gafas de sol<br />
-            <em style={{ fontStyle: 'italic' }}>VELHOURA</em>
+            VELHOURA<br />
+            <em style={{ fontStyle: 'italic' }}>sunglasses</em>
           </motion.h1>
 
           {/* Prueba social */}
@@ -120,7 +120,7 @@ export default function Hero() {
               ))}
             </div>
             <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.04em' }}>
-              4.9 · <strong style={{ color: 'rgba(255,255,255,0.9)' }}>+8.400 clientes</strong> satisfechos
+              4.9 · <strong style={{ color: 'rgba(255,255,255,0.9)' }}>+8,400 happy</strong> customers
             </span>
           </motion.div>
 
@@ -153,7 +153,7 @@ export default function Hero() {
                   />
                 )}
               </AnimatePresence>
-              Comprar Ahora
+              Shop Now
               <motion.span animate={{ x: ripple ? 6 : 0 }} transition={{ duration: 0.3 }} style={{ display: 'flex', alignItems: 'center' }}>
                 <ArrowRight size={14} />
               </motion.span>

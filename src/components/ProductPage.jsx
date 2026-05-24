@@ -9,22 +9,22 @@ import Footer from './Footer'
 
 /* ─── Feature data ────────────────────────────────────────── */
 const featureBadges = [
-  { icon: Sun,    title: 'Protección UV400',       desc: 'Bloquea el 100% de los rayos UVA y UVB' },
-  { icon: Shield, title: 'Garantía de por vida',   desc: 'Satisfecho o te devolvemos el dinero en 30 días' },
-  { icon: Layers, title: 'Policarbonato premium',  desc: 'Resistente, ligero y diseñado para durar' },
-  { icon: Heart,  title: 'Montura ultraligera',    desc: 'Comodidad durante todo el día, sin marcas' },
+  { icon: Sun,    title: 'UV400 Protection',       desc: 'Blocks 100% of UVA and UVB rays' },
+  { icon: Shield, title: 'Lifetime Warranty',      desc: 'Satisfied or your money back within 30 days' },
+  { icon: Layers, title: 'Premium Polycarbonate',  desc: 'Tough, lightweight and built to last' },
+  { icon: Heart,  title: 'Ultralight Frame',       desc: 'All-day comfort, no marks' },
 ]
 
 const shippingBadges = [
-  { icon: Truck,     label: 'Envío gratis' },
-  { icon: RefreshCw, label: 'Devolución 30 días' },
-  { icon: Package,   label: 'Embalaje premium' },
+  { icon: Truck,     label: 'Free shipping' },
+  { icon: RefreshCw, label: '30-day returns' },
+  { icon: Package,   label: 'Premium packaging' },
 ]
 
 const accordionData = [
-  { title: 'Características', content: 'Montura de acetato premium de alta resistencia. Cristales polarizados con protección UV400 que bloquean el 100% de los rayos UVA y UVB. Bisagras de barril de acero inoxidable con ajuste de precisión. Ancho de montura: 148mm · Puente: 18mm · Largo de patilla: 145mm.' },
-  { title: 'Información sobre el Envío', content: 'Envío gratuito en todos los pedidos. Entrega en 24-48h en península, 3-5 días en islas. Seguimiento en tiempo real incluido. Embalaje premium reciclable con estuche rígido incluido.' },
-  { title: 'Devoluciones Fáciles en 30 Días', content: 'Si no estás 100% satisfecho, devuelves sin coste y sin preguntas en 30 días desde la recepción. Solo necesitas el embalaje original. Reembolso en menos de 5 días hábiles.' },
+  { title: 'Features', content: 'Premium high-strength acetate frame. Polarized lenses with UV400 protection that block 100% of UVA and UVB rays. Stainless steel barrel hinges with precision fit. Frame width: 148mm · Bridge: 18mm · Temple length: 145mm.' },
+  { title: 'Shipping Information', content: 'Free shipping on all orders. Delivery in 24-48h within mainland, 3-5 days for islands. Real-time tracking included. Premium recyclable packaging with rigid case included.' },
+  { title: 'Easy 30-Day Returns', content: 'If you are not 100% satisfied, return free of charge and no questions asked within 30 days of receipt. Just keep the original packaging. Refund in less than 5 business days.' },
 ]
 
 /* ─── Accordion ───────────────────────────────────────────── */
@@ -255,7 +255,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
           onMouseEnter={e => e.currentTarget.style.opacity = '0.45'}
           onMouseLeave={e => e.currentTarget.style.opacity = '1'}
         >
-          <ArrowLeft size={isMobile ? 14 : 17} /> Volver
+          <ArrowLeft size={isMobile ? 14 : 17} /> Back
         </button>
 
         <span style={{ fontFamily: 'var(--font-logo)', fontSize: isMobile ? 13 : 20, fontWeight: 600, letterSpacing: isMobile ? '0.16em' : '0.26em', textTransform: 'uppercase', color: 'var(--black)' }}>
@@ -328,7 +328,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
 
                 <button
                   onClick={() => setMainImg((mainImg - 1 + images.length) % images.length)}
-                  aria-label="Imagen anterior"
+                  aria-label="Previous image"
                   style={{
                     position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)',
                     width: 40, height: 40, borderRadius: '50%',
@@ -343,7 +343,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
 
                 <button
                   onClick={() => setMainImg((mainImg + 1) % images.length)}
-                  aria-label="Siguiente imagen"
+                  aria-label="Next image"
                   style={{
                     position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)',
                     width: 40, height: 40, borderRadius: '50%',
@@ -372,7 +372,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
                   <button
                     key={i}
                     onClick={() => setMainImg(i)}
-                    aria-label={`Ir a imagen ${i + 1}`}
+                    aria-label={`Go to image ${i + 1}`}
                     style={{
                       width: i === mainImg ? 22 : 7,
                       height: 7,
@@ -458,7 +458,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
             <div style={{ display: 'flex', gap: 2 }}>
               {[1,2,3,4,5].map(s => <Star key={s} size={13} fill="var(--blue)" color="var(--blue)" />)}
             </div>
-            <span style={{ fontSize: 12, color: 'var(--gray-400)' }}>4.9 · 127 reseñas</span>
+            <span style={{ fontSize: 12, color: 'var(--gray-400)' }}>4.9 · 127 reviews</span>
           </div>
 
           {/* Name + tag */}
@@ -489,7 +489,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
             onMouseLeave={e => { if (!added) e.currentTarget.style.background = 'var(--navy)' }}
           >
             <ShoppingBag size={isMobile ? 15 : 17} />
-            {added ? '¡Añadido a la bolsa! ✓' : `Añadir a la cesta — 35,00€`}
+            {added ? 'Added to bag! ✓' : `Add to cart — €35.00`}
           </motion.button>
 
           {/* Color selector */}
@@ -537,8 +537,8 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
 
           {/* Promo banner */}
           <div style={{ padding: isMobile ? '14px 16px' : '18px 20px', background: '#1a1a1a', marginBottom: 22, borderRadius: 4 }}>
-            <p style={{ fontSize: isMobile ? 12 : 13, fontWeight: 700, color: '#fff', marginBottom: 3, letterSpacing: '0.05em' }}>COMPRA UNA, 2ª UNIDAD AL 50%</p>
-            <p style={{ fontSize: isMobile ? 10 : 11, color: 'rgba(255,255,255,0.6)' }}>Válido en Spring Sale</p>
+            <p style={{ fontSize: isMobile ? 12 : 13, fontWeight: 700, color: '#fff', marginBottom: 3, letterSpacing: '0.05em' }}>BUY ONE, 2ND ITEM 50% OFF</p>
+            <p style={{ fontSize: isMobile ? 10 : 11, color: 'rgba(255,255,255,0.6)' }}>Valid during Spring Sale</p>
           </div>
 
           {/* Shipping */}
@@ -551,7 +551,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
           </div>
 
           <p style={{ fontSize: 11, color: 'var(--gray-400)', textAlign: 'center', marginBottom: 28, letterSpacing: '0.04em' }}>
-            Envío gratuito · Devolución gratuita en 30 días
+            Free shipping · Free returns within 30 days
           </p>
 
           {/* Feature grid */}

@@ -3,13 +3,13 @@ import { motion, useScroll, useTransform, useInView, useMotionValue, animate as 
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const BASE_ITEMS = [
-  { id: 1, label: 'Urban Soul',    sub: 'Primavera 2025',   img: '/imagenes/imagenchico.png' },
-  { id: 2, label: 'En Movimiento', sub: 'Verano 2025',      img: '/imagenes/imagencaminando.png' },
-  { id: 3, label: 'Golden Hour',   sub: 'Edición Especial', img: '/imagenes/chicorolex.jpg' },
-  { id: 4, label: 'Coastal Light', sub: 'Colección Mar',    img: '/imagenes/rubia.png' },
-  { id: 5, label: 'The Bold Look', sub: 'Drop Exclusivo',   img: '/imagenes/Imagenchica.png' },
-  { id: 6, label: 'Wave Rider',    sub: 'Summer Drop',      img: '/imagenes/surfero.png' },
-  { id: 7, label: 'Gafitas',       sub: 'Colección Premium', img: '/imagenes/gafitas.png' },
+  { id: 1, label: 'Urban Soul',    sub: 'Spring 2025',       img: '/imagenes/imagenchico.png' },
+  { id: 2, label: 'In Motion',     sub: 'Summer 2025',       img: '/imagenes/imagencaminando.png' },
+  { id: 3, label: 'Golden Hour',   sub: 'Special Edition',   img: '/imagenes/chicorolex.jpg' },
+  { id: 4, label: 'Coastal Light', sub: 'Sea Collection',    img: '/imagenes/rubia.png' },
+  { id: 5, label: 'The Bold Look', sub: 'Exclusive Drop',    img: '/imagenes/Imagenchica.png' },
+  { id: 6, label: 'Wave Rider',    sub: 'Summer Drop',       img: '/imagenes/surfero.png' },
+  { id: 7, label: 'Shades',        sub: 'Premium Collection', img: '/imagenes/gafitas.png' },
 ]
 
 const N     = BASE_ITEMS.length
@@ -166,7 +166,7 @@ export default function Gallery() {
           transition={{ duration: 0.6 }}
           style={{ display: 'block', fontSize: 11, fontWeight: 600, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: 14 }}
         >
-          Campaña Editorial
+          Editorial Campaign
         </motion.span>
 
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 24 }}>
@@ -176,7 +176,7 @@ export default function Gallery() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 4vw, 68px)', fontWeight: 700, lineHeight: 0.93, letterSpacing: '-0.02em', color: 'var(--black)' }}
           >
-            La <em style={{ fontStyle: 'italic' }}>Galería</em>
+            The <em style={{ fontStyle: 'italic' }}>Gallery</em>
           </motion.h2>
 
           {/* Arrows + counter */}

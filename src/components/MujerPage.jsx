@@ -12,10 +12,10 @@ const mujerProducts = [
   {
     id: 101,
     name: 'Vintage Lady',
-    subtitle: 'UV400 · Mujer',
+    subtitle: 'UV400 · Women',
     price: 35,
     originalPrice: 49.99,
-    tag: 'Más Vendido',
+    tag: 'Best Seller',
     imgDefault: `${VINTAGE_LADY}/forntal.png`,
     imgHover:   `${VINTAGE_LADY}/semilateral.png`,
     images: [`${VINTAGE_LADY}/forntal.png`, `${VINTAGE_LADY}/semilateral.png`, `${VINTAGE_LADY}/lateral.png`, `${VINTAGE_LADY}/traseras.png`],
@@ -23,7 +23,7 @@ const mujerProducts = [
   {
     id: 102,
     name: 'Italian Glam',
-    subtitle: 'Lujo italiano · Premium',
+    subtitle: 'Italian luxury · Premium',
     price: 35,
     originalPrice: 49.99,
     tag: 'New Drop',
@@ -34,10 +34,10 @@ const mujerProducts = [
   {
     id: 103,
     name: 'Crystal Street',
-    subtitle: 'Transparente · Cat.3',
+    subtitle: 'Transparent · Cat.3',
     price: 35,
     originalPrice: 49.99,
-    tag: 'Exclusivo',
+    tag: 'Exclusive',
     imgDefault: `${TRANSPARENT}/frontal.png`,
     imgHover:   `${TRANSPARENT}/semilateral.png`,
     images: [`${TRANSPARENT}/frontal.png`, `${TRANSPARENT}/semilateral.png`, `${TRANSPARENT}/lateral.png`, `${TRANSPARENT}/traseras.png`],
@@ -45,7 +45,7 @@ const mujerProducts = [
   {
     id: 104,
     name: 'Eclipse',
-    subtitle: 'Alta calidad · Unisex',
+    subtitle: 'High quality · Unisex',
     price: 35,
     originalPrice: 49.99,
     tag: 'New Drop',
@@ -100,7 +100,7 @@ function ProductCard({ product, index, onAdd, onProductClick }) {
           onMouseEnter={e => e.currentTarget.style.background = 'var(--blue)'}
           onMouseLeave={e => e.currentTarget.style.background = 'var(--navy)'}
         >
-          <ShoppingBag size={11} /> Añadir
+          <ShoppingBag size={11} /> Add
         </motion.button>
       </div>
 
@@ -157,7 +157,7 @@ export default function MujerPage({ onClose, onAdd, onProductClick, cartItems = 
     >
       <div className="collection-page-topbar" style={{ position: 'sticky', top: 0, zIndex: 10, background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(14px)', borderBottom: '1px solid var(--gray-100)', padding: '0 48px', height: 62, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <button onClick={onClose} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--black)', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.4'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
-          <ArrowLeft size={17} /> Volver
+          <ArrowLeft size={17} /> Back
         </button>
         <span style={{ fontSize: 20, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' }}>VELHOURA</span>
         <button onClick={onOpenCart} style={{ position: 'relative', display: 'flex', alignItems: 'center', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.5'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
@@ -167,17 +167,17 @@ export default function MujerPage({ onClose, onAdd, onProductClick, cartItems = 
       </div>
 
       <div className="collection-page-hero" style={{ position: 'relative', height: 420, overflow: 'hidden' }}>
-        <img src="/imagenes/Imagenchica.png" alt="Colección Mujer" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
+        <img src="/imagenes/Imagenchica.png" alt="Women Collection" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(6,13,26,0.82) 40%, rgba(6,13,26,0.2) 100%)' }} />
         <div className="collection-page-hero-content" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px' }}>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--blue-bright)', marginBottom: 14 }}>
-            Colección Exclusiva
+            Exclusive Collection
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }} style={{ fontSize: 'clamp(44px, 9vw, 88px)', fontWeight: 800, color: '#fff', lineHeight: 0.92, letterSpacing: '-0.02em' }}>
-            Mujer
+            Women
           </motion.h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', marginTop: 16, maxWidth: 380 }}>
-            Elegancia sin límites. Actitud sin filtros.
+            Limitless elegance. Unfiltered attitude.
           </motion.p>
         </div>
       </div>
@@ -185,10 +185,10 @@ export default function MujerPage({ onClose, onAdd, onProductClick, cartItems = 
       <div className="collection-page-content" style={{ padding: '72px 72px 100px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 52, gap: 16, flexWrap: 'wrap' }}>
           <div>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: 8 }}>Selección Curada</p>
-            <h2 style={{ fontSize: 'clamp(28px, 6vw, 48px)', fontWeight: 800, color: 'var(--black)', lineHeight: 1 }}>Modelos Mujer</h2>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: 8 }}>Curated Selection</p>
+            <h2 style={{ fontSize: 'clamp(28px, 6vw, 48px)', fontWeight: 800, color: 'var(--black)', lineHeight: 1 }}>Women's Models</h2>
           </div>
-          <p style={{ fontSize: 13, color: 'var(--gray-400)' }}>{mujerProducts.length} modelos disponibles</p>
+          <p style={{ fontSize: 13, color: 'var(--gray-400)' }}>{mujerProducts.length} models available</p>
         </div>
         <div className="collection-page-grid" style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: isMobile ? '28px 12px' : '48px 28px' }}>
           {mujerProducts.map((p, i) => (

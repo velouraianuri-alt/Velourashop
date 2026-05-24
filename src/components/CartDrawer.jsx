@@ -19,7 +19,7 @@ function ShippingBar({ subtotal, compact }) {
         marginBottom: compact ? 6 : 10,
         color: unlocked ? '#16a34a' : 'var(--black)',
       }}>
-        {unlocked ? '¡Envío gratuito desbloqueado!' : `Te faltan €${(FREE_SHIPPING_THRESHOLD - subtotal).toFixed(2)} para envío gratis`}
+        {unlocked ? 'Free shipping unlocked!' : `You're €${(FREE_SHIPPING_THRESHOLD - subtotal).toFixed(2)} away from free shipping`}
       </p>
       <div style={{ position: 'relative', height: 6, background: '#e5e7eb', borderRadius: 99, overflow: 'visible' }}>
         <div style={{
@@ -49,7 +49,7 @@ function ShippingBar({ subtotal, compact }) {
       </div>
       {unlocked && (
         <p style={{ textAlign: 'right', fontSize: 11, color: '#16a34a', marginTop: 8, fontWeight: 600 }}>
-          Envío gratuito
+          Free shipping
         </p>
       )}
     </div>
@@ -106,7 +106,7 @@ function CartItem({ item, onIncrease, onDecrease, onRemove, compact }) {
           </span>
           {!compact && (
             <span style={{ fontSize: 11, fontWeight: 700, color: '#ef4444' }}>
-              (Ahorras €{saving.toFixed(2)})
+              (You save €{saving.toFixed(2)})
             </span>
           )}
         </div>
@@ -176,12 +176,12 @@ function ShippingProtection({ enabled, onToggle, compact }) {
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontSize: compact ? 12 : 13, fontWeight: 700, color: 'var(--black)' }}>Protección de envío</span>
+          <span style={{ fontSize: compact ? 12 : 13, fontWeight: 700, color: 'var(--black)' }}>Shipping protection</span>
           <span style={{ fontSize: compact ? 12 : 13, fontWeight: 700, color: 'var(--black)' }}>€2,95</span>
         </div>
         {!compact && (
         <p style={{ fontSize: 11, color: '#9ca3af', marginTop: 2, lineHeight: 1.4 }}>
-          Protege tu pedido contra daños, pérdida o robo durante el envío.
+          Protects your order against damage, loss or theft during shipping.
         </p>
         )}
       </div>
@@ -348,8 +348,8 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
               {!hasItems ? (
                 <div style={{ textAlign: 'center', paddingTop: 80 }}>
                   <ShoppingBag size={48} color="#e5e7eb" style={{ margin: '0 auto 20px' }} />
-                  <p style={{ fontSize: 18, fontWeight: 700, marginBottom: 8, color: 'var(--black)' }}>Tu bolsa está vacía</p>
-                  <p style={{ color: '#9ca3af', fontSize: 13 }}>Añade un modelo para empezar.</p>
+                  <p style={{ fontSize: 18, fontWeight: 700, marginBottom: 8, color: 'var(--black)' }}>Your bag is empty</p>
+                  <p style={{ color: '#9ca3af', fontSize: 13 }}>Add a model to get started.</p>
                   <button
                     onClick={onClose}
                     style={{
@@ -364,7 +364,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                       textTransform: 'uppercase',
                     }}
                   >
-                    Ver Colección
+                    View Collection
                   </button>
                 </div>
               ) : (
@@ -384,11 +384,11 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                       textAlign: 'center',
                     }}>
                       <p style={{ fontSize: isMobile ? 12 : 14, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--black)', marginBottom: isMobile ? 2 : 4 }}>
-                        🎁 2.ª unidad al 50%
+                        🎁 2nd item 50% off
                       </p>
                       {!isMobile && (
                         <p style={{ fontSize: 12, color: '#92400e' }}>
-                          Añade otro artículo y la 2.ª te sale a mitad de precio.
+                          Add another item and get it for half off with the Spring Sale.
                         </p>
                       )}
                     </div>
@@ -406,7 +406,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                 <div style={{ display: 'flex', gap: 0, marginBottom: isMobile ? 8 : 14 }}>
                   <input
                     type="text"
-                    placeholder="Código promocional"
+                    placeholder="Promo code"
                     value={promoCode}
                     onChange={e => setPromoCode(e.target.value)}
                     disabled={promoApplied}
@@ -440,7 +440,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                       border: 'none'
                     }}
                   >
-                    {promoApplied ? '✓' : 'Aplicar'}
+                    {promoApplied ? '✓' : 'Apply'}
                   </button>
                 </div>
 
@@ -452,14 +452,14 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
 
                 {promoDiscount > 0 && (
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: isMobile ? 4 : 8, fontSize: 12, color: '#16a34a' }}>
-                    <span>2ª unidad al 50%</span>
+                    <span>2nd item 50% off</span>
                     <span>−€{promoDiscount.toFixed(2)}</span>
                   </div>
                 )}
 
                 {discount > 0 && (
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: isMobile ? 4 : 8, fontSize: 12, color: '#16a34a' }}>
-                    <span>Descuento (10%)</span>
+                    <span>Discount (10%)</span>
                     <span>−€{discount.toFixed(2)}</span>
                   </div>
                 )}
@@ -499,7 +499,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                           <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.8s" repeatCount="indefinite"/>
                         </path>
                       </svg>
-                      Procesando…
+                      Processing…
                     </>
                   ) : (
                     `Checkout · €${total.toFixed(2)}`

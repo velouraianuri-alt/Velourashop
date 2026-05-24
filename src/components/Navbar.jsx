@@ -37,16 +37,16 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const links = ['Colecciones', 'Ibiza Collection']
+  const links = ['Collections', 'Ibiza Collection']
 
   const handleLinkClick = (e, link) => {
     e.preventDefault()
     onProductClose?.()
-    if (link === 'Colecciones') {
+    if (link === 'Collections') {
       onSectionOpen?.(null)
       setMenuOpen(false)
-    } else if (link === 'Historia' || link === 'Ibiza Collection') {
-      onSectionOpen?.(link.toLowerCase().replace(' ', ''))
+    } else if (link === 'Ibiza Collection') {
+      onSectionOpen?.('ibizacollection')
       setMenuOpen(false)
     }
   }
@@ -76,7 +76,7 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
       }}>
         <div className="sale-bar-label" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', lineHeight: 1.15 }}>
           <span className="sale-bar-title" style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase' }}>Spring Sale</span>
-          <span className="sale-bar-sub" style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.9 }}>2ª unidad al 50%</span>
+          <span className="sale-bar-sub" style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.9 }}>2nd item 50% off</span>
         </div>
         <div className="sale-bar-timer" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           {[
@@ -210,7 +210,7 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
             }}
           >
             <ShoppingBag size={15} />
-            <span className="nav-bolsa-text">Bolsa</span>
+            <span className="nav-bolsa-text">Bag</span>
             {cartCount > 0 && (
               <span style={{
                 position: 'absolute',

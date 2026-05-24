@@ -50,7 +50,7 @@ export default function FloatingOffer() {
             }}
           >
             <span style={{ color: '#93c5fd', display: 'flex' }}><GlassesIcon /></span>
-            <span>−10% en tu primera compra</span>
+            <span>−10% off your first order</span>
             <motion.span
               animate={{ x: [0, 4, 0] }}
               transition={{ repeat: Infinity, duration: 1.4, ease: 'easeInOut' }}
@@ -88,17 +88,17 @@ export default function FloatingOffer() {
                 <X size={15} />
               </button>
               <div style={{ color: '#93c5fd', marginBottom: 10, display: 'flex' }}><GlassesIcon /></div>
-              <p style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)', marginBottom: 4 }}>Oferta exclusiva</p>
+              <p style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)', marginBottom: 4 }}>Exclusive offer</p>
               <h3 style={{ fontSize: 22, fontWeight: 800, color: '#fff', letterSpacing: '-0.01em' }}>
-                10% de descuento
+                10% off
               </h3>
-              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>En tu primera compra en VELHOURA</p>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>On your first order at VELHOURA</p>
             </div>
 
             {/* Body */}
             <div style={{ padding: '20px 22px 22px' }}>
               <p style={{ fontSize: 12, color: '#6b7280', marginBottom: 16, lineHeight: 1.6 }}>
-                Usa este código al finalizar tu compra y disfruta de un <strong style={{ color: 'var(--navy)' }}>10% de descuento</strong> en todos nuestros modelos.
+                Use this code at checkout and enjoy <strong style={{ color: 'var(--navy)' }}>10% off</strong> on all our models.
               </p>
 
               {/* Código */}
@@ -123,12 +123,12 @@ export default function FloatingOffer() {
                     transition: 'background 0.3s, color 0.3s', cursor: 'pointer', whiteSpace: 'nowrap',
                   }}
                 >
-                  {copied ? <><Check size={13} /> Copiado</> : <><Copy size={13} /> Copiar</>}
+                  {copied ? <><Check size={13} /> Copied</> : <><Copy size={13} /> Copy</>}
                 </motion.button>
               </div>
 
               <p style={{ fontSize: 10, color: '#9ca3af', textAlign: 'center', letterSpacing: '0.04em' }}>
-                Válido durante 48h · No acumulable con otras ofertas
+                Valid for 48h · Cannot be combined with other offers
               </p>
             </div>
           </motion.div>

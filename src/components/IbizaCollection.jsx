@@ -56,7 +56,7 @@ export default function IbizaCollection({ onClose, onOpenCart, cartItems = [] })
             variants={fadeUp}
             style={{ fontSize: 16, fontWeight: 300, color: 'rgba(255,255,255,0.85)', lineHeight: 1.7, maxWidth: 620, margin: '0 auto 40px' }}
           >
-            Diseñada para capturar la esencia del Mediterráneo. Cada gafa, una historia de lujo, libertad y ese sentimiento indescriptible de verano eterno.
+            Designed to capture the essence of the Mediterranean. Every pair, a story of luxury, freedom and that indescribable feeling of endless summer.
           </motion.p>
 
           <motion.div variants={fadeUp} className="ibiza-hero-info" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 40, fontSize: 12, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', flexWrap: 'wrap' }}>
@@ -64,7 +64,7 @@ export default function IbizaCollection({ onClose, onOpenCart, cartItems = [] })
               <MapPin size={16} /> Ibiza, Balearic Islands
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Wind size={16} /> Próximamente
+              <Wind size={16} /> Coming Soon
             </div>
           </motion.div>
         </motion.div>
@@ -79,13 +79,13 @@ export default function IbizaCollection({ onClose, onOpenCart, cartItems = [] })
           style={{ maxWidth: 700 }}
         >
           <span style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: 24 }}>
-            Exclusiva VELHOURA
+            VELHOURA Exclusive
           </span>
           <h2 style={{ fontSize: 'clamp(40px, 6vw, 80px)', fontWeight: 800, color: 'var(--black)', lineHeight: 1.1, letterSpacing: '-0.03em', marginBottom: 28 }}>
-            Los mejores<br />diseños del verano
+            The best<br />summer designs
           </h2>
           <p style={{ fontSize: 16, fontWeight: 400, color: 'var(--gray-600)', lineHeight: 1.8, marginBottom: 48 }}>
-            Estamos creando algo especial. Una colección que captura la esencia del Mediterráneo con cada detalle cuidado al máximo. Las mejores gafas para los mejores momentos.
+            We are creating something special. A collection that captures the essence of the Mediterranean with every detail crafted to the highest standard. The best eyewear for the best moments.
           </p>
 
           <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -113,7 +113,7 @@ export default function IbizaCollection({ onClose, onOpenCart, cartItems = [] })
                 e.currentTarget.style.transform = 'translateY(0)'
               }}
             >
-              Volver a Tienda
+              Back to Shop
             </button>
           </div>
         </motion.div>

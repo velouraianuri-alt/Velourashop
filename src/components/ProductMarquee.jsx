@@ -1,17 +1,17 @@
 import { useRef, useState } from 'react'
 
 const items = [
-  { name: 'Aura Classic',   tag: 'Más Vendido', img: '/imagenes/numero1.png' },
+  { name: 'Aura Classic',   tag: 'Best Seller', img: '/imagenes/numero1.png' },
   { name: 'Midnight Slim',  tag: 'New Drop',    img: '/imagenes/numero2.png' },
-  { name: 'Urban Shield',   tag: 'Limitado',    img: '/imagenes/numero3.png' },
-  { name: 'Coastal Drift',  tag: 'Exclusivo',   img: '/imagenes/numero4.png' },
+  { name: 'Urban Shield',   tag: 'Limited',     img: '/imagenes/numero3.png' },
+  { name: 'Coastal Drift',  tag: 'Exclusive',   img: '/imagenes/numero4.png' },
   { name: 'Shadow Round',   tag: null,           img: '/imagenes/numero5.png' },
-  { name: 'Vintage Lady',   tag: 'Más Vendido', img: '/imagenes/custom-high-quality-uv400-ladys-shades-wholesale-vintage/7b887131-faff-4250-9c34-c73fb218090b.png' },
+  { name: 'Vintage Lady',   tag: 'Best Seller', img: '/imagenes/custom-high-quality-uv400-ladys-shades-wholesale-vintage/7b887131-faff-4250-9c34-c73fb218090b.png' },
   { name: 'Italian Glam',   tag: 'New Drop',    img: '/imagenes/italian-luxury-eyewear-new-model/8d4e7346-7fe2-4ba7-ac44-7c961cc0e088.png' },
-  { name: 'Crystal Street', tag: 'Exclusivo',   img: '/imagenes/transparent-new-cat3-luxury-street-wear-glasses/2de9dc94-71de-4b7e-871b-c9ac35a71117.png' },
-  { name: 'Retro Ace',      tag: 'Limitado',    img: '/imagenes/custom-retro-shades-biodegradable-acetate-sunglasses-for-men-high-quality/61d8f823-be25-494d-b7c0-109f776fd4c0.png' },
+  { name: 'Crystal Street', tag: 'Exclusive',   img: '/imagenes/transparent-new-cat3-luxury-street-wear-glasses/2de9dc94-71de-4b7e-871b-c9ac35a71117.png' },
+  { name: 'Retro Ace',      tag: 'Limited',     img: '/imagenes/custom-retro-shades-biodegradable-acetate-sunglasses-for-men-high-quality/61d8f823-be25-494d-b7c0-109f776fd4c0.png' },
   { name: 'Classic Pro',    tag: null,           img: '/imagenes/high-quality-sunglasses-manufacturer/0ce621d9-03c3-4483-b19a-69b687439400.png' },
-  { name: 'Vintage Square', tag: 'Exclusivo',   img: '/imagenes/lma-1025-vintage-oversize-square-classic/cecab9c2-15ff-4a2e-aa41-3bb5b33fe309.png' },
+  { name: 'Vintage Square', tag: 'Exclusive',   img: '/imagenes/lma-1025-vintage-oversize-square-classic/cecab9c2-15ff-4a2e-aa41-3bb5b33fe309.png' },
 ]
 
 // Triple the items so the loop is seamless
@@ -130,10 +130,10 @@ export default function ProductMarquee() {
       {/* Header */}
       <div className="product-marquee-header" style={{ textAlign: 'center', marginBottom: 48, position: 'relative', zIndex: 3, padding: '0 20px' }}>
         <p style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.32em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: 10 }}>
-          Toda la colección
+          The full collection
         </p>
         <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 800, color: 'var(--black)', letterSpacing: '-0.02em', lineHeight: 1 }}>
-          Modelos <em style={{ fontStyle: 'italic', color: 'var(--blue)' }}>VELHOURA</em>
+          VELHOURA <em style={{ fontStyle: 'italic', color: 'var(--blue)' }}>Models</em>
         </h2>
       </div>
 

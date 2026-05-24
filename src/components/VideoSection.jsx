@@ -42,7 +42,7 @@ export default function VideoSection() {
           color: 'var(--blue-bright)',
           marginBottom: 16,
         }}>
-          Detrás del Diseño
+          Behind the Design
         </span>
         <h2 style={{
           fontFamily: 'var(--font-display)',
@@ -52,8 +52,8 @@ export default function VideoSection() {
           letterSpacing: '-0.025em',
           color: 'var(--white)',
         }}>
-          Creado para los que{' '}
-          <em style={{ fontStyle: 'italic', color: 'var(--blue-bright)' }}>ven diferente</em>
+          Made for those who{' '}
+          <em style={{ fontStyle: 'italic', color: 'var(--blue-bright)' }}>see different</em>
         </h2>
       </motion.div>
 
@@ -134,7 +134,7 @@ export default function VideoSection() {
           margin: '0 auto 28px',
           lineHeight: 1.7,
         }}>
-          Cada diseño empieza con una historia. Descubre cómo llevamos cada modelo del concepto a la realidad.
+          Every design starts with a story. See how we take each model from concept to reality.
         </p>
         <button
           style={{
@@ -152,7 +152,7 @@ export default function VideoSection() {
           onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--blue)'; e.currentTarget.style.background = 'var(--blue)' }}
           onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'; e.currentTarget.style.background = 'transparent' }}
         >
-          Explorar el Proceso
+          Explore the Process
         </button>
       </motion.div>
 

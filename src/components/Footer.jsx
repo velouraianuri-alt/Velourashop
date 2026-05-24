@@ -50,7 +50,7 @@ export default function Footer() {
             maxWidth: 280,
             marginBottom: 36,
           }}>
-            Eyewear de alto diseño en la intersección del arte, la cultura y la calle. Cada gafa cuenta una historia.
+            High-design eyewear at the intersection of art, culture and the street. Every pair tells a story.
           </p>
 
           {/* Newsletter */}
@@ -62,15 +62,15 @@ export default function Footer() {
             color: 'rgba(255,255,255,0.45)',
             marginBottom: 14,
           }}>
-            Únete a la Lista Exclusiva
+            Join the Exclusive List
           </p>
           {subscribed ? (
-            <p style={{ color: 'var(--blue-bright)', fontSize: 14, fontWeight: 600 }}>¡Perfecto! Estate atento a tu correo.</p>
+            <p style={{ color: 'var(--blue-bright)', fontSize: 14, fontWeight: 600 }}>Perfect! Watch your inbox.</p>
           ) : (
             <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: 0 }}>
               <input
                 type="email"
-                placeholder="tu@email.com"
+                placeholder="your@email.com"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 required
@@ -109,9 +109,9 @@ export default function Footer() {
 
         {/* Links cols */}
         {[
-          { title: 'Tienda', links: ['Novedades', 'Más Vendidos', 'Colecciones', 'Ediciones Limitadas'] },
-          { title: 'Ayuda', links: ['Devoluciones', 'Seguir Pedido', 'FAQ'] },
-          { title: 'Empresa', links: ['Contacto'] },
+          { title: 'Shop', links: ['New In', 'Best Sellers', 'Collections', 'Limited Editions'] },
+          { title: 'Help', links: ['Returns', 'Track Order', 'FAQ'] },
+          { title: 'Company', links: ['Contact'] },
         ].map((col, i) => (
           <motion.div
             key={col.title}
@@ -158,7 +158,7 @@ export default function Footer() {
         gap: 16,
       }}>
         <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.28)' }}>
-          © 2025 VELHOURA Eyewear. Todos los derechos reservados.
+          © 2025 VELHOURA Eyewear. All rights reserved.
         </p>
         <div style={{ display: 'flex', gap: 18 }}>
           {[IconInstagram, IconTikTok].map((Icon, i) => (
@@ -174,7 +174,7 @@ export default function Footer() {
           ))}
         </div>
         <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.28)' }}>
-          Pagos seguros · Privacidad · Términos
+          Secure payments · Privacy · Terms
         </p>
       </div>
 

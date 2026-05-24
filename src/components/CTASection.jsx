@@ -71,7 +71,7 @@ export default function CTASection({ onShopClick }) {
             color: 'var(--blue-bright)',
             marginBottom: 20,
           }}>
-            Comparativa Premium
+            Premium Comparison
           </span>
           <h2 style={{
             fontFamily: 'var(--font-display)',
@@ -81,7 +81,7 @@ export default function CTASection({ onShopClick }) {
             letterSpacing: '-0.03em',
             color: 'var(--white)',
           }}>
-            ¿Por qué elegir<br /><em style={{ fontStyle: 'italic', color: 'var(--blue)' }}>VELHOURA?</em>
+            Why choose<br /><em style={{ fontStyle: 'italic', color: 'var(--blue)' }}>VELHOURA?</em>
           </h2>
         </motion.div>
 
@@ -109,14 +109,14 @@ export default function CTASection({ onShopClick }) {
             </thead>
             <tbody>
               {[
-                'Diseño Premium',
-                'Calidad UV400',
-                'Materiales Sostenibles',
-                'Garantía de por vida',
-                'Servicio al Cliente Premium',
-                'Envío Express Gratis',
-                'Devoluciones 30 días',
-                'Colecciones Limitadas',
+                'Premium Design',
+                'UV400 Quality',
+                'Sustainable Materials',
+                'Lifetime Warranty',
+                'Premium Customer Service',
+                'Free Express Shipping',
+                '30-Day Returns',
+                'Limited Collections',
               ].map((feature, i) => (
                 <motion.tr
                   key={feature}
@@ -191,7 +191,7 @@ export default function CTASection({ onShopClick }) {
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(62,82,74,0.4)' }}
             onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
           >
-            Descubre VELHOURA <ArrowRight size={16} />
+            Discover VELHOURA <ArrowRight size={16} />
           </button>
         </motion.div>
       </div>

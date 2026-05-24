@@ -64,19 +64,19 @@ export default function OfferPopup() {
               <div className="offer-popup-image" style={{ position: 'relative', minHeight: 480, overflow: 'hidden' }}>
                 <img
                   src="/imagenes/imagenchico.png"
-                  alt="VELHOURA Eyewear Oferta"
+                  alt="VELHOURA Eyewear Offer"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(6,13,26,0.1) 0%, rgba(6,13,26,0.7) 100%)' }} />
                 <div style={{ position: 'absolute', top: 24, left: 24, background: 'var(--blue)', color: 'var(--white)', padding: '8px 16px', borderRadius: 6, display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700, letterSpacing: '0.08em' }}>
-                  <Tag size={14} /> OFERTA EXCLUSIVA
+                  <Tag size={14} /> EXCLUSIVE OFFER
                 </div>
                 <div style={{ position: 'absolute', bottom: 28, left: 24, right: 24 }}>
                   <div style={{ fontSize: 52, fontWeight: 800, color: 'var(--white)', lineHeight: 1, marginBottom: 8 }}>
                     -10%
                   </div>
                   <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.5 }}>
-                    En tu primera compra.<br />Solo por tiempo limitado.
+                    On your first purchase.<br />Limited time only.
                   </p>
                 </div>
               </div>
@@ -98,7 +98,7 @@ export default function OfferPopup() {
                       {countdown}
                     </div>
                     <span style={{ fontSize: 12, color: 'var(--gray-400)', lineHeight: 1.4 }}>
-                      Esta oferta expira en <strong>{countdown}</strong> segundos
+                      This offer expires in <strong>{countdown}</strong> seconds
                     </span>
                   </div>
                 )}
@@ -106,31 +106,31 @@ export default function OfferPopup() {
                 {submitted ? (
                   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} style={{ textAlign: 'center' }}>
                     <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'var(--blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: 28, color: 'white' }}>✓</div>
-                    <h3 style={{ fontSize: 32, fontWeight: 700, marginBottom: 12, color: 'var(--black)' }}>¡Ya eres parte de VELHOURA!</h3>
+                    <h3 style={{ fontSize: 32, fontWeight: 700, marginBottom: 12, color: 'var(--black)' }}>You're now part of VELHOURA!</h3>
                     <p style={{ fontSize: 15, color: 'var(--gray-600)', marginBottom: 20, lineHeight: 1.6 }}>
-                      Tu código del 10% ha sido enviado a <strong>{email}</strong>.
+                      Your 10% code has been sent to <strong>{email}</strong>.
                     </p>
                     <div style={{ background: 'var(--gray-100)', padding: '14px 20px', borderRadius: 8, fontSize: 24, fontWeight: 700, letterSpacing: '0.1em', color: 'var(--blue)', border: '2px dashed var(--blue)' }}>
                       VELHOURA10
                     </div>
-                    <p style={{ fontSize: 12, color: 'var(--gray-400)', marginTop: 10 }}>Úsalo en el carrito al finalizar la compra</p>
+                    <p style={{ fontSize: 12, color: 'var(--gray-400)', marginTop: 10 }}>Use it in your cart at checkout</p>
                   </motion.div>
                 ) : (
                   <>
                     <span style={{ display: 'block', fontSize: 11, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: 14 }}>
-                      Solo para nuevos clientes
+                      New customers only
                     </span>
                     <h2 style={{ fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 700, lineHeight: 1.05, color: 'var(--black)', marginBottom: 16 }}>
-                      Únete a VELHOURA.<br />
-                      <em style={{ fontStyle: 'italic', color: 'var(--blue)' }}>Ve diferente.</em>
+                      Join VELHOURA.<br />
+                      <em style={{ fontStyle: 'italic', color: 'var(--blue)' }}>See different.</em>
                     </h2>
                     <p style={{ fontSize: 14, color: 'var(--gray-600)', lineHeight: 1.7, marginBottom: 28 }}>
-                      Suscríbete y obtén un <strong>10% de descuento</strong> en tu primera compra, acceso anticipado a nuevas colecciones y ofertas exclusivas.
+                      Subscribe and get <strong>10% off</strong> your first purchase, early access to new collections and exclusive offers.
                     </p>
                     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                       <input
                         type="email"
-                        placeholder="tu@email.com"
+                        placeholder="your@email.com"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                         required
@@ -144,7 +144,7 @@ export default function OfferPopup() {
                         onMouseEnter={e => e.currentTarget.style.background = 'var(--blue-mid)'}
                         onMouseLeave={e => e.currentTarget.style.background = 'var(--blue)'}
                       >
-                        Obtener mi -10% <ArrowRight size={15} />
+                        Get my -10% <ArrowRight size={15} />
                       </button>
                     </form>
                     <button
@@ -153,7 +153,7 @@ export default function OfferPopup() {
                       onMouseEnter={e => e.currentTarget.style.color = 'var(--black)'}
                       onMouseLeave={e => e.currentTarget.style.color = 'var(--gray-400)'}
                     >
-                      No, gracias — prefiero pagar el precio completo
+                      No thanks — I'd rather pay full price
                     </button>
                   </>
                 )}

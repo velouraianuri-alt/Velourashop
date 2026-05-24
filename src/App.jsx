@@ -115,7 +115,7 @@ export default function App() {
       }
       return [...prev, newItem]
     })
-    addToast(`${product.name} añadido a la bolsa`)
+    addToast(`${product.name} added to bag`)
 
     if (sourceRect && cartRef.current) {
       const targetRect = cartRef.current.getBoundingClientRect()
@@ -202,7 +202,7 @@ export default function App() {
             flexWrap: 'wrap',
           }}
         >
-          {[['8K+', 'Clientes Satisfechos'], ['50+', 'Modelos Exclusivos'], ['48h', 'Envío Express'], ['30 días', 'Devoluciones Gratis']].map(([num, label], i) => (
+          {[['8K+', 'Happy Customers'], ['50+', 'Exclusive Models'], ['48h', 'Express Shipping'], ['30 days', 'Free Returns']].map(([num, label], i) => (
             <motion.div
               key={label}
               initial={{ opacity: 0, y: 20 }}

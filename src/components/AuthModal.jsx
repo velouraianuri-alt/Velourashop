@@ -99,11 +99,11 @@ export default function AuthModal({ onClose }) {
               transition={{ duration: 0.22 }}
               style={{ fontSize: 26, fontWeight: 800, color: '#fff', letterSpacing: '-0.01em' }}
             >
-              {isRegister ? 'Crear cuenta' : 'Bienvenido de nuevo'}
+              {isRegister ? 'Create account' : 'Welcome back'}
             </motion.h2>
           </AnimatePresence>
           <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', marginTop: 4 }}>
-            {isRegister ? 'Únete a la familia VELHOURA' : 'Accede a tu cuenta'}
+            {isRegister ? 'Join the VELHOURA family' : 'Access your account'}
           </p>
         </div>
 
@@ -118,7 +118,7 @@ export default function AuthModal({ onClose }) {
           {/* Divider */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 20 }}>
             <div style={{ flex: 1, height: 1, background: '#e5e7eb' }} />
-            <span style={{ fontSize: 11, fontWeight: 600, color: '#9ca3af', letterSpacing: '0.08em', textTransform: 'uppercase' }}>o continúa con email</span>
+            <span style={{ fontSize: 11, fontWeight: 600, color: '#9ca3af', letterSpacing: '0.08em', textTransform: 'uppercase' }}>or continue with email</span>
             <div style={{ flex: 1, height: 1, background: '#e5e7eb' }} />
           </div>
 
@@ -131,12 +131,12 @@ export default function AuthModal({ onClose }) {
                 exit={{ opacity: 0, x: isRegister ? -16 : 16 }}
                 transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
               >
-                {isRegister && <InputField icon={User} type="text" placeholder="Nombre completo" value={name} onChange={e => setName(e.target.value)} />}
-                <InputField icon={Mail} type="email" placeholder="Correo electrónico" value={email} onChange={e => setEmail(e.target.value)} />
-                <InputField icon={Lock} type="password" placeholder="Contraseña" value={password} onChange={e => setPassword(e.target.value)} showToggle onToggle={() => setShowPassword(v => !v)} showPassword={showPassword} />
+                {isRegister && <InputField icon={User} type="text" placeholder="Full name" value={name} onChange={e => setName(e.target.value)} />}
+                <InputField icon={Mail} type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+                <InputField icon={Lock} type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} showToggle onToggle={() => setShowPassword(v => !v)} showPassword={showPassword} />
                 {!isRegister && (
                   <div style={{ textAlign: 'right', marginTop: -8, marginBottom: 18 }}>
-                    <button type="button" style={{ fontSize: 12, color: 'var(--blue)', fontWeight: 600 }}>¿Olvidaste tu contraseña?</button>
+                    <button type="button" style={{ fontSize: 12, color: 'var(--blue)', fontWeight: 600 }}>Forgot your password?</button>
                   </div>
                 )}
               </motion.div>
@@ -149,15 +149,15 @@ export default function AuthModal({ onClose }) {
               onMouseEnter={e => e.currentTarget.style.background = 'var(--blue)'}
               onMouseLeave={e => e.currentTarget.style.background = 'var(--navy)'}
             >
-              {isRegister ? 'Crear mi cuenta' : 'Iniciar sesión'}
+              {isRegister ? 'Create my account' : 'Sign in'}
               <ArrowRight size={15} />
             </motion.button>
           </form>
 
           <p style={{ textAlign: 'center', fontSize: 13, color: '#6b7280', marginTop: 20 }}>
-            {isRegister ? '¿Ya tienes cuenta? ' : '¿Nuevo en VELHOURA? '}
+            {isRegister ? 'Already have an account? ' : 'New to VELHOURA? '}
             <button onClick={() => setMode(isRegister ? 'login' : 'register')} style={{ color: 'var(--blue)', fontWeight: 700 }}>
-              {isRegister ? 'Inicia sesión' : 'Regístrate'}
+              {isRegister ? 'Sign in' : 'Sign up'}
             </button>
           </p>
         </div>
