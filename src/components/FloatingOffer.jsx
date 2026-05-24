@@ -18,7 +18,7 @@ export default function FloatingOffer() {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = () => {
-    navigator.clipboard.writeText('VELOURA10')
+    navigator.clipboard.writeText('VELHOURA10')
     setCopied(true)
     setTimeout(() => setCopied(false), 2200)
   }
@@ -92,7 +92,7 @@ export default function FloatingOffer() {
               <h3 style={{ fontSize: 22, fontWeight: 800, color: '#fff', letterSpacing: '-0.01em' }}>
                 10% de descuento
               </h3>
-              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>En tu primera compra en VELOURA</p>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>En tu primera compra en VELHOURA</p>
             </div>
 
             {/* Body */}
@@ -110,7 +110,7 @@ export default function FloatingOffer() {
                   fontWeight: 800, letterSpacing: '0.18em', color: 'var(--navy)',
                   textAlign: 'center',
                 }}>
-                  VELOURA10
+                  VELHOURA10
                 </div>
                 <motion.button
                   whileTap={{ scale: 0.93 }}

@@ -259,7 +259,7 @@ export default function ProductPage({ product, onClose, onAdd, cartItems = [], o
         </button>
 
         <span style={{ fontFamily: 'var(--font-logo)', fontSize: isMobile ? 13 : 20, fontWeight: 600, letterSpacing: isMobile ? '0.16em' : '0.26em', textTransform: 'uppercase', color: 'var(--black)' }}>
-          VELOURA
+          VELHOURA
         </span>
 
         <div style={{ width: isMobile ? 16 : 40 }} />

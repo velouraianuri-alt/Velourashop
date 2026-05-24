@@ -82,18 +82,18 @@ a { text-decoration: none; color: inherit; }
 
 /* Navbar */
 @media (max-width: 768px) {
-  .veloura-nav { padding: 0 18px !important; }
+  .velhoura-nav { padding: 0 18px !important; }
   .nav-bolsa-text { display: none !important; }
 }
 
 /* Stats bar */
 @media (max-width: 768px) {
-  .veloura-stats { padding: 28px 20px !important; gap: 22px !important; }
-  .veloura-stats > div > div:first-child { font-size: 28px !important; }
-  .veloura-stats > div > div:last-child { font-size: 9px !important; }
+  .velhoura-stats { padding: 28px 20px !important; gap: 22px !important; }
+  .velhoura-stats > div > div:first-child { font-size: 28px !important; }
+  .velhoura-stats > div > div:last-child { font-size: 9px !important; }
 }
 @media (max-width: 480px) {
-  .veloura-stats { padding: 22px 14px !important; gap: 14px !important; }
+  .velhoura-stats { padding: 22px 14px !important; gap: 14px !important; }
 }
 
 /* Product page – mobile layout */

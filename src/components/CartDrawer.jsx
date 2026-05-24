@@ -266,7 +266,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
   const hasItems = items.length > 0
 
   const applyPromo = () => {
-    if (promoCode.toUpperCase() === 'VELOURA10') {
+    if (promoCode.toUpperCase() === 'VELHOURA10') {
       setPromoApplied(true)
     }
   }
@@ -313,7 +313,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
               position: 'relative',
             }}>
               <h2 style={{ fontSize: isMobile ? 17 : 22, fontWeight: 900, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--black)' }}>
-                VELOURA
+                VELHOURA
               </h2>
               {!isMobile && (
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5, marginTop: 3 }}>

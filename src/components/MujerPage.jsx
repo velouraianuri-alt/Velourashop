@@ -159,7 +159,7 @@ export default function MujerPage({ onClose, onAdd, onProductClick, cartItems = 
         <button onClick={onClose} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--black)', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.4'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
           <ArrowLeft size={17} /> Volver
         </button>
-        <span style={{ fontSize: 20, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' }}>VELOURA</span>
+        <span style={{ fontSize: 20, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' }}>VELHOURA</span>
         <button onClick={onOpenCart} style={{ position: 'relative', display: 'flex', alignItems: 'center', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.5'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
           <ShoppingBag size={18} />
           {cartCount > 0 && <span style={{ position: 'absolute', top: -7, right: -7, background: 'var(--blue)', color: '#fff', borderRadius: '50%', width: 17, height: 17, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, fontWeight: 700 }}>{cartCount}</span>}

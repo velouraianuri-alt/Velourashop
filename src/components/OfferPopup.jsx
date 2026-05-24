@@ -12,11 +12,11 @@ export default function OfferPopup() {
   const [countdown, setCountdown] = useState(AUTO_CLOSE_SECONDS)
 
   useEffect(() => {
-    const alreadySeen = sessionStorage.getItem('VELOURA_offer_seen')
+    const alreadySeen = sessionStorage.getItem('VELHOURA_offer_seen')
     if (alreadySeen) return
     const showTimer = setTimeout(() => {
       setVisible(true)
-      sessionStorage.setItem('VELOURA_offer_seen', '1')
+      sessionStorage.setItem('VELHOURA_offer_seen', '1')
     }, SHOW_DELAY)
     return () => clearTimeout(showTimer)
   }, [])
@@ -64,7 +64,7 @@ export default function OfferPopup() {
               <div className="offer-popup-image" style={{ position: 'relative', minHeight: 480, overflow: 'hidden' }}>
                 <img
                   src="/imagenes/imagenchico.png"
-                  alt="VELOURA Eyewear Oferta"
+                  alt="VELHOURA Eyewear Oferta"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(6,13,26,0.1) 0%, rgba(6,13,26,0.7) 100%)' }} />
@@ -106,12 +106,12 @@ export default function OfferPopup() {
                 {submitted ? (
                   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} style={{ textAlign: 'center' }}>
                     <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'var(--blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: 28, color: 'white' }}>✓</div>
-                    <h3 style={{ fontSize: 32, fontWeight: 700, marginBottom: 12, color: 'var(--black)' }}>¡Ya eres parte de VELOURA!</h3>
+                    <h3 style={{ fontSize: 32, fontWeight: 700, marginBottom: 12, color: 'var(--black)' }}>¡Ya eres parte de VELHOURA!</h3>
                     <p style={{ fontSize: 15, color: 'var(--gray-600)', marginBottom: 20, lineHeight: 1.6 }}>
                       Tu código del 10% ha sido enviado a <strong>{email}</strong>.
                     </p>
                     <div style={{ background: 'var(--gray-100)', padding: '14px 20px', borderRadius: 8, fontSize: 24, fontWeight: 700, letterSpacing: '0.1em', color: 'var(--blue)', border: '2px dashed var(--blue)' }}>
-                      VELOURA10
+                      VELHOURA10
                     </div>
                     <p style={{ fontSize: 12, color: 'var(--gray-400)', marginTop: 10 }}>Úsalo en el carrito al finalizar la compra</p>
                   </motion.div>
@@ -121,7 +121,7 @@ export default function OfferPopup() {
                       Solo para nuevos clientes
                     </span>
                     <h2 style={{ fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 700, lineHeight: 1.05, color: 'var(--black)', marginBottom: 16 }}>
-                      Únete a VELOURA.<br />
+                      Únete a VELHOURA.<br />
                       <em style={{ fontStyle: 'italic', color: 'var(--blue)' }}>Ve diferente.</em>
                     </h2>
                     <p style={{ fontSize: 14, color: 'var(--gray-600)', lineHeight: 1.7, marginBottom: 28 }}>

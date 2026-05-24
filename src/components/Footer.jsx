@@ -41,7 +41,7 @@ export default function Footer() {
             letterSpacing: '-0.02em',
             color: 'var(--white)',
           }}>
-            VELOURA
+            VELHOURA
           </h2>
           <p style={{
             fontSize: 14,
@@ -158,7 +158,7 @@ export default function Footer() {
         gap: 16,
       }}>
         <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.28)' }}>
-          © 2025 VELOURA Eyewear. Todos los derechos reservados.
+          © 2025 VELHOURA Eyewear. Todos los derechos reservados.
         </p>
         <div style={{ display: 'flex', gap: 18 }}>
           {[IconInstagram, IconTikTok].map((Icon, i) => (

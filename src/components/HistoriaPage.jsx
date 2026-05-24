@@ -31,7 +31,7 @@ function AnimBlock({ children, delay = 0, style }) {
 const milestones = [
   { year: '2023', icon: Zap,      title: 'La chispa',        desc: 'Todo empezó en una tarde de lluvia en Barcelona. Dos amigos, un portátil y una idea que no nos dejaba dormir.' },
   { year: '2024', icon: Heart,    title: 'El proyecto nace', desc: 'Diseñamos los primeros modelos a mano. Cientos de bocetos, noches largas y mucho café con leche del bar de abajo.' },
-  { year: '2025', icon: MapPin,   title: 'VELOURA al mundo', desc: 'Lanzamos la marca desde Barcelona con un objetivo claro: gafas de calidad premium al alcance de nuestra generación.' },
+  { year: '2025', icon: MapPin,   title: 'VELHOURA al mundo', desc: 'Lanzamos la marca desde Barcelona con un objetivo claro: gafas de calidad premium al alcance de nuestra generación.' },
 ]
 
 export default function HistoriaPage({ onClose, onOpenCart, cartItems = [] }) {
@@ -108,7 +108,7 @@ export default function HistoriaPage({ onClose, onOpenCart, cartItems = [] }) {
               Somos Oriol y un compañero, dos chicos de Barcelona con 20 años que un día decidimos que queríamos crear algo propio. Algo que fuera nuestro de verdad.
             </p>
             <p style={{ fontSize: 16, color: 'var(--gray-600)', lineHeight: 1.85 }}>
-              VELOURA nació de nuestra obsesión por el diseño, la moda y el detalle. Nos dimos cuenta de que las marcas premium estaban fuera del alcance de nuestra generación, y quisimos cambiar eso.
+              VELHOURA nació de nuestra obsesión por el diseño, la moda y el detalle. Nos dimos cuenta de que las marcas premium estaban fuera del alcance de nuestra generación, y quisimos cambiar eso.
             </p>
           </AnimBlock>
 
@@ -219,12 +219,12 @@ export default function HistoriaPage({ onClose, onOpenCart, cartItems = [] }) {
       {/* Closing CTA */}
       <div className="historia-section" style={{ background: 'var(--navy)', padding: '100px 72px', textAlign: 'center' }}>
         <AnimBlock>
-          <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase', color: 'var(--blue-bright)', marginBottom: 20 }}>Únete a VELOURA</p>
+          <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase', color: 'var(--blue-bright)', marginBottom: 20 }}>Únete a VELHOURA</p>
           <h2 style={{ fontSize: 'clamp(36px, 5vw, 68px)', fontWeight: 800, color: '#fff', lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: 20 }}>
             Esta historia<br /><em style={{ fontStyle: 'italic', color: 'var(--blue-bright)' }}>la escribimos juntos.</em>
           </h2>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', maxWidth: 480, margin: '0 auto 44px', lineHeight: 1.7 }}>
-            Cuando llevas VELOURA, formas parte de algo más que una marca. Formas parte de la historia de dos jóvenes que se atrevieron.
+            Cuando llevas VELHOURA, formas parte de algo más que una marca. Formas parte de la historia de dos jóvenes que se atrevieron.
           </p>
           <motion.button
             whileHover={{ scale: 1.04 }}

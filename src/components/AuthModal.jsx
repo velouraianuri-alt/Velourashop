@@ -91,7 +91,7 @@ export default function AuthModal({ onClose }) {
           <button onClick={onClose} style={{ position: 'absolute', top: 16, right: 16, color: 'rgba(255,255,255,0.45)', transition: 'color 0.2s', padding: 6 }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.45)'}>
             <X size={18} />
           </button>
-          <p style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--blue-bright)', marginBottom: 6 }}>VELOURA</p>
+          <p style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--blue-bright)', marginBottom: 6 }}>VELHOURA</p>
           <AnimatePresence mode="wait">
             <motion.h2
               key={mode}
@@ -103,7 +103,7 @@ export default function AuthModal({ onClose }) {
             </motion.h2>
           </AnimatePresence>
           <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', marginTop: 4 }}>
-            {isRegister ? 'Únete a la familia VELOURA' : 'Accede a tu cuenta'}
+            {isRegister ? 'Únete a la familia VELHOURA' : 'Accede a tu cuenta'}
           </p>
         </div>
 
@@ -155,7 +155,7 @@ export default function AuthModal({ onClose }) {
           </form>
 
           <p style={{ textAlign: 'center', fontSize: 13, color: '#6b7280', marginTop: 20 }}>
-            {isRegister ? '¿Ya tienes cuenta? ' : '¿Nuevo en VELOURA? '}
+            {isRegister ? '¿Ya tienes cuenta? ' : '¿Nuevo en VELHOURA? '}
             <button onClick={() => setMode(isRegister ? 'login' : 'register')} style={{ color: 'var(--blue)', fontWeight: 700 }}>
               {isRegister ? 'Inicia sesión' : 'Regístrate'}
             </button>

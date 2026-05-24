@@ -55,7 +55,7 @@ export default function Hero() {
       >
         <img
           src="/imagenes/chicoenbarca.png"
-          alt="VELOURA Eyewear"
+          alt="VELHOURA Eyewear"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
         />
       </motion.div>
@@ -106,7 +106,7 @@ export default function Hero() {
             }}
           >
             Las gafas de sol<br />
-            <em style={{ fontStyle: 'italic' }}>VELOURA</em>
+            <em style={{ fontStyle: 'italic' }}>VELHOURA</em>
           </motion.h1>
 
           {/* Prueba social */}

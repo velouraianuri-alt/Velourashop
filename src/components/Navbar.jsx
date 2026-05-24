@@ -98,7 +98,7 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
       </div>
 
       <motion.nav
-        className="veloura-nav"
+        className="velhoura-nav"
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
@@ -132,7 +132,7 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
             transition: 'color 0.4s',
           }}
         >
-          VELOURA
+          VELHOURA
         </a>
 
         {/* Desktop links */}
@@ -296,7 +296,7 @@ export default function Navbar({ cartCount = 0, onCartOpen, onSectionOpen, onAut
           .hamburger { display: flex !important; }
         }
         @media (max-width: 480px) {
-          .veloura-nav { padding: 0 14px !important; }
+          .velhoura-nav { padding: 0 14px !important; }
         }
       `}</style>
     </>

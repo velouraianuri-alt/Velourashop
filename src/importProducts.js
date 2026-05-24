@@ -18,7 +18,7 @@ const productsToImport = [
     title: 'Crystal Street',
     handle: 'crystal-street',
     bodyHtml: 'Premium transparent sunglasses with exclusive design',
-    vendor: 'VELOURA',
+    vendor: 'VELHOURA',
     productType: 'Sunglasses',
     images: [
       `${TRANSPARENT}/frontal.png`,
@@ -38,7 +38,7 @@ const productsToImport = [
     title: 'Retro Ace',
     handle: 'retro-ace',
     bodyHtml: 'Classic retro-style sunglasses with timeless appeal',
-    vendor: 'VELOURA',
+    vendor: 'VELHOURA',
     productType: 'Sunglasses',
     images: [
       `${RETRO}/frontal.png`,
@@ -58,7 +58,7 @@ const productsToImport = [
     title: 'Vintage Lady',
     handle: 'vintage-lady',
     bodyHtml: 'Elegant vintage-inspired sunglasses for women',
-    vendor: 'VELOURA',
+    vendor: 'VELHOURA',
     productType: 'Sunglasses',
     images: [
       `${VINTAGE_LADY}/forntal.png`,
@@ -78,7 +78,7 @@ const productsToImport = [
     title: 'Italian Glam',
     handle: 'italian-glam',
     bodyHtml: 'Luxurious Italian-inspired glamorous eyewear',
-    vendor: 'VELOURA',
+    vendor: 'VELHOURA',
     productType: 'Sunglasses',
     images: [
       `${ITALIAN}/frontal.png`,
@@ -98,7 +98,7 @@ const productsToImport = [
     title: 'Vintage Square',
     handle: 'vintage-square',
     bodyHtml: 'Sophisticated square-framed vintage sunglasses',
-    vendor: 'VELOURA',
+    vendor: 'VELHOURA',
     productType: 'Sunglasses',
     images: [
       `${VINTAGE_SQ}/frontal.png`,
@@ -118,7 +118,7 @@ const productsToImport = [
     title: 'Unisex Pro',
     handle: 'unisex-pro',
     bodyHtml: 'Versatile unisex professional sunglasses',
-    vendor: 'VELOURA',
+    vendor: 'VELHOURA',
     productType: 'Sunglasses',
     images: [
       `${UNISEX}/frontal.png`,
@@ -138,7 +138,7 @@ const productsToImport = [
     title: 'Eclipse',
     handle: 'eclipse',
     bodyHtml: 'Premium multi-color sunglasses with exclusive designs',
-    vendor: 'VELOURA',
+    vendor: 'VELHOURA',
     productType: 'Sunglasses',
     images: [
       `${HQ}/negras_naranja/frontal.png`,

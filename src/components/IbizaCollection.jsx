@@ -79,7 +79,7 @@ export default function IbizaCollection({ onClose, onOpenCart, cartItems = [] })
           style={{ maxWidth: 700 }}
         >
           <span style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: 24 }}>
-            Exclusiva VELOURA
+            Exclusiva VELHOURA
           </span>
           <h2 style={{ fontSize: 'clamp(40px, 6vw, 80px)', fontWeight: 800, color: 'var(--black)', lineHeight: 1.1, letterSpacing: '-0.03em', marginBottom: 28 }}>
             Los mejores<br />diseños del verano

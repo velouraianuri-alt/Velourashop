@@ -12,7 +12,7 @@ const benefits = [
   {
     icon: Shield,
     title: 'Garantía de Autenticidad',
-    desc: 'Cada gafa viene con certificado de autenticidad. Lleva tu VELOURA con total confianza.',
+    desc: 'Cada gafa viene con certificado de autenticidad. Lleva tu VELHOURA con total confianza.',
     offset: 60,
   },
   {
@@ -54,7 +54,7 @@ export default function Benefits() {
                 marginBottom: 14,
               }}
             >
-              Por qué VELOURA
+              Por qué VELHOURA
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 35 }}

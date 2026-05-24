@@ -50,7 +50,7 @@ export default function CTASection({ onShopClick }) {
           lineHeight: 1,
           whiteSpace: 'nowrap',
         }}>
-          VELOURA
+          VELHOURA
         </span>
       </div>
 
@@ -81,7 +81,7 @@ export default function CTASection({ onShopClick }) {
             letterSpacing: '-0.03em',
             color: 'var(--white)',
           }}>
-            ¿Por qué elegir<br /><em style={{ fontStyle: 'italic', color: 'var(--blue)' }}>VELOURA?</em>
+            ¿Por qué elegir<br /><em style={{ fontStyle: 'italic', color: 'var(--blue)' }}>VELHOURA?</em>
           </h2>
         </motion.div>
 
@@ -103,7 +103,7 @@ export default function CTASection({ onShopClick }) {
             <thead>
               <tr>
                 <th style={{ padding: '28px 32px', textAlign: 'left', fontWeight: 600, color: 'rgba(255,255,255,0.5)', fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>Feature</th>
-                <th style={{ padding: '28px 32px', textAlign: 'center', fontWeight: 700, color: 'var(--blue)', fontSize: 14, letterSpacing: '0.06em', textTransform: 'uppercase', borderBottom: '1px solid rgba(62,82,74,0.6)', background: 'rgba(62,82,74,0.2)' }}>VELOURA</th>
+                <th style={{ padding: '28px 32px', textAlign: 'center', fontWeight: 700, color: 'var(--blue)', fontSize: 14, letterSpacing: '0.06em', textTransform: 'uppercase', borderBottom: '1px solid rgba(62,82,74,0.6)', background: 'rgba(62,82,74,0.2)' }}>VELHOURA</th>
                 <th style={{ padding: '28px 32px', textAlign: 'center', fontWeight: 600, color: 'rgba(255,255,255,0.5)', fontSize: 13, letterSpacing: '0.06em', textTransform: 'uppercase', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>Standard Brand</th>
               </tr>
             </thead>
@@ -191,7 +191,7 @@ export default function CTASection({ onShopClick }) {
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(62,82,74,0.4)' }}
             onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
           >
-            Descubre VELOURA <ArrowRight size={16} />
+            Descubre VELHOURA <ArrowRight size={16} />
           </button>
         </motion.div>
       </div>

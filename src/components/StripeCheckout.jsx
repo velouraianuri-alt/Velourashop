@@ -76,7 +76,7 @@ export default function StripeCheckout({ open, onClose, total, items }) {
 
 Número de transacción: ${paymentMethod.id.slice(0, 12).toUpperCase()}
 
-Gracias por tu compra en VELOURA.`
+Gracias por tu compra en VELHOURA.`
 
       alert(successMessage)
       onClose()

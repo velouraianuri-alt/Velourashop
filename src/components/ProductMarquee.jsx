@@ -133,7 +133,7 @@ export default function ProductMarquee() {
           Toda la colección
         </p>
         <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 800, color: 'var(--black)', letterSpacing: '-0.02em', lineHeight: 1 }}>
-          Modelos <em style={{ fontStyle: 'italic', color: 'var(--blue)' }}>VELOURA</em>
+          Modelos <em style={{ fontStyle: 'italic', color: 'var(--blue)' }}>VELHOURA</em>
         </h2>
       </div>
 
