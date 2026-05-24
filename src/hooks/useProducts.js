@@ -60,24 +60,40 @@ export function useProducts() {
         setLoading(true)
         const data = await getProducts()
 
+        // Metadatos realistas por producto
+        const META = {
+          'Crystal Street':  { stars: 4.7, reviews:  89, watching:  8, stock: 5, tag: 'Exclusive' },
+          'Retro Ace':       { stars: 4.9, reviews: 318, watching: 23, stock: 4, tag: 'Best Seller' },
+          'Vintage Lady':    { stars: 4.8, reviews: 134, watching: 15, stock: 6, tag: 'New Drop' },
+          'Italian Glam':    { stars: 5.0, reviews:  61, watching: 34, stock: 2, tag: 'Limited' },
+          'Vintage Square':  { stars: 4.6, reviews: 207, watching:  6, stock: 3, tag: null },
+          'Unisex Pro':      { stars: 4.8, reviews: 182, watching: 11, stock: 7, tag: 'Exclusive' },
+          'Eclipse':         { stars: 4.9, reviews:  97, watching: 19, stock: 8, tag: 'New Drop' },
+        }
+
         // Mapear productos de Shopify al formato de la app
-        const mappedProducts = data.map(product => ({
+        const mappedProducts = data.map(product => {
+          // Busca metadatos por nombre base (antes de posible " - Color")
+          const baseName = product.title.replace(/\s*[-–—]\s*.+$/, '').trim()
+          const meta = META[baseName] || { stars: 4.8, reviews: 120, watching: 10, stock: 5, tag: null }
+          return {
           id: product.id,
           name: product.title,
           price: product.price,
           originalPrice: parseFloat((product.price * 1.43).toFixed(2)),
-          tag: 'Exclusivo',
-          stock: 5,
-          stars: 4.8,
-          reviews: 150,
-          watching: 12,
+          tag: meta.tag,
+          stock: meta.stock,
+          stars: meta.stars,
+          reviews: meta.reviews,
+          watching: meta.watching,
           imgDefault: product.images[0],
           imgHover: product.images[1] || product.images[0],
           images: product.images,
           description: product.description,
           handle: product.handle,
           variants: product.variants,
-        }))
+        }
+        })
 
         // Excluir productos de servicios/add-ons (ej. Shipping Protection)
         const sunglassesOnly = mappedProducts.filter(p =>
