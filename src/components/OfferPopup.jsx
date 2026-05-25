@@ -113,7 +113,7 @@ export default function OfferPopup() {
                     <div style={{ background: 'var(--gray-100)', padding: '14px 20px', borderRadius: 8, fontSize: 24, fontWeight: 700, letterSpacing: '0.1em', color: 'var(--blue)', border: '2px dashed var(--blue)' }}>
                       VELHOURA10
                     </div>
-                    <p style={{ fontSize: 12, color: 'var(--gray-400)', marginTop: 10 }}>Use it in your cart at checkout</p>
+                    <p style={{ fontSize: 12, color: 'var(--gray-400)', marginTop: 10 }}>Apply this code on the checkout page when paying</p>
                   </motion.div>
                 ) : (
                   <>

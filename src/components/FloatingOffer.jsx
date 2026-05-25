@@ -98,7 +98,7 @@ export default function FloatingOffer() {
             {/* Body */}
             <div style={{ padding: '20px 22px 22px' }}>
               <p style={{ fontSize: 12, color: '#6b7280', marginBottom: 16, lineHeight: 1.6 }}>
-                Use this code at checkout and enjoy <strong style={{ color: 'var(--navy)' }}>10% off</strong> on all our models.
+                Enjoy <strong style={{ color: 'var(--navy)' }}>10% off</strong> on all our models. Apply this code on the checkout page when paying.
               </p>
 
               {/* Código */}

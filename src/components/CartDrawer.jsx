@@ -241,16 +241,7 @@ const PAYMENT_ICONS = [
 
 export default function CartDrawer({ open, onClose, items, onIncrease, onDecrease, onRemove, onCheckout, checkoutLoading = false }) {
   const [shippingProtection, setShippingProtection] = useState(false)
-  const [promoCode, setPromoCode] = useState('')
-  const [promoApplied, setPromoApplied] = useState(false)
-  const [promoError, setPromoError] = useState(false)
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 600)
-
-  // Códigos de descuento válidos → porcentaje de descuento
-  const VALID_CODES = {
-    'VELHOURA10':   10,
-    'POLAKOADIELEH': 10,
-  }
 
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth <= 600)
@@ -266,26 +257,8 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
   const promoDiscount = count >= 2 ? Math.round(cheapestPrice * 0.5 * 100) / 100 : 0
 
   const protectionFee = shippingProtection ? 2.95 : 0
-  const promoPercent = promoApplied ? (VALID_CODES[promoCode.toUpperCase()] ?? 0) : 0
-  const discount = promoPercent > 0 ? Math.round((subtotal - promoDiscount) * (promoPercent / 100) * 100) / 100 : 0
-  const total = subtotal - promoDiscount - discount + protectionFee
+  const total = subtotal - promoDiscount + protectionFee
   const hasItems = items.length > 0
-
-  const applyPromo = () => {
-    const code = promoCode.toUpperCase()
-    if (VALID_CODES[code] !== undefined) {
-      setPromoApplied(true)
-      setPromoError(false)
-    } else {
-      setPromoError(true)
-    }
-  }
-
-  const removePromo = () => {
-    setPromoApplied(false)
-    setPromoCode('')
-    setPromoError(false)
-  }
 
   return (
     <>
@@ -420,90 +393,7 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
             {/* Footer */}
             {hasItems && (
               <div className="cart-drawer-footer" style={{ padding: isMobile ? '10px 14px' : '16px 24px', borderTop: '1px solid #f0f0f0' }}>
-                {/* Promo code input */}
-                <div style={{ marginBottom: isMobile ? 8 : 14 }}>
-                  <div style={{ display: 'flex', gap: 0 }}>
-                    <input
-                      type="text"
-                      placeholder="Promo code"
-                      value={promoCode}
-                      onChange={e => { setPromoCode(e.target.value); setPromoError(false) }}
-                      onKeyDown={e => e.key === 'Enter' && !promoApplied && applyPromo()}
-                      disabled={promoApplied}
-                      style={{
-                        flex: 1,
-                        padding: isMobile ? '8px 10px' : '11px 14px',
-                        border: `1.5px solid ${promoError ? '#ef4444' : promoApplied ? '#16a34a' : '#e5e7eb'}`,
-                        borderRight: 'none',
-                        borderRadius: '4px 0 0 4px',
-                        fontFamily: 'var(--font-body)',
-                        fontSize: 12,
-                        outline: 'none',
-                        backgroundColor: promoApplied ? '#f0fdf4' : 'white',
-                        color: promoApplied ? '#15803d' : 'var(--black)',
-                        fontWeight: promoApplied ? 700 : 400,
-                        cursor: promoApplied ? 'default' : 'text',
-                        letterSpacing: promoApplied ? '0.06em' : 'normal',
-                      }}
-                    />
-                    {promoApplied ? (
-                      <button
-                        onClick={removePromo}
-                        title="Remove code"
-                        style={{
-                          padding: isMobile ? '8px 10px' : '11px 14px',
-                          background: '#f3f4f6',
-                          color: '#6b7280',
-                          borderRadius: '0 4px 4px 0',
-                          fontSize: 11,
-                          fontWeight: 700,
-                          border: '1.5px solid #16a34a',
-                          borderLeft: 'none',
-                          cursor: 'pointer',
-                          display: 'flex', alignItems: 'center', gap: 4,
-                          transition: 'background 0.2s, color 0.2s',
-                        }}
-                        onMouseEnter={e => { e.currentTarget.style.background = '#fee2e2'; e.currentTarget.style.color = '#ef4444' }}
-                        onMouseLeave={e => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280' }}
-                      >
-                        <X size={13} /> Remove
-                      </button>
-                    ) : (
-                      <button
-                        onClick={applyPromo}
-                        style={{
-                          padding: isMobile ? '8px 10px' : '11px 14px',
-                          background: 'var(--black)',
-                          color: 'white',
-                          borderRadius: '0 4px 4px 0',
-                          fontSize: 11,
-                          fontWeight: 700,
-                          letterSpacing: '0.08em',
-                          textTransform: 'uppercase',
-                          cursor: 'pointer',
-                          transition: 'background 0.2s',
-                          border: 'none',
-                        }}
-                        onMouseEnter={e => e.currentTarget.style.background = '#374151'}
-                        onMouseLeave={e => e.currentTarget.style.background = 'var(--black)'}
-                      >
-                        Apply
-                      </button>
-                    )}
-                  </div>
-                  {promoError && (
-                    <p style={{ fontSize: 11, color: '#ef4444', marginTop: 5, fontWeight: 600 }}>
-                      Invalid promo code. Please try again.
-                    </p>
-                  )}
-                  {promoApplied && (
-                    <p style={{ fontSize: 11, color: '#16a34a', marginTop: 5, fontWeight: 600 }}>
-                      ✓ {promoPercent}% discount applied!
-                    </p>
-                  )}
-                </div>
-
-                {/* Subtotal and discount */}
+                {/* Subtotal */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: isMobile ? 4 : 8, fontSize: 12, color: '#6b7280' }}>
                   <span>Subtotal</span>
                   <span>€{subtotal.toFixed(2)}</span>
@@ -516,12 +406,9 @@ export default function CartDrawer({ open, onClose, items, onIncrease, onDecreas
                   </div>
                 )}
 
-                {discount > 0 && (
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: isMobile ? 4 : 8, fontSize: 12, color: '#16a34a' }}>
-                    <span>Promo code ({promoPercent}%)</span>
-                    <span>−€{discount.toFixed(2)}</span>
-                  </div>
-                )}
+                <p style={{ fontSize: 11, color: '#6b7280', marginBottom: isMobile ? 8 : 12, lineHeight: 1.5 }}>
+                  Have a promo code? You can apply it at checkout.
+                </p>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: isMobile ? 10 : 16, paddingTop: isMobile ? 6 : 8, borderTop: '1px solid #f0f0f0' }}>
                   <span style={{ fontSize: isMobile ? 14 : 15, fontWeight: 600, color: 'var(--black)' }}>Total</span>
